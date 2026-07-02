@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genre Framing Study — Patryk Parzelski</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:        #0f0f0f;
+  --surface:   #1a1a1a;
+  --border:    #2a2a2a;
+  --text:      #e8e8e8;
+  --muted:     #888888;
+  --accent:    #c8f04a;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 2.5rem;
+  background: rgba(15,15,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.02em; color: var(--text); text-decoration: none;
+}
+.nav-back {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--muted);
+  text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem;
+}
+.nav-back:hover { color: var(--accent); }
+
+/* CASE HERO */
+.case-hero {
+  padding: 10rem 2.5rem 5rem;
+  max-width: 900px; margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.case-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; color: var(--accent);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.case-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 1.5rem;
+}
+.case-disciplines {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+}
+.discipline {
+  font-family: var(--font-mono); font-size: 0.62rem;
+  color: var(--muted); border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.case-summary {
+  font-size: 1.05rem; color: var(--muted);
+  line-height: 1.8; max-width: 680px;
+}
+
+/* STATS BAR */
+.stats-bar {
+  max-width: 900px; margin: 0 auto;
+  padding: 2rem 2.5rem;
+  display: flex; gap: 3rem; flex-wrap: wrap;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.stat { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 700; color: var(--text);
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* IMAGE BLOCK */
+.case-image {
+  max-width: 900px; margin: 0 auto;
+  background: #111;
+  min-height: 420px;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border);
+}
+.case-image img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
+.case-image-placeholder {
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: #333; letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* BODY */
+.case-body {
+  max-width: 900px; margin: 0 auto;
+  padding: 4rem 2.5rem;
+  display: flex; flex-direction: column; gap: 3.5rem;
+}
+.case-section {}
+.case-section-label {
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 1rem;
+}
+.case-section-label::after { content:''; flex:1; height:1px; background: transparent; }
+.case-section h3 {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
+}
+.case-section p {
+  font-size: 0.93rem; color: var(--muted);
+  line-height: 1.85; margin-bottom: 0.9rem;
+}
+.case-section p strong { color: var(--text); font-weight: 500; }
+.case-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.case-list li {
+  font-size: 0.9rem; color: var(--muted);
+  padding-left: 1.25rem; position: relative; line-height: 1.7;
+}
+.case-list li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent); font-size: 0.8rem;
+}
+
+/* WIP badge */
+.wip-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.wip-badge::before {
+  content:''; display:block; width:7px; height:7px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* BACK LINK */
+.case-back-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 2.5rem 4rem;
+}
+.case-back {
+  font-family: var(--font-mono); font-size: 0.75rem;
+  color: var(--muted); text-decoration: none;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1px solid var(--border); padding: 0.7rem 1.4rem;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.case-back:hover { color: var(--accent); border-color: var(--accent); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .case-hero { padding-top: 8rem; }
+  .stats-bar { gap: 2rem; }
+}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-name" href="index.html">Patryk Parzelski</a>
+    <a class="nav-back" href="index.html">← Back to work</a>
+  </nav>
+
+  <div class="case-hero">
+    <p class="case-eyebrow">Individual Research Project · University of Greenwich · Unity</p>
+    <h1 class="case-title">Genre Framing &amp; Player Navigation Study</h1>
+    <div class="case-disciplines">
+      <span class="discipline">Research</span>
+      <span class="discipline">Environmental Design</span>
+      <span class="discipline">Player Behaviour</span>
+      <span class="discipline">Unity</span>
+    </div>
+    <p class="case-summary">A research-led individual project investigating whether genre framing — telling a player what kind of game they're playing — influences how they navigate and explore an identical 3D environment. Three controlled groups of 10 participants each played the same space under different conditions. All standard design variables were stripped: no music, no lighting variation, no UI prompts. Only the environment and the framing.</p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">30</span><span class="stat-label">Total participants</span></div>
+    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Controlled groups</span></div>
+    <div class="stat"><span class="stat-num">10</span><span class="stat-label">Participants per group</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-label">Design variables between groups</span></div>
+  </div>
+
+  <div class="case-image">
+    <div class="case-image-placeholder">[ Add research environment screenshot ]</div>
+  </div>
+
+  <div class="case-body">
+
+    <div class="case-section">
+      <div class="case-section-label">The Research Question</div>
+      <p>Does genre framing change how players behave in a space — independent of anything the space itself is doing? The premise came from observing how much context shapes player expectations before they even begin to play. A loading screen, a title, a one-line description — these things prime players to look for certain things and ignore others.</p>
+      <p>The question was whether that priming produced measurable differences in navigational and explorational behaviour in an otherwise identical environment.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Study Design</div>
+      <ul class="case-list">
+        <li><strong>Group A</strong> was told they were about to play a horror game</li>
+        <li><strong>Group B</strong> was told they were about to play an adventure game</li>
+        <li><strong>Group C</strong> was given no genre information — just told to play</li>
+        <li>All three groups played an identical 3D environment built in Unity with zero variation between sessions</li>
+        <li>No music was used — audio was completely absent to remove an entire category of emotional influence</li>
+        <li>No lighting changes were made — a single soft area light illuminated the scene for visibility only, with no atmospheric variation</li>
+        <li>No UI prompts, waypoints, or instructional text appeared during play</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Environmental Design</div>
+      <p>Designing the environment for this study was a specific and unusual challenge: the space had to be <strong>deliberately ambiguous</strong>. It needed to be readable as horror, as adventure, or as neither — depending only on what the player had been told beforehand.</p>
+      <p>This meant avoiding any design choices that would anchor the space to a single genre reading. No overt horror props, no warm adventure-game palette, no neutral sterility. The environment needed to support all three interpretations simultaneously.</p>
+      <ul class="case-list">
+        <li>Every spatial decision was stress-tested against the question: does this push the space toward a specific genre reading?</li>
+        <li>The absence of certain design choices was itself a conscious design decision — removing colour grading, sound design, and signposting to isolate the framing variable</li>
+        <li>The environment was designed with enough navigational complexity to generate meaningful behavioural differences between groups, without being so complex that all groups would converge on the same path</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Findings &amp; Design Implications</div>
+      <p>The study produced measurable differences in navigational and explorational behaviour between the three groups. Genre framing demonstrably shaped how players moved through and interpreted the same physical space.</p>
+      <p>The implications for environmental storytelling are significant. The context established before a player enters a space changes how they read that space — what they look for, what they avoid, how cautiously or confidently they move. A designer can shift a player's experience of an environment without changing a single piece of geometry, simply by controlling what the player believes they are about to experience.</p>
+      <p>This finding has direct practical relevance for how games handle their opening sequences, loading screens, and genre signalling — all of which prime the player before the environment itself has a chance to speak.</p>
+    </div>
+
+  </div>
+
+  <div class="case-back-wrap">
+    <a class="case-back" href="index.html">← Back to all work</a>
+  </div>
+
+  <footer>
+    <span>Patryk Parzelski — Game Designer</span>
+    <span>© 2026</span>
+  </footer>
+</body>
+</html>

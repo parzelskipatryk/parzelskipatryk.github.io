@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gramophone Puzzle Box — Patryk Parzelski</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:        #0f0f0f;
+  --surface:   #1a1a1a;
+  --border:    #2a2a2a;
+  --text:      #e8e8e8;
+  --muted:     #888888;
+  --accent:    #c8f04a;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 2.5rem;
+  background: rgba(15,15,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.02em; color: var(--text); text-decoration: none;
+}
+.nav-back {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--muted);
+  text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem;
+}
+.nav-back:hover { color: var(--accent); }
+
+/* CASE HERO */
+.case-hero {
+  padding: 10rem 2.5rem 5rem;
+  max-width: 900px; margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.case-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; color: var(--accent);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.case-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 1.5rem;
+}
+.case-disciplines {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+}
+.discipline {
+  font-family: var(--font-mono); font-size: 0.62rem;
+  color: var(--muted); border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.case-summary {
+  font-size: 1.05rem; color: var(--muted);
+  line-height: 1.8; max-width: 680px;
+}
+
+/* STATS BAR */
+.stats-bar {
+  max-width: 900px; margin: 0 auto;
+  padding: 2rem 2.5rem;
+  display: flex; gap: 3rem; flex-wrap: wrap;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.stat { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 700; color: var(--text);
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* IMAGE BLOCK */
+.case-image {
+  max-width: 900px; margin: 0 auto;
+  background: #111;
+  min-height: 420px;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border);
+}
+.case-image img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
+.case-image-placeholder {
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: #333; letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* BODY */
+.case-body {
+  max-width: 900px; margin: 0 auto;
+  padding: 4rem 2.5rem;
+  display: flex; flex-direction: column; gap: 3.5rem;
+}
+.case-section {}
+.case-section-label {
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 1rem;
+}
+.case-section-label::after { content:''; flex:1; height:1px; background: transparent; }
+.case-section h3 {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
+}
+.case-section p {
+  font-size: 0.93rem; color: var(--muted);
+  line-height: 1.85; margin-bottom: 0.9rem;
+}
+.case-section p strong { color: var(--text); font-weight: 500; }
+.case-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.case-list li {
+  font-size: 0.9rem; color: var(--muted);
+  padding-left: 1.25rem; position: relative; line-height: 1.7;
+}
+.case-list li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent); font-size: 0.8rem;
+}
+
+/* WIP badge */
+.wip-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.wip-badge::before {
+  content:''; display:block; width:7px; height:7px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* BACK LINK */
+.case-back-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 2.5rem 4rem;
+}
+.case-back {
+  font-family: var(--font-mono); font-size: 0.75rem;
+  color: var(--muted); text-decoration: none;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1px solid var(--border); padding: 0.7rem 1.4rem;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.case-back:hover { color: var(--accent); border-color: var(--accent); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .case-hero { padding-top: 8rem; }
+  .stats-bar { gap: 2rem; }
+}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-name" href="index.html">Patryk Parzelski</a>
+    <a class="nav-back" href="index.html">← Back to work</a>
+  </nav>
+
+  <div class="case-hero">
+    <p class="case-eyebrow">Group Project · Physical Prototype · Arduino</p>
+    <h1 class="case-title">Gramophone Puzzle Box</h1>
+    <div class="case-disciplines">
+      <span class="discipline">Puzzle Design</span>
+      <span class="discipline">Physical Prototyping</span>
+      <span class="discipline">Arduino</span>
+    </div>
+    <p class="case-summary">A physical escape-room puzzle built entirely from electrical components and an Arduino microcontroller — deliberately avoiding digital game engines as a design constraint. Players tune a dial, align a spinning record to hear correct audio, and operate a crank in the correct sequence to illuminate a series of lights. No screen. No software layer. Pure physical feedback.</p>
+  </div>
+
+  <div class="case-image">
+    <div class="case-image-placeholder">[ Add Gramophone photo — physical box or internals ]</div>
+  </div>
+
+  <div class="case-body">
+
+    <div class="case-section">
+      <div class="case-section-label">The Constraint</div>
+      <p>The project brief challenged us to build a game experience using only physical electrical components — no Unity, no Unreal, no software to fall back on for feedback, state management, or instruction. Everything a player needed to understand had to be communicated through physical sensation: sound, light, resistance, and movement.</p>
+      <p>This constraint forced a kind of design rigour that digital projects often don't require. When you can't add a tooltip or a UI prompt to clarify an interaction, the interaction itself has to be self-explanatory.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Puzzle Design</div>
+      <ul class="case-list">
+        <li><strong>Dial tuning:</strong> Players must rotate a physical dial — connected to a rotary encoder — to reach a correct value. Incorrect positions produce no positive feedback; the correct position triggers the next stage</li>
+        <li><strong>Record alignment:</strong> A motor-driven spinning record must be aligned to a specific position for the gramophone's audio output to play correctly. Wrong alignment produces garbled or incorrect sound — the physical metaphor of a misaligned record doing exactly what a misaligned record would do</li>
+        <li><strong>Crank sequencing:</strong> A hand crank must be turned in the correct direction a set number of times, triggering an LED sequence to illuminate in order. The light sequence provides feedback — partial completion is visible, wrong direction resets progress</li>
+        <li>Each stage's completion provides the information or access needed for the next — the puzzles are chained, not parallel</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Affordance Design Without a Screen</div>
+      <p>The most interesting design challenge was communicating puzzle state and progress using only physical feedback. Every design decision had to answer the question: how does the player know what to do, and how do they know if they're succeeding?</p>
+      <ul class="case-list">
+        <li>Sound was the primary feedback channel for the dial and record stages — correct states produced clean audio, incorrect states produced degraded or absent audio</li>
+        <li>Light was used for the crank sequence — LEDs illuminating in order provided visible progress without needing any text or interface</li>
+        <li>Physical resistance and mechanical feel were used where possible to reinforce correct vs incorrect states — the crank clicks differently in the correct direction</li>
+        <li>The gramophone theme was chosen specifically because it justified the components narratively — a rotary encoder becomes a tuning dial, a motor becomes a record player. The narrative wrapper made the technical components feel intentional</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="case-back-wrap">
+    <a class="case-back" href="index.html">← Back to all work</a>
+  </div>
+
+  <footer>
+    <span>Patryk Parzelski — Game Designer</span>
+    <span>© 2026</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whoever Left The Light On — Patryk Parzelski</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:        #0f0f0f;
+  --surface:   #1a1a1a;
+  --border:    #2a2a2a;
+  --text:      #e8e8e8;
+  --muted:     #888888;
+  --accent:    #c8f04a;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 2.5rem;
+  background: rgba(15,15,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.02em; color: var(--text); text-decoration: none;
+}
+.nav-back {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--muted);
+  text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem;
+}
+.nav-back:hover { color: var(--accent); }
+
+/* CASE HERO */
+.case-hero {
+  padding: 10rem 2.5rem 5rem;
+  max-width: 900px; margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.case-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; color: var(--accent);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.case-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 1.5rem;
+}
+.case-disciplines {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+}
+.discipline {
+  font-family: var(--font-mono); font-size: 0.62rem;
+  color: var(--muted); border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.case-summary {
+  font-size: 1.05rem; color: var(--muted);
+  line-height: 1.8; max-width: 680px;
+}
+
+/* STATS BAR */
+.stats-bar {
+  max-width: 900px; margin: 0 auto;
+  padding: 2rem 2.5rem;
+  display: flex; gap: 3rem; flex-wrap: wrap;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.stat { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 700; color: var(--text);
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* IMAGE BLOCK */
+.case-image {
+  max-width: 900px; margin: 0 auto;
+  background: #111;
+  min-height: 420px;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border);
+}
+.case-image img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
+.case-image-placeholder {
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: #333; letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* BODY */
+.case-body {
+  max-width: 900px; margin: 0 auto;
+  padding: 4rem 2.5rem;
+  display: flex; flex-direction: column; gap: 3.5rem;
+}
+.case-section {}
+.case-section-label {
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 1rem;
+}
+.case-section-label::after { content:''; flex:1; height:1px; background: transparent; }
+.case-section h3 {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
+}
+.case-section p {
+  font-size: 0.93rem; color: var(--muted);
+  line-height: 1.85; margin-bottom: 0.9rem;
+}
+.case-section p strong { color: var(--text); font-weight: 500; }
+.case-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+.case-list li {
+  font-size: 0.9rem; color: var(--muted);
+  padding-left: 1.25rem; position: relative; line-height: 1.7;
+}
+.case-list li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent); font-size: 0.8rem;
+}
+
+/* WIP badge */
+.wip-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.wip-badge::before {
+  content:''; display:block; width:7px; height:7px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* BACK LINK */
+.case-back-wrap {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 2.5rem 4rem;
+}
+.case-back {
+  font-family: var(--font-mono); font-size: 0.75rem;
+  color: var(--muted); text-decoration: none;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1px solid var(--border); padding: 0.7rem 1.4rem;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.case-back:hover { color: var(--accent); border-color: var(--accent); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.25rem; }
+  .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .case-hero { padding-top: 8rem; }
+  .stats-bar { gap: 2rem; }
+}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-name" href="index.html">Patryk Parzelski</a>
+    <a class="nav-back" href="index.html">← Back to work</a>
+  </nav>
+
+  <div class="case-hero">
+    <div class="wip-badge">In production — Steam target July 2026</div>
+    <p class="case-eyebrow">In Production · Unity 6 URP · Steam</p>
+    <h1 class="case-title">Whoever Left The Light On</h1>
+    <div class="case-disciplines">
+      <span class="discipline">Design Lead</span>
+      <span class="discipline">Puzzle Design</span>
+      <span class="discipline">UI Design</span>
+      <span class="discipline">Narrative Design</span>
+      <span class="discipline">Unity 6 URP</span>
+    </div>
+    <p class="case-summary">A single-player escape-puzzle game set in a student bedroom, developed by a small micro-studio targeting Steam release July 2026. I am Design Team Lead — responsible for the game's entire design direction, puzzle architecture, UI asset production, and the coordination of design work across a cross-discipline team.</p>
+  </div>
+
+  <div class="case-image">
+    <div class="case-image-placeholder">[ Add WLTLO screenshot — environment or UI work ]</div>
+  </div>
+
+  <div class="case-body">
+
+    <div class="case-section">
+      <div class="case-section-label">Overview</div>
+      <p>Whoever Left The Light On is a narrative escape-puzzle game built around a student bedroom environment. The game uses a hand-drawn graphic novel aesthetic with diegetic UI — meaning the interface is embedded in the world itself rather than sitting on top of it. The puzzle structure is built around three phases, each centred on a different object in the room.</p>
+      <p>I helped name the game, shaped its initial concept, and have been the primary design voice throughout production — working alongside a project director and a team spanning programming, art, and audio.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Design Leadership</div>
+      <ul class="case-list">
+        <li>Authored the full Game Design Document — establishing the game's design standards, mechanics reference, narrative framework, and puzzle specifications</li>
+        <li>Wrote individual puzzle design specifications for each team member: radio puzzle (Shannon), calendar puzzle (Kasper), toothbrush/teeth puzzle (Ahmet)</li>
+        <li>Produced a narrative beat document mapping how the game's story is communicated through environmental details rather than dialogue</li>
+        <li>Scoped the project from an initially larger vision down to a realistic, shippable build for the July 2026 window — making hard calls about what to cut without losing the game's identity</li>
+        <li>Managed design task distribution across disciplines via Trello, acting as the final decision-maker on design direction alongside the project director</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Puzzle Design</div>
+      <p>The game's puzzle architecture is built across three phases, each using a distinct interaction model while maintaining a coherent overall flow. The bedroom setting means every puzzle is motivated by the environment — nothing feels arbitrary because everything belongs to the room.</p>
+      <ul class="case-list">
+        <li>Designed the overall three-phase structure to build in complexity — each phase introduces a new interaction type before the final phase combines them</li>
+        <li>Designed a main menu pinboard system that extends the game's diegetic language into navigation itself — the menu is part of the world, not a layer on top of it</li>
+        <li>Each puzzle spec was written to give the implementing team member enough direction to build confidently while leaving room for their own creative input</li>
+        <li>Continuously reviewed puzzle implementations during production, providing feedback and adjustments to maintain consistent difficulty pacing</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">UI &amp; Art Direction</div>
+      <p>The game's hand-drawn graphic novel aesthetic required UI work that felt made by hand rather than generated by software. I produced the complete icon set working in Clip Studio Paint, using brush settings and texture approaches to match the illustrative style of the rest of the game.</p>
+      <ul class="case-list">
+        <li>Produced the full UI icon asset set for both diegetic in-world elements and the menu-facing interface</li>
+        <li>Developed a working method in Clip Studio Paint to replicate a hand-drawn style consistently across assets — establishing a set of brush and texture guidelines for the art team</li>
+        <li>Contributed to decisions about how the UI language distinguishes the game visually from standard Unity defaults</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="case-back-wrap">
+    <a class="case-back" href="index.html">← Back to all work</a>
+  </div>
+
+  <footer>
+    <span>Patryk Parzelski — Game Designer</span>
+    <span>© 2026</span>
+  </footer>
+</body>
+</html>
