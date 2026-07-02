@@ -371,7 +371,7 @@
       text-transform: uppercase;
     }
 
-    /* Case study CTA — sits at bottom of card info, visible */
+    /* Case study CTA — starts dark, lights up green on hover */
     .project-cta {
       display: inline-flex;
       align-items: center;
@@ -381,16 +381,17 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #0f0f0f;
-      background: var(--accent);
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--border);
       padding: 0.6rem 1.2rem;
       width: fit-content;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
     .project-card:hover .project-cta {
-      background: transparent;
-      color: var(--accent);
-      outline: 1px solid var(--accent);
+      background: var(--accent);
+      color: #0f0f0f;
+      border-color: var(--accent);
     }
 
     .project-wip {
