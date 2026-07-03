@@ -20,7 +20,7 @@
       --font-body:    'Inter', sans-serif;
       --font-mono:    'Space Mono', monospace;
     }
-    html { scroll-behaviour: smooth; }
+    html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
@@ -66,60 +66,53 @@
     /* HERO */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 8rem 2.5rem 5rem;
-      max-width: 900px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 7rem 2.5rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
       position: relative;
-      overflow: hidden;
     }
     .hero-grid-bg {
-      position: absolute;
+      position: fixed;
       inset: 0;
       background-image:
         linear-gradient(rgba(200,240,74,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(200,240,74,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
+      z-index: -1;
     }
-    .hero-grid-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 100%, transparent 40%, var(--bg) 100%);
-    }
+    .hero-content { display: flex; flex-direction: column; }
     .hero-role {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--accent);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      position: relative;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
     .hero-name {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-size: clamp(2.4rem, 4.5vw, 4.2rem);
       font-weight: 700;
       line-height: 1.0;
       letter-spacing: -0.02em;
       color: var(--text);
-      position: relative;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
     .hero-sub {
       font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 520px;
+      color: #aaaaaa;
       line-height: 1.75;
-      position: relative;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
+      max-width: 460px;
     }
     .hero-meta {
       display: flex;
-      gap: 2.5rem;
-      position: relative;
+      gap: 2rem;
       flex-wrap: wrap;
     }
     .hero-stat { display: flex; flex-direction: column; gap: 0.2rem; }
@@ -129,12 +122,46 @@
       font-weight: 700;
       color: var(--text);
     }
+    .hero-stat-sub {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: #777;
+      letter-spacing: 0.04em;
+      margin-top: 0.1rem;
+    }
     .hero-stat-label {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--muted);
+      font-size: 0.62rem;
+      color: #777;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+    .hero-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.85;
+    }
+    .hero-visual-placeholder {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: #2a2a2a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 2rem;
+      line-height: 2;
     }
 
     /* SECTIONS */
@@ -490,7 +517,8 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.25rem; }
       .nav-links { display: none; }
-      .hero { padding: 0 1.25rem 4rem; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.25rem 3rem; gap: 2rem; }
+      .hero-visual { min-height: 240px; }
       .hero-meta { gap: 1.5rem; flex-wrap: wrap; }
       section { padding: 4rem 1.25rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -504,6 +532,15 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
     }
+
+    /* FEATURED CARD */
+    .project-card--featured {
+      grid-template-columns: 1.6fr 1fr;
+      min-height: 420px;
+      border-left: 3px solid var(--accent);
+    }
+    .project-card--featured .project-image { min-height: 380px; }
+    .project-card--featured .project-title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
 
     /* GLOBAL GREEN HOVER — every interactive element */
     .nav-links a:hover { color: var(--accent) !important; }
@@ -526,26 +563,29 @@
 
   <div class="hero">
     <div class="hero-grid-bg"></div>
-    <p class="hero-role">Game &amp; Level Designer</p>
-    <h1 class="hero-name">Patryk Parzelski</h1>
-    <p class="hero-sub">
-      BSc Games Design &amp; Development, University of Greenwich, graduating July 2026.<br>
-      Published titles, led design teams, tested with real players.<br>
-      TIGA Graduate of the Year nominee, Designer category, 2026.
-    </p>
-    <div class="hero-meta">
-      <div class="hero-stat">
-        <span class="hero-stat-num">431K</span>
-        <span class="hero-stat-label">Visits on published title</span>
+    <div class="hero-content">
+      <p class="hero-role">Game &amp; Level Designer</p>
+      <h1 class="hero-name">Patryk Parzelski</h1>
+      <p class="hero-sub">BSc Games Design &amp; Development, University of Greenwich. Graduating July 2026. Published titles, led design teams, tested with real players. TIGA Graduate of the Year nominee, Designer category, 2026.</p>
+      <div class="hero-meta">
+        <div class="hero-stat">
+          <span class="hero-stat-num">431K</span>
+          <span class="hero-stat-label">Visits on published title</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">86%</span>
+          <span class="hero-stat-label">Positive review rate</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">2</span>
+          <span class="hero-stat-sub">1 shipped · 1 in production</span>
+          <span class="hero-stat-label">Commercial titles</span>
+        </div>
       </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">86%</span>
-        <span class="hero-stat-label">Positive review rate</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">1 published,<br><span style="font-size:1.1rem">1 in production</span></span>
-        <span class="hero-stat-label">Commercial titles</span>
-      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Replace with: <img src="your-image.jpg" alt="Lootin' level design" /> -->
+      <div class="hero-visual-placeholder">[ Add key project image here ]<br>Lootin' screenshot, whiteboard,<br>or level blockout recommended</div>
     </div>
   </div>
 
@@ -563,8 +603,8 @@
       <div class="about-text">
         <h2>About me.</h2>
         <p>I've always been more interested in <strong>why a design works</strong> than what it looks like. That means building systems with testable assumptions, laying out levels with clear navigational logic, and not calling something finished until players prove it is.</p>
-        <p>My background spans published live-service games on Roblox, VR multiplayer puzzle design, physical puzzle installations, and research-led single-player environments. I've led design teams, run playtesting programmemes, and tracked player behaviour to make decisions grounded in data rather than instinct.</p>
-        <p>Currently finishing my BSc at the University of Greenwich and leading design on <strong>Whoever Left The Light On</strong>, targeting Steam release July 2026.</p>
+        <p>My background spans published live-service games on Roblox, VR multiplayer puzzle design, physical puzzle installations, and research-led single-player environments. I've led design teams, run playtesting programmes, and tracked player behaviour to make decisions grounded in data rather than instinct.</p>
+        <p>Currently finishing my BSc at the University of Greenwich and leading design on <strong>Whoever Left The Light On</strong>, targeting a 2026 Steam release.</p>
       </div>
       <div class="about-skills">
         <div class="skill-row">
@@ -615,28 +655,29 @@
   <div style="max-width:1100px; margin:0 auto; padding:0 2.5rem 6rem;">
     <div class="projects-list">
 
-      <!-- Lootin' -->
-      <a class="project-card reveal" href="case-lootin.html">
+      <!-- Lootin' — FEATURED -->
+      <a class="project-card project-card--featured reveal" href="case-lootin.html">
         <div class="project-image">
           <div class="project-image-placeholder">[ Add Lootin' screenshot ]</div>
         </div>
         <div class="project-info">
           <div class="project-top">
             <div class="project-disciplines">
+              <span class="discipline" style="border-color:var(--accent);color:var(--accent);">Featured</span>
               <span class="discipline">Level Design</span>
               <span class="discipline">Puzzle Design</span>
               <span class="discipline">Quest Design</span>
               <span class="discipline">Player Analytics</span>
             </div>
             <h3 class="project-title">Lootin'</h3>
-            <p class="project-desc">A published Roblox action-mining game that reached 431K visits and sustained 200–300 daily active players. I owned the full design pipeline, level flow, tutorialisation, puzzle and quest design, and player data analysis to drive iterative improvements.</p>
+            <p class="project-desc">A Roblox action-mining game I designed, shipped, and sold to a studio. 431K visits, 200–300 daily active players at peak, 86% positive review rating. I owned the full design pipeline — blockout, tutorialisation, economy balancing, and live data analysis.</p>
           </div>
           <div class="project-bottom">
             <ul class="project-contributions">
-              <li>Designed level flow and player navigation from blockout to polish</li>
+              <li>Designed level flow and navigation from blockout to polished state</li>
               <li>Built luck and progression systems with Excel-based balancing models</li>
               <li>Ran structured playtesting groups and analysed behavioural data</li>
-              <li>Created onboarding funnels; tracked drop-off to iterate on tutorial design</li>
+              <li>Tracked onboarding funnels and iterated on tutorial design from drop-off data</li>
               <li>Managed a Discord community of 400+ active members</li>
             </ul>
             <div class="project-stats">
@@ -663,7 +704,7 @@
               <span class="discipline">Narrative Design</span>
             </div>
             <h3 class="project-title">Whoever Left The Light On</h3>
-            <p class="project-desc">A bedroom escape-puzzle game targeting Steam release July 2026. As Design Team Lead I'm shaping the entire design direction, puzzle architecture across three phases, UI icon production, and narrative integration.</p>
+            <p class="project-desc">A bedroom escape-puzzle game targeting a 2026 Steam release. As Design Team Lead I'm shaping the entire design direction, puzzle architecture across three phases, UI icon production, and narrative integration.</p>
           </div>
           <div class="project-bottom">
             <ul class="project-contributions">
@@ -672,7 +713,7 @@
               <li>Produced the full UI icon asset set, diegetic and menu-facing</li>
               <li>Coordinated design tasks across disciplines via Trello</li>
             </ul>
-            <div class="project-wip">In production, Steam target July 2026</div>
+            <div class="project-wip">In production, targeting 2026 Steam release</div>
             <span class="project-cta">View Case Study →</span>
           </div>
         </div>
