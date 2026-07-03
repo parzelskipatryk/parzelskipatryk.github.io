@@ -25,8 +25,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -70,6 +70,10 @@ nav {
   font-weight: 700; line-height: 1.05;
   letter-spacing: -0.02em; margin-bottom: 1.5rem;
 }
+.case-subtitle {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted);
+  letter-spacing: 0.06em; margin-bottom: 1.5rem;
+}
 .case-disciplines {
   display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
 }
@@ -109,12 +113,9 @@ nav {
   min-height: 420px;
   display: flex; align-items: center; justify-content: center;
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
 }
 .case-image img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
-.case-image-placeholder {
-  font-family: var(--font-mono); font-size: 0.65rem;
-  color: #333; letter-spacing: 0.1em; text-transform: uppercase;
-}
 
 /* BODY */
 .case-body {
@@ -122,22 +123,19 @@ nav {
   padding: 4rem 2.5rem;
   display: flex; flex-direction: column; gap: 3.5rem;
 }
-.case-section {}
 .case-section-label {
   font-family: var(--font-mono); font-size: 0.85rem;
   color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;
   margin-bottom: 1.25rem; padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 1rem;
 }
-.case-section-label::after { content:''; flex:1; height:1px; background: transparent; }
 .case-section h3 {
   font-family: var(--font-display); font-size: 1.3rem;
   font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
 }
 .case-section p {
-  font-size: 0.93rem; color: var(--muted);
-  line-height: 1.85; margin-bottom: 0.9rem;
+  font-size: 0.95rem; color: var(--muted);
+  line-height: 1.75; margin-bottom: 0.9rem;
 }
 .case-section p strong { color: var(--text); font-weight: 500; }
 .case-list {
@@ -145,27 +143,86 @@ nav {
   margin-top: 0.5rem;
 }
 .case-list li {
-  font-size: 0.9rem; color: var(--muted);
-  padding-left: 1.25rem; position: relative; line-height: 1.7;
+  font-size: 0.93rem; color: var(--muted);
+  padding-left: 1.25rem; position: relative; line-height: 1.75;
 }
 .case-list li::before {
   content: '→'; position: absolute; left: 0;
   color: var(--accent); font-size: 0.8rem;
 }
+.case-list li strong { color: var(--text); font-weight: 500; }
 
-/* WIP badge */
-.wip-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--font-mono); font-size: 0.65rem;
-  color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
-  margin-bottom: 1.5rem;
+/* FRAMEWORK GRID */
+.framework-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  margin-top: 1.5rem;
 }
-.wip-badge::before {
-  content:''; display:block; width:7px; height:7px;
-  background: var(--accent); border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
+.framework-card { background: var(--surface); padding: 1.5rem; }
+.framework-num {
+  font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent);
+  letter-spacing: 0.1em; margin-bottom: 0.6rem;
 }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.framework-title {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.framework-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+/* CAROUSEL */
+.carousel { border: 1px solid var(--border); background: var(--surface); overflow: hidden; margin-top: 1.5rem; }
+.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+.carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
+.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.carousel-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.carousel-caption { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; }
+.carousel-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+.carousel-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.carousel-controls { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
+.carousel-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--font-mono); font-size: 0.9rem; padding: 0.4rem 0.9rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+.carousel-btn:hover { color: var(--accent); border-color: var(--accent); }
+.carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
+.carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s; border: none; padding: 0; }
+.carousel-dot.active, .carousel-dot:hover { background: var(--accent); }
+
+/* ANALYTICS / HEATMAP GRID */
+.analytics-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  margin-top: 1.5rem;
+}
+.analytics-card { background: var(--surface); display: flex; flex-direction: column; }
+.analytics-card img { width: 100%; display: block; object-fit: cover; }
+.analytics-card-caption { padding: 1rem 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.3rem; }
+.analytics-card-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+.analytics-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+/* METRIC GRID (numbers, not images) */
+.metric-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  margin-top: 1.5rem;
+}
+.metric-card { background: var(--surface); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.metric-card-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.metric-card-num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--text); }
+.metric-card-sub { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+.metric-card--highlight .metric-card-num { color: var(--accent); }
+
+/* QUOTES */
+.quote-grid { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 1.5rem; }
+.quote-card { background: var(--surface); padding: 1.5rem 1.75rem; border-left: 2px solid var(--accent); }
+.quote-cond { font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.quote-text { font-family: var(--font-display); font-size: 1rem; font-weight: 500; font-style: italic; color: var(--text); line-height: 1.5; margin-bottom: 0.6rem; }
+.quote-note { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+/* RESULT BANNER */
+.result-banner {
+  margin-top: 1.5rem; border: 1px solid var(--border); background: var(--surface);
+  padding: 1.5rem 1.75rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.result-banner-num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent); }
+.result-banner-text { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 560px; }
 
 /* BACK LINK */
 .case-back-wrap {
@@ -198,22 +255,10 @@ footer span {
   .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
   .case-hero { padding-top: 8rem; }
   .stats-bar { gap: 2rem; }
+  .framework-grid { grid-template-columns: 1fr; }
+  .analytics-grid { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: 1fr; }
 }
-
-/* GLOBAL OVERRIDES */
-body { font-size: 17px; line-height: 1.5; }
-.case-section p { font-size: 0.95rem; line-height: 1.75; }
-.case-list li { font-size: 0.93rem; line-height: 1.75; }
-.case-summary { font-size: 1.05rem; line-height: 1.8; }
-
-/* CONSISTENT GREEN HOVER, every interactive element */
-a { transition: color 0.2s; }
-.nav-back:hover { color: var(--accent) !important; }
-.case-back:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
-.carousel-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
-.carousel-dot:hover { background: var(--accent) !important; }
-.carousel-dot.active { background: var(--accent) !important; }
-
   </style>
 </head>
 <body>
@@ -223,66 +268,284 @@ a { transition: color 0.2s; }
   </nav>
 
   <div class="case-hero">
-    <p class="case-eyebrow">Research Study · University of Greenwich · Unity</p>
+    <p class="case-eyebrow">Individual Research Project · University of Greenwich · Unity</p>
     <h1 class="case-title">Perceptual Pathways</h1>
-    <p style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;margin-bottom:1.5rem;">Genre Framing and Player Navigation, Research Study</p>
+    <p class="case-subtitle">Genre Framing and Player Navigation, Final Year Individual Project · Supervisor: Tom Cole</p>
     <div class="case-disciplines">
       <span class="discipline">Research</span>
-      <span class="discipline">Environmental Design</span>
-      <span class="discipline">Player Behaviour</span>
+      <span class="discipline">Level Design</span>
+      <span class="discipline">Player Psychology</span>
       <span class="discipline">Unity</span>
+      <span class="discipline">C#</span>
     </div>
-    <p class="case-summary">An individual research study investigating whether genre framing, telling a player what kind of game they're playing, influences how they navigate and explore an identical 3D environment. Three controlled groups of 10 participants each played the same space under different conditions. All standard design variables were stripped: no music, no lighting variation, no UI prompts. Only the environment and the framing.</p>
+    <p class="case-summary">A between-subjects study asking a simple question with a complicated answer: does telling a player what genre they're about to play change how they move through a space, when the space itself never changes? Thirty participants explored the same Unity office environment under one of three genre labels, horror, adventure, or none at all, while every interaction and footstep was logged automatically. The label alone was enough to shift arousal, caution, and curiosity in measurable, statistically significant ways.</p>
   </div>
 
   <div class="stats-bar">
-    <div class="stat"><span class="stat-num">30</span><span class="stat-label">Total participants</span></div>
-    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Controlled groups</span></div>
-    <div class="stat"><span class="stat-num">10</span><span class="stat-label">Participants per group</span></div>
-    <div class="stat"><span class="stat-num">0</span><span class="stat-label">Design variables between groups</span></div>
+    <div class="stat"><span class="stat-num">30</span><span class="stat-label">Participants, 3 conditions</span></div>
+    <div class="stat"><span class="stat-num">d = 1.52</span><span class="stat-label">Effect size, horror vs neutral arousal</span></div>
+    <div class="stat"><span class="stat-num">2.4×</span><span class="stat-label">Curiosity-driven interactions, adventure vs horror</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-label">Geometry changes between conditions</span></div>
   </div>
 
   <div class="case-image">
-    <div class="case-image-placeholder">[ Add research environment screenshot ]</div>
+    <img src="research-lobby.png" alt="Office lobby environment used across all three test conditions" />
   </div>
 
   <div class="case-body">
 
     <div class="case-section">
       <div class="case-section-label">The Research Question</div>
-      <p>Does genre framing change how players behave in a space, independent of anything the space itself is doing? The premise came from observing how much context shapes player expectations before they even begin to play. A loading screen, a title, a one-line description, these things prime players to look for certain things and ignore others.</p>
-      <p>The question was whether that priming produced measurable differences in navigational and explorational behaviour in an otherwise identical environment.</p>
+      <p>Level design communicates before the player ever presses a key. A loading screen, a title, a one-line genre description, all of this primes what a player looks for and what they ignore the moment they gain control. The question behind this project was whether that priming produces measurable differences in how players actually behave inside an identical space, independent of anything the environment itself is doing.</p>
+      <p>Thirty participants were split into three groups of ten. One was told they were about to play a horror game, one an adventure game, and the third received no framing at all and didn't know the other two conditions existed. All three walked through the exact same Unity office lobby, with identical geometry, lighting, and props. The only variable was the sentence they were given before they picked up the controller.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Theoretical Framework</div>
+      <p>Four frameworks structured the study, chosen to isolate framing as the only moving part in an otherwise fixed environment.</p>
+      <div class="framework-grid">
+        <div class="framework-card">
+          <div class="framework-num">01</div>
+          <div class="framework-title">Framing Theory</div>
+          <div class="framework-desc">Tversky &amp; Kahneman (1981). The same situation gets interpreted differently depending on how it's presented. Applied here as genre labels given before play.</div>
+        </div>
+        <div class="framework-card">
+          <div class="framework-num">02</div>
+          <div class="framework-title">PAD Model</div>
+          <div class="framework-desc">Mehrabian &amp; Russell (1974). Measures emotion across Pleasure, Arousal, and Dominance, letting the study track emotional response without relying on narrative or mechanics.</div>
+        </div>
+        <div class="framework-card">
+          <div class="framework-num">03</div>
+          <div class="framework-title">Spatial Legibility</div>
+          <div class="framework-desc">Lynch (1960). Environments are read through paths, landmarks, edges, and nodes. Kept consistent throughout so framing stayed the only variable.</div>
+        </div>
+        <div class="framework-card">
+          <div class="framework-num">04</div>
+          <div class="framework-title">Architectural Communication</div>
+          <div class="framework-desc">Totten (2014). Space carries meaning before narrative or mechanics arrive. Even a minimal environment says something to the player.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Level Showcase</div>
+      <p>A single Unity environment, reframed by genre. Every participant walked through the same rooms: an entry lobby with vending machines and seating, an open-plan office floor with cubicles and an elevator, side rooms including a kitchen and a conference room, and an S-bend corridor connecting the zones, deliberately built as the key reframing target with blind corners and no line of sight to the goal.</p>
+
+      <div class="carousel" id="researchCarousel">
+        <div class="carousel-track" id="researchTrack">
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="research-lobby.png" alt="Office lobby entry point" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Lobby</span>
+              <p class="carousel-desc">The entry point every participant shared. Vending machines, exit signage, and a waiting area sat in an architectural indent off the main path, a deliberate zoning choice to see whether participants would deviate from the shortest route to the goal.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="research-kitchen.png" alt="Office kitchen side room" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Kitchen</span>
+              <p class="carousel-desc">One of the optional side rooms, a dead end by design, entered and exited through the same door. Mundane props like the fridge and dining table were included to ground the space in a recognisable office setting rather than anything genre-coded.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="research-meeting.png" alt="Dimly lit conference room" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Conference Room</span>
+              <p class="carousel-desc">A darker side room used to test whether even minor lighting variation between rooms would bias interpretation on its own. Lighting stayed static and corporate throughout, with no flicker or mood lighting anywhere in the level.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="research-sbend.png" alt="S-bend connecting corridor" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">S-Bend Corridor</span>
+              <p class="carousel-desc">The connecting passage between zones and the main reframing target. Blind corners removed line of sight to the exit, forcing participants to commit to a path without knowing what was around the turn. Whether they approached with caution or efficiency was one of the clearest behavioural tells in the study.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="moveCarousel(-1)">←</button>
+          <div class="carousel-dots" id="researchDots"></div>
+          <button class="carousel-btn" onclick="moveCarousel(1)">→</button>
+        </div>
+      </div>
     </div>
 
     <div class="case-section">
       <div class="case-section-label">Study Design</div>
       <ul class="case-list">
-        <li><strong>Group A</strong> was told they were about to play a horror game</li>
-        <li><strong>Group B</strong> was told they were about to play an adventure game</li>
-        <li><strong>Group C</strong> was given no genre information, just told to play</li>
-        <li>All three groups played an identical 3D environment built in Unity with zero variation between sessions</li>
-        <li>No music was used, audio was completely absent to remove an entire category of emotional influence</li>
-        <li>No lighting changes were made, a single soft area light illuminated the scene for visibility only, with no atmospheric variation</li>
-        <li>No UI prompts, waypoints, or instructional text appeared during play</li>
+        <li><strong>Horror (n = 10)</strong> was told they were about to play a horror game before starting</li>
+        <li><strong>Adventure (n = 10)</strong> was told they were about to play an adventure game before starting</li>
+        <li><strong>Neutral (n = 10)</strong> received no genre framing and wasn't told other conditions existed, serving as a genuine baseline</li>
+        <li>Between-subjects design with random assignment, sampled by convenience from the Games Design cohort</li>
+        <li>Procedure: genre priming, free exploration with no objectives or time limit, exit interaction, SAM questionnaire, then open-ended written responses</li>
+        <li>No scripted events, enemies, audio cues, or narrative beats anywhere in the build, only geometry, lighting, and props that players could assign their own meaning to</li>
       </ul>
     </div>
 
     <div class="case-section">
       <div class="case-section-label">Environmental Design</div>
-      <p>Designing the environment for this study was a specific and unusual challenge: the space had to be <strong>deliberately ambiguous</strong>. It needed to be readable as horror, as adventure, or as neither, depending only on what the player had been told beforehand.</p>
-      <p>This meant avoiding any design choices that would anchor the space to a single genre reading. No overt horror props, no warm adventure-game palette, no neutral sterility. The environment needed to support all three interpretations simultaneously.</p>
+      <p>Designing for this study meant the opposite of normal level design instincts: the space had to read as horror, adventure, or neither, depending only on what the player had been told beforehand. Every prop and every architectural decision was stress-tested against one question, does this push the space toward a specific genre reading on its own?</p>
       <ul class="case-list">
-        <li>Every spatial decision was stress-tested against the question: does this push the space toward a specific genre reading?</li>
-        <li>The absence of certain design choices was itself a conscious design decision, removing colour grading, sound design, and signposting to isolate the framing variable</li>
-        <li>The environment was designed with enough navigational complexity to generate meaningful behavioural differences between groups, without being so complex that all groups would converge on the same path</li>
+        <li><strong>Spatial scaling.</strong> Early passes felt like an empty warehouse rather than a corporate lobby. Camera FOV and walking speed were tuned to ground the sense of scale without losing the open space needed to observe exploratory behaviour</li>
+        <li><strong>Zoning strategy.</strong> Assets like the reception desk and waiting area were grouped into an architectural indent off the main route, creating an optional zone to see whether participants would deviate from the shortest path</li>
+        <li><strong>Narrative anchors.</strong> Small human touches, like an Employee of the Month board, kept the space from feeling sterile and doubled as visual distractors to observe in post-session responses</li>
+        <li><strong>Diegetic navigation only.</strong> No arrows, waypoints, or HUD elements. Exit signs, water coolers, and fire extinguishers did the navigational work instead, clustered subtly to draw players toward the exit without them noticing they were being guided</li>
+        <li><strong>Lighting held flat.</strong> Baked lighting kept illumination consistent across the whole level. No flicker, no moody spot-lighting, nothing that could tip the environment toward horror or adventure on its own</li>
       </ul>
     </div>
 
     <div class="case-section">
-      <div class="case-section-label">Findings &amp; Design Implications</div>
-      <p>The study produced measurable differences in navigational and explorational behaviour between the three groups. Genre framing demonstrably shaped how players moved through and interpreted the same physical space.</p>
-      <p>The implications for environmental storytelling are significant. The context established before a player enters a space changes how they read that space, what they look for, what they avoid, how cautiously or confidently they move. A designer can shift a player's experience of an environment without changing a single piece of geometry, simply by controlling what the player believes they are about to experience.</p>
-      <p>This finding has direct practical relevance for how games handle their opening sequences, loading screens, and genre signalling, all of which prime the player before the environment itself has a chance to speak.</p>
+      <div class="case-section-label">Data Capture Systems</div>
+      <p>All data collection was built directly into the product, since asking participants to self-report movement would have undermined the entire premise of the study.</p>
+      <ul class="case-list">
+        <li>Player position sampled at fixed intervals throughout every session and stored as coordinate data, later visualised as movement heatmaps</li>
+        <li>Every interaction with doors, drawers, and the elevator logged automatically with object type, world position, and timestamp, using a layermask-based raycast so new interactables could be added without touching the core logic</li>
+        <li>A ghost replay system recorded full position and orientation every frame, letting sessions be played back in-engine as a first-person walkthrough, not just plotted as a flat heatmap</li>
+        <li>Session duration recorded automatically from spawn to the moment a participant interacted with the fire exit</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Findings, Behavioural Data</div>
+      <p>Adventure-framed participants moved and interacted more than either other group, while horror and neutral behaviour tracked each other closely. That pairing turned out to be the most useful part of the result: horror framing didn't suppress curiosity below a natural baseline, adventure framing actively pulled it upward.</p>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <span class="metric-card-label">Interactions / minute</span>
+          <span class="metric-card-num">6.53</span>
+          <span class="metric-card-sub">Horror</span>
+        </div>
+        <div class="metric-card metric-card--highlight">
+          <span class="metric-card-label">Interactions / minute</span>
+          <span class="metric-card-num">9.18</span>
+          <span class="metric-card-sub">Adventure, significantly higher than both other conditions (p = .038)</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-card-label">Interactions / minute</span>
+          <span class="metric-card-num">6.25</span>
+          <span class="metric-card-sub">Neutral, nearly identical to Horror</span>
+        </div>
+      </div>
+
+      <p style="margin-top:1.5rem;">The drawer metric was the single most diagnostic finding in the whole study. Drawers contained nothing, so opening one was a pure measure of curiosity rather than reward-seeking. Adventure participants opened drawers at more than twice the rate of the other two groups, who landed almost exactly on top of each other.</p>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <span class="metric-card-label">Drawer interactions / session</span>
+          <span class="metric-card-num">10.3</span>
+          <span class="metric-card-sub">Horror</span>
+        </div>
+        <div class="metric-card metric-card--highlight">
+          <span class="metric-card-label">Drawer interactions / session</span>
+          <span class="metric-card-num">24.5</span>
+          <span class="metric-card-sub">Adventure, over 2× Horror and Neutral</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-card-label">Drawer interactions / session</span>
+          <span class="metric-card-num">10.1</span>
+          <span class="metric-card-sub">Neutral</span>
+        </div>
+      </div>
+
+      <p style="margin-top:1.5rem;">Aggregate movement heatmaps also revealed a qualitative difference in how each group covered similar ground. Horror activity stayed concentrated along corridors and peripheral edges. Adventure produced warmer clusters directly around interactable objects. Neutral movement was sparser and more linear, consistent with passive transit rather than deliberate exploration.</p>
+
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <img src="research-heatmap-horror.png" alt="Horror condition movement heatmap" />
+          <div class="analytics-card-caption">
+            <span class="analytics-card-label">Horror Heatmap</span>
+            <span class="analytics-card-desc">Movement hugs corridors and edges, consistent with cautious, threat-aware traversal.</span>
+          </div>
+        </div>
+        <div class="analytics-card">
+          <img src="research-heatmap-adventure.png" alt="Adventure condition movement heatmap" />
+          <div class="analytics-card-caption">
+            <span class="analytics-card-label">Adventure Heatmap</span>
+            <span class="analytics-card-desc">Denser, more scattered coverage clustered around interactable objects and side rooms.</span>
+          </div>
+        </div>
+        <div class="analytics-card">
+          <img src="research-heatmap-neutral.png" alt="Neutral condition movement heatmap" />
+          <div class="analytics-card-caption">
+            <span class="analytics-card-label">Neutral Heatmap</span>
+            <span class="analytics-card-desc">Sparser, more linear paths, closer to passive transit than active exploration.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Findings, Emotional Response (SAM)</div>
+      <p>Arousal and Dominance both followed a clean gradient across the three conditions, measured using the Self-Assessment Manikin against Mehrabian and Russell's Pleasure, Arousal, Dominance model. Pleasure showed no significant difference between groups, which fits an environment with no explicit threat or reward built into it.</p>
+      <div class="result-banner">
+        <span class="result-banner-num">t(18) = 3.40, p = .003</span>
+        <span class="result-banner-text">Horror participants reported significantly higher arousal than Neutral participants, d = 1.52, a very large effect by Cohen's (1988) conventions. Dominance mirrored this in reverse: Horror felt the least in control, Neutral the most.</span>
+      </div>
+      <p style="margin-top:1.5rem;">The tighter spread in Horror responses compared to Adventure was one of the more interesting secondary results. Horror carries a culturally shared set of associations, tension, hypervigilance, threat anticipation, so it anchored interpretation consistently across almost every participant. Adventure is a broader category, covering everything from calm exploration to active excitement, and produced far more individual variation as a result.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Qualitative Highlights</div>
+      <p>Open-ended responses after each session made the mechanism behind the numbers visible. None of these behaviours were prompted by any mechanic. The genre label was the only thing that changed.</p>
+      <div class="quote-grid">
+        <div class="quote-card">
+          <div class="quote-cond">Horror</div>
+          <div class="quote-text">I wanted to stay close to the walls.</div>
+          <p class="quote-note">Corner-peeking, wall-hugging, and hesitating at thresholds were common across the Horror group, all self-generated rather than prompted by anything in the level.</p>
+        </div>
+        <div class="quote-card">
+          <div class="quote-cond">Adventure</div>
+          <div class="quote-text">I felt like I had a job to do or some information to gather.</div>
+          <p class="quote-note">Explains the elevated drawer rate directly. Objects were treated as sources of information rather than threats.</p>
+        </div>
+        <div class="quote-card">
+          <div class="quote-cond">Neutral</div>
+          <div class="quote-text">I expected the PCs to turn on, the clock to get hands and start a countdown.</div>
+          <p class="quote-note">With no frame to read the space through, several Neutral participants started inventing rules that weren't there. 18.2% of the group reached for horror vocabulary unprompted, compared with 10% of Adventure participants.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Tonal Gravity</div>
+      <p>The most analytically interesting result wasn't something the study set out to test, it surfaced from the data during analysis. Even without any framing, a portion of Neutral participants still read the space as unsettling. That points to something beyond framing alone: the environment carries a pull of its own, and framing can't fully override what a space is already saying before the player is told anything about it.</p>
+      <ul class="case-list">
+        <li><strong>Institutional emptiness.</strong> A corporate lobby with nobody in it reads as post-abandonment by default</li>
+        <li><strong>Absence of human presence.</strong> No NPCs, no signs anyone had just left</li>
+        <li><strong>The dark server room.</strong> An unlit recessed space read as uncertain or threatening regardless of framing</li>
+        <li><strong>Ambient silence.</strong> No incidental audio, which made the emptiness feel heavier across all three conditions</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Design Guidelines</div>
+      <ul class="case-list">
+        <li><strong>Frame for the behaviour you want.</strong> If the goal is curious, exploratory play, pre-play framing has to actively push players away from horror's default threat-readiness. Leaving framing neutral just defaults to low curiosity</li>
+        <li><strong>Don't assume your environment is neutral.</strong> Liminal spaces and empty institutional interiors carry horror-adjacent associations before a single word of framing is added. Playtest the environment's baseline tone before treating it as a blank canvas</li>
+        <li><strong>Horror and adventure aren't equally reliable.</strong> Horror produces consistent responses across almost every player. Adventure is broader and produces far more variation, so it needs reinforcement through environment or mechanics if consistency matters</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Limitations &amp; Result</div>
+      <p>The sample (N = 30) was drawn entirely from the Games Design cohort, meaning participants were likely more analytically aware of genre as a construct than a general player base would be. A couple of results sat between p = .05 and .06, treated here as suggestive rather than confirmed, though their effect sizes remained large. Future work would benefit from a larger, non-specialist sample and physiological measures like heart rate or GSR to track the framing effect as it unfolds in real time, rather than only at the end of a session.</p>
+      <div class="result-banner">
+        <span class="result-banner-num">First Class</span>
+        <span class="result-banner-text">The project formed the core of my COMP1870 Final Year Individual Project, contributing to a final degree mark of approximately 75.11%, a comfortable First Class Honours.</span>
+      </div>
     </div>
 
   </div>
@@ -295,5 +558,36 @@ a { transition: color 0.2s; }
     <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
+
+  <script>
+    let current = 0;
+    const track = document.getElementById('researchTrack');
+    const dotsContainer = document.getElementById('researchDots');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const total = slides.length;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function moveCarousel(dir) { goTo(current + dir); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') moveCarousel(-1);
+      if (e.key === 'ArrowRight') moveCarousel(1);
+    });
+  </script>
 </body>
 </html>
