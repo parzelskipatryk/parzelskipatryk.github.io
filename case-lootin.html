@@ -3,297 +3,502 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lootin', Patryk Parzelski</title>
+  <title>Lootin' — Patryk Parzelski</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg:        #0f0f0f;
-  --surface:   #1a1a1a;
-  --border:    #2a2a2a;
-  --text:      #e8e8e8;
-  --muted:     #888888;
-  --accent:    #c8f04a;
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body:    'Inter', sans-serif;
-  --font-mono:    'Space Mono', monospace;
-}
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0f0f0f;
+      --surface:   #1a1a1a;
+      --border:    #2a2a2a;
+      --text:      #e8e8e8;
+      --muted:     #888888;
+      --accent:    #c8f04a;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --font-mono:    'Space Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.25rem 2.5rem;
-  background: rgba(15,15,15,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-name {
-  font-family: var(--font-display);
-  font-size: 0.95rem; font-weight: 600;
-  letter-spacing: 0.02em; color: var(--text); text-decoration: none;
-}
-.nav-back {
-  font-family: var(--font-mono);
-  font-size: 0.75rem; color: var(--muted);
-  text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
-  transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem;
-}
-.nav-back:hover { color: var(--accent); }
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: rgba(15,15,15,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem; font-weight: 600;
+      letter-spacing: 0.02em; color: var(--text); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-name:hover { color: var(--accent); }
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 0.75rem; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+      transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem;
+    }
+    .nav-back:hover { color: var(--accent); }
 
-/* CASE HERO */
-.case-hero {
-  padding: 10rem 2.5rem 5rem;
-  max-width: 900px; margin: 0 auto;
-  border-bottom: 1px solid var(--border);
-}
-.case-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.7rem; color: var(--accent);
-  letter-spacing: 0.12em; text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-.case-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 700; line-height: 1.05;
-  letter-spacing: -0.02em; margin-bottom: 1.5rem;
-}
-.case-disciplines {
-  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
-}
-.discipline {
-  font-family: var(--font-mono); font-size: 0.62rem;
-  color: var(--muted); border: 1px solid var(--border);
-  padding: 0.2rem 0.6rem; letter-spacing: 0.06em; text-transform: uppercase;
-}
-.case-summary {
-  font-size: 1.05rem; color: var(--muted);
-  line-height: 1.8; max-width: 680px;
-}
+    /* HERO IMAGE — full width thumbnail */
+    .case-hero-image {
+      width: 100%;
+      max-height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      margin-top: 64px;
+    }
+    .case-hero-image img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      display: block;
+    }
 
-/* STATS BAR */
-.stats-bar {
-  max-width: 900px; margin: 0 auto;
-  padding: 2rem 2.5rem;
-  display: flex; gap: 3rem; flex-wrap: wrap;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-.stat { display: flex; flex-direction: column; gap: 0.2rem; }
-.stat-num {
-  font-family: var(--font-display);
-  font-size: 1.8rem; font-weight: 700; color: var(--text);
-}
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem; color: var(--muted);
-  letter-spacing: 0.08em; text-transform: uppercase;
-}
+    /* CASE HEADER */
+    .case-hero {
+      padding: 3.5rem 2.5rem 3rem;
+      max-width: 900px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .case-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem; color: var(--accent);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.02em; margin-bottom: 1.25rem;
+    }
+    .case-disciplines {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem;
+    }
+    .discipline {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      color: var(--muted); border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .case-summary {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.8; max-width: 700px;
+    }
 
-/* IMAGE BLOCK */
-.case-image {
-  max-width: 900px; margin: 0 auto;
-  background: #111;
-  min-height: 420px;
-  display: flex; align-items: center; justify-content: center;
-  border-bottom: 1px solid var(--border);
-}
-.case-image img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
-.case-image-placeholder {
-  font-family: var(--font-mono); font-size: 0.65rem;
-  color: #333; letter-spacing: 0.1em; text-transform: uppercase;
-}
+    /* STATS BAR */
+    .stats-bar {
+      max-width: 900px; margin: 0 auto;
+      padding: 2rem 2.5rem;
+      display: flex; gap: 3rem; flex-wrap: wrap;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat { display: flex; flex-direction: column; gap: 0.2rem; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem; font-weight: 700; color: var(--text);
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem; color: var(--muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
 
-/* BODY */
-.case-body {
-  max-width: 900px; margin: 0 auto;
-  padding: 4rem 2.5rem;
-  display: flex; flex-direction: column; gap: 3.5rem;
-}
-.case-section {}
-.case-section-label {
-  font-family: var(--font-mono); font-size: 0.65rem;
-  color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
-  margin-bottom: 1.25rem; padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 1rem;
-}
-.case-section-label::after { content:''; flex:1; height:1px; background: transparent; }
-.case-section h3 {
-  font-family: var(--font-display); font-size: 1.3rem;
-  font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
-}
-.case-section p {
-  font-size: 0.93rem; color: var(--muted);
-  line-height: 1.85; margin-bottom: 0.9rem;
-}
-.case-section p strong { color: var(--text); font-weight: 500; }
-.case-list {
-  list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
-  margin-top: 0.5rem;
-}
-.case-list li {
-  font-size: 0.9rem; color: var(--muted);
-  padding-left: 1.25rem; position: relative; line-height: 1.7;
-}
-.case-list li::before {
-  content: '→'; position: absolute; left: 0;
-  color: var(--accent); font-size: 0.8rem;
-}
+    /* CASE BODY */
+    .case-body {
+      max-width: 900px; margin: 0 auto;
+      padding: 4rem 2.5rem;
+      display: flex; flex-direction: column; gap: 4rem;
+    }
+    .case-section {}
+    .case-section-label {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .case-section p {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.8; margin-bottom: 0.9rem;
+    }
+    .case-section p strong { color: var(--text); font-weight: 500; }
+    .case-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+      margin-top: 0.75rem;
+    }
+    .case-list li {
+      font-size: 0.93rem; color: var(--muted);
+      padding-left: 1.25rem; position: relative; line-height: 1.75;
+    }
+    .case-list li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.8rem;
+    }
 
-/* WIP badge */
-.wip-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--font-mono); font-size: 0.65rem;
-  color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-.wip-badge::before {
-  content:''; display:block; width:7px; height:7px;
-  background: var(--accent); border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    /* CAROUSEL */
+    .carousel {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
+    .carousel-img-wrap {
+      background: #0a0a0a;
+      min-height: 340px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .carousel-img-wrap img {
+      width: 100%; display: block;
+      max-height: 400px; object-fit: contain;
+    }
+    .carousel-placeholder {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      color: #333; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .carousel-caption {
+      padding: 1.25rem 1.75rem;
+      border-top: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .carousel-label {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .carousel-desc {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.6;
+    }
+    .carousel-controls {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .carousel-btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--muted); font-family: var(--font-mono);
+      font-size: 0.9rem; padding: 0.4rem 0.9rem;
+      cursor: pointer; transition: color 0.2s, border-color 0.2s;
+    }
+    .carousel-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--border); cursor: pointer;
+      transition: background 0.2s; border: none; padding: 0;
+    }
+    .carousel-dot.active { background: var(--accent); }
+    .carousel-dot:hover { background: var(--accent); }
 
-/* BACK LINK */
-.case-back-wrap {
-  max-width: 900px; margin: 0 auto;
-  padding: 0 2.5rem 4rem;
-}
-.case-back {
-  font-family: var(--font-mono); font-size: 0.75rem;
-  color: var(--muted); text-decoration: none;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  border: 1px solid var(--border); padding: 0.7rem 1.4rem;
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  transition: color 0.2s, border-color 0.2s;
-}
-.case-back:hover { color: var(--accent); border-color: var(--accent); }
+    /* ANALYTICS GRID */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 1.5rem;
+    }
+    .analytics-card {
+      background: var(--surface);
+      padding: 0;
+      display: flex; flex-direction: column;
+    }
+    .analytics-card img {
+      width: 100%; display: block;
+      object-fit: cover;
+    }
+    .analytics-card-caption {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 0.3rem;
+    }
+    .analytics-card-label {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .analytics-card-desc {
+      font-size: 0.82rem; color: var(--muted); line-height: 1.55;
+    }
+    .analytics-card--full {
+      grid-column: 1 / -1;
+    }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 2rem 2.5rem;
-  display: flex; justify-content: space-between; align-items: center;
-}
-footer span {
-  font-family: var(--font-mono);
-  font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
-}
+    /* ECONOMY IMAGE */
+    .economy-image {
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .economy-image img {
+      width: 100%; display: block;
+    }
+    .economy-image-caption {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 0.3rem;
+    }
+    .economy-image-label {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .economy-image-desc {
+      font-size: 0.82rem; color: var(--muted); line-height: 1.55;
+    }
 
-@media (max-width: 768px) {
-  nav { padding: 1rem 1.25rem; }
-  .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .case-hero { padding-top: 8rem; }
-  .stats-bar { gap: 2rem; }
-}
+    /* BACK + FOOTER */
+    .case-back-wrap {
+      max-width: 900px; margin: 0 auto;
+      padding: 0 2.5rem 4rem;
+    }
+    .case-back {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--muted); text-decoration: none;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border: 1px solid var(--border); padding: 0.7rem 1.4rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .case-back:hover { color: var(--accent); border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer span {
+      font-family: var(--font-mono);
+      font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
+    }
 
-/* GLOBAL OVERRIDES */
-body { font-size: 17px; line-height: 1.5; }
-.case-section p { font-size: 0.95rem; line-height: 1.75; }
-.case-list li { font-size: 0.93rem; line-height: 1.75; }
-.case-summary { font-size: 1.05rem; line-height: 1.8; }
-
-/* CONSISTENT GREEN HOVER, every interactive element */
-a { transition: color 0.2s; }
-.nav-back:hover { color: var(--accent) !important; }
-.case-back:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
-.carousel-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
-.carousel-dot:hover { background: var(--accent) !important; }
-.carousel-dot.active { background: var(--accent) !important; }
-
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .analytics-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+
   <nav>
     <a class="nav-name" href="index.html">Patryk Parzelski</a>
     <a class="nav-back" href="index.html">← Back to work</a>
   </nav>
 
+  <!-- FULL WIDTH THUMBNAIL -->
+  <div class="case-hero-image">
+    <img src="lootin-thumbnail.png" alt="Lootin' game thumbnail" />
+  </div>
+
+  <!-- HEADER -->
   <div class="case-hero">
-    <p class="case-eyebrow">Published · Roblox · 2023–2024</p>
+    <p class="case-eyebrow">Published · Roblox · 2023 to 2024</p>
     <h1 class="case-title">Lootin'</h1>
     <div class="case-disciplines">
       <span class="discipline">Level Design</span>
-      <span class="discipline">Puzzle Design</span>
       <span class="discipline">Quest Design</span>
       <span class="discipline">Player Analytics</span>
       <span class="discipline">Lighting Design</span>
+      <span class="discipline">Economy Design</span>
       <span class="discipline">Roblox Studio</span>
     </div>
-    <p class="case-summary">A published Roblox action-mining game that reached 431K visits, sustained 200–300 daily active players at peak, and earned an 86% positive review rating. I owned the full design pipeline, spatial layout, tutorialisation, economy balancing, live data analysis, and community management. The game was later sold to another studio, built on the strength of its metrics and community.</p>
+    <p class="case-summary">A published Roblox action-mining game that reached 431K visits, sustained 200 to 300 daily active players at peak, and earned an 86% positive review rating. I owned the full design pipeline across level layout, tutorialisation, economy balancing, and live data analysis. The game was later sold to another studio on the strength of its metrics and community.</p>
   </div>
 
+  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat"><span class="stat-num">431K</span><span class="stat-label">Total visits</span></div>
     <div class="stat"><span class="stat-num">86%</span><span class="stat-label">Positive reviews</span></div>
     <div class="stat"><span class="stat-num">3,000+</span><span class="stat-label">Favourites</span></div>
     <div class="stat"><span class="stat-num">200–300</span><span class="stat-label">Daily active players (peak)</span></div>
-    <div class="stat"><span class="stat-num">400+</span><span class="stat-label">Discord community</span></div>
-  </div>
-
-  <div class="case-image">
-    <div class="case-image-placeholder">[ Add Lootin' screenshot, overhead or wide level view ]</div>
+    <div class="stat"><span class="stat-num">91st</span><span class="stat-label">Percentile avg. playtime</span></div>
+    <div class="stat"><span class="stat-num">87th</span><span class="stat-label">Percentile payer conversion</span></div>
   </div>
 
   <div class="case-body">
 
+    <!-- OVERVIEW -->
     <div class="case-section">
       <div class="case-section-label">Overview</div>
-      <p>Lootin' was a live-service action-mining game on Roblox built around a core progression loop of exploring zones, mining resources, upgrading equipment, and unlocking new areas. My role covered every layer of the design: the world players moved through, the systems that kept them engaged, the data that told us where the design was failing, and the iterations that fixed it.</p>
-      <p>Lootin' built a loyal community, strong retention, and a positive review rating that held consistently throughout its run. When I returned to full-time study, the title was handed to another studio that wanted to continue it, a decision made on the strength of what it had become. Selling a game you built from nothing is a good outcome. I retain the development environment and all historical data from the game's active period, including economy spreadsheets, funnel analysis, and playtesting records.</p>
+      <p>Lootin' was a live-service action-mining game on Roblox built around a core loop of exploring zones, mining resources, upgrading equipment, and unlocking new areas. Across approximately 10 zones with 3 to 4 hours of content and a deep quest system, my role covered every design layer: the world players moved through, the systems that kept them engaged, the data that showed where the design was failing, and the changes that fixed it.</p>
+      <p>Lootin' built a loyal community, consistent retention, and a positive review rating that held throughout its run. When I returned to full-time study, the title was sold to another studio that wanted to continue it. Selling a game you built from scratch is a good outcome. I retain the development environment and all historical data including economy spreadsheets, funnel analysis, and playtesting records.</p>
     </div>
 
+    <!-- GAMEPLAY CAROUSEL -->
+    <div class="case-section">
+      <div class="case-section-label">Gameplay</div>
+      <p>The game spans multiple distinct zones, each with a visual identity and difficulty gradient giving players a readable sense of progression. Navigation, lighting, and path geometry directed players without explicit UI markers.</p>
+
+      <div class="carousel" id="gameplayCarousel">
+        <div class="carousel-track" id="gameplayTrack">
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="lootin-hub.png" alt="Lootin' main hub area" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Main Hub</span>
+              <p class="carousel-desc">The central hub area showing the Aurora Maker, Sell shop, and miner statue. This is the spatial anchor the player returns to between zones, designed to communicate available systems at a glance.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="lootin-flow.png" alt="Annotated player flow diagram" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Annotated Player Flow</span>
+              <p class="carousel-desc">Annotated level screenshot showing designed navigational cues: a colour-differentiated pathway, a tree-line directing the player linearly, and an area opening that signals a zone transition. Navigation was built into the environment rather than UI overlays.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="lootin-loot.png" alt="Loot drop and Perfect timing feedback" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Reward Feedback Design</span>
+              <p class="carousel-desc">A loot drop moment showing the "Perfect!" timing feedback and coin burst VFX. Reward clarity at key moments was a deliberate design priority. The skill-based timing layer added engagement to the core mining loop.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="lootin-journal.png" alt="Journal compendium screen" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Compendium System</span>
+              <p class="carousel-desc">The Journal Compendium tracking discovered ores across all zones. Designed to give players a collectible meta-goal that drove exploration across the full zone range and increased session length.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="lootin-quest.png" alt="Quest journal tab" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Quest Design</span>
+              <p class="carousel-desc">The Quest tab showing a zone-specific objective. Quests were designed to funnel players toward new areas naturally, using NPC directives rather than map markers to maintain the exploration feeling.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="lootin-pickaxe.png" alt="Miners Satchel equipment screen" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Equipment Progression</span>
+              <p class="carousel-desc">The Miners Satchel showing pickaxe progression. Each tool has four balanced stats: Efficiency, Control, Luck, and Rating. The stat system was modelled in the economy spreadsheet to ensure each upgrade felt meaningful without trivialising earlier content.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="moveCarousel('gameplay', -1)">←</button>
+          <div class="carousel-dots" id="gameplayDots"></div>
+          <button class="carousel-btn" onclick="moveCarousel('gameplay', 1)">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEVEL DESIGN -->
     <div class="case-section">
       <div class="case-section-label">Level Design</div>
-      <p>I designed the complete world layout starting from blockout, establishing spatial flow, zone progression, and points of interest before any art was placed. The blockout-first approach meant design decisions were made on feel and function, not aesthetics.</p>
+      <p>I designed the complete world layout starting from blockout, establishing spatial flow, zone progression, and points of interest before any art was placed. With approximately 10 zones built across the game's lifespan, each area needed a distinct identity and a clear navigational logic that felt natural rather than prescribed.</p>
       <ul class="case-list">
-        <li>Designed zone layout to create a clear sense of progression, each area had a distinct visual identity and difficulty gradient to give players a readable sense of advancement</li>
-        <li>Built navigational cues into the environment itself to guide players without explicit UI arrows, lighting, scale, and path geometry did the directing</li>
-        <li>Designed the tutorialisation zone to introduce core mechanics through action rather than text, keeping players in the game loop from the first seconds</li>
-        <li>Created a lighting design pass across all zones to support atmosphere, reinforce zone identity, and direct attention to interactable elements</li>
+        <li>Designed zone layout to create a readable progression arc: each area had a distinct visual identity and difficulty gradient so players always knew where they were and what came next</li>
+        <li>Built navigational cues into the environment itself using lighting, scale, path geometry, and colour differentiation to guide players without explicit UI markers</li>
+        <li>Designed the tutorialisation zone to introduce core mechanics through action rather than text, keeping players inside the game loop from the first seconds of a session</li>
+        <li>Created lighting design passes across all zones to support atmosphere, reinforce zone identity, and direct player attention toward interactable elements</li>
       </ul>
     </div>
 
+    <!-- ONBOARDING & FUNNEL -->
     <div class="case-section">
-      <div class="case-section-label">Onboarding &amp; Funnel Design</div>
-      <p>One of the most impactful design areas was the onboarding funnel. Early playtesting revealed players were dropping off before reaching the game's first meaningful reward, a problem that pointed to the tutorial design, not the game itself.</p>
+      <div class="case-section-label">Onboarding &amp; Funnel Analysis</div>
+      <p>Tracking the onboarding funnel revealed where the tutorial design was losing players before they reached the game's first meaningful reward. The data identified "Breaking Ground" at step 5 as the biggest drop point, with 25.86% churn at that stage and a total user conversion of 29.43% across the full funnel.</p>
       <ul class="case-list">
-        <li>Built player behaviour funnels to track where players entered, what they interacted with first, and where they stopped playing</li>
-        <li>Identified specific bottlenecks, one early zone boundary was creating navigation confusion causing a measurable spike in session-end events</li>
-        <li>Redesigned the boundary and adjusted the tutorial pacing based on the drop-off data, which produced a measurable improvement in early retention</li>
-        <li>Iterated on quest design to ensure the first few objectives were achievable within the first session, giving players a reason to return</li>
+        <li>Built a 21-step player behaviour funnel tracking acceptance, progress, and completion at each tutorial stage across 2,103 users</li>
+        <li>Identified the largest drop point as step 5 of the "Breaking Ground" quest, where 25.86% of players stopped engaging</li>
+        <li>Redesigned the quest pacing and zone boundary at that stage based on the data, adjusting the tutorial flow to reduce friction at the identified bottleneck</li>
+        <li>Tracked post-change funnel performance to confirm improvement before moving on</li>
       </ul>
+
+      <div class="analytics-grid">
+        <div class="analytics-card analytics-card--full">
+          <img src="lootin-funnel.png" alt="21-step tutorialisation funnel" />
+          <div class="analytics-card-caption">
+            <span class="analytics-card-label">Tutorialisation Funnel (21 steps, 2,103 users)</span>
+            <p class="analytics-card-desc">Full funnel showing step completion, churn rate, and total conversion at each stage across the tutorial sequence. The largest drops are visible at steps 2 and 5, both of which were iterated on following this data.</p>
+          </div>
+        </div>
+        <div class="analytics-card">
+          <img src="lootin-conversion.png" alt="Funnel conversion summary" />
+          <div class="analytics-card-caption">
+            <span class="analytics-card-label">Conversion Summary</span>
+            <p class="analytics-card-desc">2,103 users tracked. Total conversion 29.43%. Biggest identified drop at step 5, Breaking Ground (PROGRESS).</p>
+          </div>
+        </div>
+        <div class="analytics-card">
+          <img src="lootin-stats.png" alt="Benchmarked performance stats" />
+          <div class="analytics-card-caption">
+            <span class="analytics-card-label">Benchmarked Performance</span>
+            <p class="analytics-card-desc">Lootin' at the 91st percentile for average playtime and 87th percentile for payer conversion rate within the simulation genre benchmark. Day 1 retention at the 63rd percentile.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <!-- ECONOMY -->
     <div class="case-section">
-      <div class="case-section-label">Systems &amp; Economy Balancing</div>
-      <p>The game's economy, resource drop rates, upgrade costs, luck modifiers, required ongoing balancing as the player base grew and behaviour patterns shifted.</p>
+      <div class="case-section-label">Economy &amp; Systems Design</div>
+      <p>The game's economy required ongoing balancing as the player base grew and behaviour shifted. Loot tables, luck modifiers, upgrade costs, and progression pacing were all modelled in Excel before changes were pushed to the live game.</p>
       <ul class="case-list">
-        <li>Built Excel spreadsheets to model loot tables and luck curves, allowing changes to be simulated before pushing to the live game</li>
-        <li>Tracked economy metrics post-patch to catch unintended consequences, inflation, trivialised content, or progression bottlenecks</li>
-        <li>Designed and adjusted luck systems to preserve the feeling of meaningful randomness while keeping progression predictable enough to feel rewarding</li>
+        <li>Built spreadsheets modelling loot tables per zone with rarity tiers, raw chance values, adjusted chance after luck modifiers, true percentages, and total weight</li>
+        <li>Ran 1,000-simulation luck curve models at different luck values to visualise how the drop distribution shifted, ensuring higher luck felt meaningfully different without making rare items trivial</li>
+        <li>Tracked economy metrics post-patch to catch unintended consequences: inflation, trivialised content, or progression bottlenecks</li>
+        <li>Balanced four pickaxe stats (Efficiency, Control, Luck, Rating) across the equipment tier progression to ensure each upgrade felt earned</li>
       </ul>
+
+      <div class="economy-image">
+        <img src="lootin-excel.png" alt="Economy balancing spreadsheet" />
+        <div class="economy-image-caption">
+          <span class="economy-image-label">Economy Balancing Spreadsheet (Solaris Zone 2-3)</span>
+          <p class="economy-image-desc">Loot table model for the Solaris zone showing ore rarity, raw and adjusted drop chances, true percentages, luck factor variables, and simulation graphs comparing drop distributions at Luck=1 vs Luck=20. Changes were modelled here before going live.</p>
+        </div>
+      </div>
     </div>
 
+    <!-- PLAYTESTING -->
     <div class="case-section">
       <div class="case-section-label">Playtesting &amp; Community</div>
       <ul class="case-list">
-        <li>Ran structured playtesting groups to gather quantitative data on specific design changes before going live</li>
-        <li>Managed a Discord community of 400+ members, using community feedback as a qualitative signal alongside the quantitative data</li>
-        <li>Designed VFX passes for key reward moments, drops, level-ups, unlocks, to ensure feedback clarity at the moments that mattered most for player satisfaction</li>
+        <li>Ran structured playtesting groups to gather quantitative data on specific design changes before pushing to the live game</li>
+        <li>Managed a Discord community of 400+ members, using community feedback as a qualitative signal alongside the quantitative funnel data</li>
+        <li>Designed VFX passes for key reward moments including loot drops, level-ups, and zone unlocks to reinforce feedback clarity at the moments that most affect player satisfaction</li>
+        <li>Used Roblox analytics benchmarks to compare Lootin' performance against comparable games in the simulation genre, identifying areas where design changes moved the needle on retention and playtime</li>
       </ul>
     </div>
 
@@ -304,8 +509,50 @@ a { transition: color 0.2s; }
   </div>
 
   <footer>
-    <span>Patryk Parzelski, Game Designer</span>
+    <span>Patryk Parzelski — Game Designer</span>
     <span>© 2026</span>
   </footer>
+
+  <script>
+    const carousels = {};
+
+    function initCarousel(id, trackId, dotsId) {
+      const track = document.getElementById(trackId);
+      const dotsContainer = document.getElementById(dotsId);
+      const slides = track.querySelectorAll('.carousel-slide');
+      const total = slides.length;
+      let current = 0;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.classList.add('carousel-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      carousels[id] = { goTo, getTotal: () => total, getCurrent: () => current };
+    }
+
+    function moveCarousel(id, dir) {
+      const c = carousels[id];
+      c.goTo(c.getCurrent() + dir);
+    }
+
+    initCarousel('gameplay', 'gameplayTrack', 'gameplayDots');
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') moveCarousel('gameplay', -1);
+      if (e.key === 'ArrowRight') moveCarousel('gameplay', 1);
+    });
+  </script>
 </body>
 </html>
