@@ -192,7 +192,17 @@ nav {
   margin-top: 1.5rem;
 }
 .analytics-card { background: var(--surface); display: flex; flex-direction: column; }
-.analytics-card img { width: 100%; display: block; object-fit: cover; }
+.analytics-card-img-wrap { display: block; height: 220px; overflow: hidden; background: #0a0a0a; position: relative; }
+.analytics-card-img-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 0.3s, opacity 0.2s; }
+.analytics-card-img-wrap:hover img { transform: scale(1.05); opacity: 0.9; }
+.analytics-card-zoom {
+  position: absolute; top: 0.6rem; right: 0.6rem;
+  font-family: var(--font-mono); font-size: 0.6rem; color: var(--text);
+  background: rgba(15,15,15,0.75); border: 1px solid var(--border);
+  padding: 0.2rem 0.5rem; letter-spacing: 0.06em; text-transform: uppercase;
+  opacity: 0; transition: opacity 0.2s;
+}
+.analytics-card-img-wrap:hover .analytics-card-zoom { opacity: 1; }
 .analytics-card-caption { padding: 1rem 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.3rem; }
 .analytics-card-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
 .analytics-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
@@ -215,6 +225,13 @@ nav {
 .quote-cond { font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
 .quote-text { font-family: var(--font-display); font-size: 1rem; font-weight: 500; font-style: italic; color: var(--text); line-height: 1.5; margin-bottom: 0.6rem; }
 .quote-note { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+/* VIDEO EMBED */
+.video-embed {
+  margin-top: 1.5rem; border: 1px solid var(--border); background: #000;
+  position: relative; width: 100%; padding-top: 56.25%; overflow: hidden;
+}
+.video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
 /* RESULT BANNER */
 .result-banner {
@@ -419,6 +436,14 @@ footer span {
     </div>
 
     <div class="case-section">
+      <div class="case-section-label">Product Demonstration</div>
+      <p>A walkthrough of the Unity environment and the ghost replay system, showing the level itself alongside a recorded session played back as a first-person walkthrough.</p>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/OXodpMIOmug" title="Perceptual Pathways, Unity level and replay demonstration" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="case-section">
       <div class="case-section-label">Findings, Behavioural Data</div>
       <p>Adventure-framed participants moved and interacted more than either other group, while horror and neutral behaviour tracked each other closely. That pairing turned out to be the most useful part of the result: horror framing didn't suppress curiosity below a natural baseline, adventure framing actively pulled it upward.</p>
 
@@ -464,21 +489,30 @@ footer span {
 
       <div class="analytics-grid">
         <div class="analytics-card">
-          <img src="research-heatmap-horror.png" alt="Horror condition movement heatmap" />
+          <a class="analytics-card-img-wrap" href="research-heatmap-horror.png" target="_blank" rel="noopener">
+            <img src="research-heatmap-horror.png" alt="Horror condition movement heatmap" />
+            <span class="analytics-card-zoom">View full ↗</span>
+          </a>
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Horror Heatmap</span>
             <span class="analytics-card-desc">Movement hugs corridors and edges, consistent with cautious, threat-aware traversal.</span>
           </div>
         </div>
         <div class="analytics-card">
-          <img src="research-heatmap-adventure.png" alt="Adventure condition movement heatmap" />
+          <a class="analytics-card-img-wrap" href="research-heatmap-adventure.png" target="_blank" rel="noopener">
+            <img src="research-heatmap-adventure.png" alt="Adventure condition movement heatmap" />
+            <span class="analytics-card-zoom">View full ↗</span>
+          </a>
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Adventure Heatmap</span>
             <span class="analytics-card-desc">Denser, more scattered coverage clustered around interactable objects and side rooms.</span>
           </div>
         </div>
         <div class="analytics-card">
-          <img src="research-heatmap-neutral.png" alt="Neutral condition movement heatmap" />
+          <a class="analytics-card-img-wrap" href="research-heatmap-neutral.png" target="_blank" rel="noopener">
+            <img src="research-heatmap-neutral.png" alt="Neutral condition movement heatmap" />
+            <span class="analytics-card-zoom">View full ↗</span>
+          </a>
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Neutral Heatmap</span>
             <span class="analytics-card-desc">Sparser, more linear paths, closer to passive transit than active exploration.</span>
