@@ -137,21 +137,21 @@
       text-transform: uppercase;
     }
     .hero-visual {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: #0a0a0a;
       min-height: 420px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
+      border-radius: 2px;
     }
     .hero-visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      opacity: 0.85;
+      opacity: 1;
     }
     .hero-visual-placeholder {
       font-family: var(--font-mono);
@@ -560,6 +560,23 @@
       clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%);
     }
 
+    /* IN PRODUCTION RIBBON */
+    .inprod-ribbon {
+      position: absolute;
+      top: 1.1rem;
+      left: -0.3rem;
+      background: #e8a030;
+      color: #0f0f0f;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem 0.3rem 0.6rem;
+      z-index: 2;
+      clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%);
+    }
+
     /* FEATURED CARD */
     .project-card--featured {
       grid-template-columns: 1.6fr 1fr;
@@ -715,7 +732,8 @@
 
       <!-- WLTLO -->
       <a class="project-card reveal" href="case-wltlo.html">
-        <div class="project-image">
+        <div class="project-image" style="position:relative;">
+          <div class="inprod-ribbon">⬤ In Production</div>
           <img src="ShowcaseImage.png" alt="Whoever Left The Light On" />
         </div>
         <div class="project-info">
