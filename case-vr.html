@@ -3,227 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Relay, Patryk Parzelski</title>
+  <title>Relay — Patryk Parzelski</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg:        #0f0f0f;
-  --surface:   #1a1a1a;
-  --border:    #2a2a2a;
-  --text:      #e8e8e8;
-  --muted:     #888888;
-  --accent:    #c8f04a;
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body:    'Inter', sans-serif;
-  --font-mono:    'Space Mono', monospace;
-}
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f0f0f; --surface: #1a1a1a; --border: #2a2a2a;
+      --text: #e8e8e8; --muted: #888888; --accent: #c8f04a;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1.25rem 2.5rem;
-  background: rgba(15,15,15,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-name {
-  font-family: var(--font-display);
-  font-size: 0.95rem; font-weight: 600;
-  letter-spacing: 0.02em; color: var(--text); text-decoration: none;
-}
-.nav-back {
-  font-family: var(--font-mono);
-  font-size: 0.75rem; color: var(--muted);
-  text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
-  transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem;
-}
-.nav-back:hover { color: var(--accent); }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: rgba(15,15,15,0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-name { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; color: var(--text); text-decoration: none; transition: color 0.2s; }
+    .nav-name:hover { color: var(--accent); }
+    .nav-back { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem; }
+    .nav-back:hover { color: var(--accent); }
 
-/* CASE HERO */
-.case-hero {
-  padding: 10rem 2.5rem 5rem;
-  max-width: 900px; margin: 0 auto;
-  border-bottom: 1px solid var(--border);
-}
-.case-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.7rem; color: var(--accent);
-  letter-spacing: 0.12em; text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-.case-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 700; line-height: 1.05;
-  letter-spacing: -0.02em; margin-bottom: 1.5rem;
-}
-.case-disciplines {
-  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
-}
-.discipline {
-  font-family: var(--font-mono); font-size: 0.62rem;
-  color: var(--muted); border: 1px solid var(--border);
-  padding: 0.2rem 0.6rem; letter-spacing: 0.06em; text-transform: uppercase;
-}
-.case-summary {
-  font-size: 1.05rem; color: var(--muted);
-  line-height: 1.8; max-width: 680px;
-}
+    .case-hero-image { width: 100%; max-height: 520px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #0a0a0a; margin-top: 64px; }
+    .case-hero-image img { width: 100%; max-height: 520px; object-fit: cover; display: block; }
 
-/* STATS BAR */
-.stats-bar {
-  max-width: 900px; margin: 0 auto;
-  padding: 2rem 2.5rem;
-  display: flex; gap: 3rem; flex-wrap: wrap;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-.stat { display: flex; flex-direction: column; gap: 0.2rem; }
-.stat-num {
-  font-family: var(--font-display);
-  font-size: 1.8rem; font-weight: 700; color: var(--text);
-}
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem; color: var(--muted);
-  letter-spacing: 0.08em; text-transform: uppercase;
-}
+    .case-hero { padding: 3.5rem 2.5rem 3rem; max-width: 900px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .case-eyebrow { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+    .case-title { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .case-disciplines { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
+    .discipline { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); border: 1px solid var(--border); padding: 0.2rem 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .case-summary { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 700px; }
 
-/* IMAGE BLOCK */
-.case-image {
-  max-width: 900px; margin: 0 auto;
-  background: #111;
-  min-height: 420px;
-  display: flex; align-items: center; justify-content: center;
-  border-bottom: 1px solid var(--border);
-}
-.case-image img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
-.case-image-placeholder {
-  font-family: var(--font-mono); font-size: 0.65rem;
-  color: #333; letter-spacing: 0.1em; text-transform: uppercase;
-}
+    .stats-bar { max-width: 900px; margin: 0 auto; padding: 2rem 2.5rem; display: flex; gap: 3rem; flex-wrap: wrap; background: var(--surface); border-bottom: 1px solid var(--border); }
+    .stat { display: flex; flex-direction: column; gap: 0.2rem; }
+    .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--text); }
+    .stat-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
-/* BODY */
-.case-body {
-  max-width: 900px; margin: 0 auto;
-  padding: 4rem 2.5rem;
-  display: flex; flex-direction: column; gap: 3.5rem;
-}
-.case-section {}
-.case-section-label {
-  font-family: var(--font-mono); font-size: 0.85rem;
-  color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;
-  margin-bottom: 1.25rem; padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 1rem;
-}
-.case-section-label::after { content:''; flex:1; height:1px; background: transparent; }
-.case-section h3 {
-  font-family: var(--font-display); font-size: 1.3rem;
-  font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
-}
-.case-section p {
-  font-size: 0.93rem; color: var(--muted);
-  line-height: 1.85; margin-bottom: 0.9rem;
-}
-.case-section p strong { color: var(--text); font-weight: 500; }
-.case-list {
-  list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
-  margin-top: 0.5rem;
-}
-.case-list li {
-  font-size: 0.9rem; color: var(--muted);
-  padding-left: 1.25rem; position: relative; line-height: 1.7;
-}
-.case-list li::before {
-  content: '→'; position: absolute; left: 0;
-  color: var(--accent); font-size: 0.8rem;
-}
+    .case-body { max-width: 900px; margin: 0 auto; padding: 4rem 2.5rem; display: flex; flex-direction: column; gap: 4rem; }
+    .case-section {}
+    .case-section-label { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+    .case-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 0.9rem; }
+    .case-section p strong { color: var(--text); font-weight: 500; }
+    .case-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.75rem; }
+    .case-list li { font-size: 0.93rem; color: var(--muted); padding-left: 1.25rem; position: relative; line-height: 1.75; }
+    .case-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
 
-/* WIP badge */
-.wip-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--font-mono); font-size: 0.65rem;
-  color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-.wip-badge::before {
-  content:''; display:block; width:7px; height:7px;
-  background: var(--accent); border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    /* CAROUSEL */
+    .carousel { border: 1px solid var(--border); background: var(--surface); overflow: hidden; margin-top: 1.5rem; }
+    .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
+    .carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .carousel-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .carousel-caption { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; }
+    .carousel-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+    .carousel-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .carousel-controls { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
+    .carousel-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--font-mono); font-size: 0.9rem; padding: 0.4rem 0.9rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+    .carousel-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
+    .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s; border: none; padding: 0; }
+    .carousel-dot.active, .carousel-dot:hover { background: var(--accent); }
 
-/* BACK LINK */
-.case-back-wrap {
-  max-width: 900px; margin: 0 auto;
-  padding: 0 2.5rem 4rem;
-}
-.case-back {
-  font-family: var(--font-mono); font-size: 0.75rem;
-  color: var(--muted); text-decoration: none;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  border: 1px solid var(--border); padding: 0.7rem 1.4rem;
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  transition: color 0.2s, border-color 0.2s;
-}
-.case-back:hover { color: var(--accent); border-color: var(--accent); }
+    /* PUZZLE FLOW DIAGRAM */
+    .puzzle-flow { margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .puzzle-step { background: var(--surface); padding: 1.5rem; }
+    .puzzle-step-num { font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .puzzle-step-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .puzzle-step-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .puzzle-step--full { grid-column: 1 / -1; }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 2rem 2.5rem;
-  display: flex; justify-content: space-between; align-items: center;
-}
-footer span {
-  font-family: var(--font-mono);
-  font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
-}
+    .case-back-wrap { max-width: 900px; margin: 0 auto; padding: 0 2.5rem 4rem; }
+    .case-back { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.7rem 1.4rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s, border-color 0.2s; }
+    .case-back:hover { color: var(--accent); border-color: var(--accent); }
+    footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    footer span { font-family: var(--font-mono); font-size: 0.65rem; color: #444; letter-spacing: 0.06em; }
 
-@media (max-width: 768px) {
-  nav { padding: 1rem 1.25rem; }
-  .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .case-hero { padding-top: 8rem; }
-  .stats-bar { gap: 2rem; }
-}
-
-/* GLOBAL OVERRIDES */
-body { font-size: 17px; line-height: 1.5; }
-.case-section p { font-size: 0.95rem; line-height: 1.75; }
-.case-list li { font-size: 0.93rem; line-height: 1.75; }
-.case-summary { font-size: 1.05rem; line-height: 1.8; }
-
-/* CONSISTENT GREEN HOVER, every interactive element */
-a { transition: color 0.2s; }
-.nav-back:hover { color: var(--accent) !important; }
-.case-back:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
-.carousel-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
-.carousel-dot:hover { background: var(--accent) !important; }
-.carousel-dot.active { background: var(--accent) !important; }
-
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .puzzle-flow { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
+
   <nav>
     <a class="nav-name" href="index.html">Patryk Parzelski</a>
     <a class="nav-back" href="index.html">← Back to work</a>
   </nav>
 
+  <div class="case-hero-image">
+    <img src="relay-spawn.png" alt="Relay spawn room" />
+  </div>
+
   <div class="case-hero">
-    <p class="case-eyebrow">University Project · Unity · VR · Co-op</p>
+    <p class="case-eyebrow">University Project · Unity · VR · Co-op · 2025</p>
     <h1 class="case-title">Relay</h1>
     <div class="case-disciplines">
       <span class="discipline">Level Design</span>
@@ -231,48 +112,175 @@ a { transition: color 0.2s; }
       <span class="discipline">Lighting Design</span>
       <span class="discipline">VR</span>
       <span class="discipline">Unity</span>
+      <span class="discipline">Asymmetric Co-op</span>
     </div>
-    <p class="case-summary">A co-operative VR puzzle game built as a university group project. As lead designer I owned the entire level, from initial spatial blockout through to the final polished, lit environment. The central design challenge: two players sharing a physical VR space but each holding different information, requiring communication and co-operation to progress.</p>
+    <p class="case-summary">A co-operative VR puzzle game built as a university group project. Two players share a physical space but occupy separate rooms with different information — they cannot see each other's puzzles, only communicate verbally. Every mechanic was designed around that constraint: what one player knows, the other needs. I led the level and puzzle design from initial blockout through to the final lit environment.</p>
   </div>
 
-  <div class="case-image">
-    <div class="case-image-placeholder">[ Add VR level screenshot, lit environment or editor blockout view ]</div>
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">2</span><span class="stat-label">Players</span></div>
+    <div class="stat"><span class="stat-num">VR</span><span class="stat-label">Platform</span></div>
+    <div class="stat"><span class="stat-num">Unity</span><span class="stat-label">Engine</span></div>
+    <div class="stat"><span class="stat-num">Lead</span><span class="stat-label">Design role</span></div>
   </div>
 
   <div class="case-body">
 
     <div class="case-section">
-      <div class="case-section-label">The Design Challenge</div>
-      <p>Asymmetric co-operation is a genuinely hard design problem in VR. Each player is physically present in the same space, they can see each other, gesture, and talk, but they're holding different pieces of the puzzle. The design had to make each player's partial knowledge feel meaningful without creating frustration when communication broke down.</p>
-      <p>There was also the VR-specific constraint of designing without a traditional HUD. No minimaps, no quest markers, no on-screen prompts. Navigation and puzzle legibility had to come entirely from the environment.</p>
+      <div class="case-section-label">Overview</div>
+      <p>The central design constraint for Relay was asymmetric information. Both players are physically present in the same VR space but separated into adjacent rooms. Neither player can see the other's puzzles. Progress requires constant verbal communication — one player describes what they see, the other acts on it.</p>
+      <p>Designing for this constraint meant every puzzle had to be built in pairs. Each mechanic on one side needed a corresponding role on the other. The challenge was making those roles feel balanced: both players needed to feel active and necessary, not one solving while the other watches.</p>
     </div>
 
     <div class="case-section">
-      <div class="case-section-label">Level Design</div>
-      <ul class="case-list">
-        <li>Designed the complete level from scratch, starting with a spatial blockout, establishing room dimensions, flow between areas, and interaction point placement before any assets were placed</li>
-        <li>Designed navigational flow independently for each of the two player roles, mapping where each player would move and what they would see at each stage</li>
-        <li>Identified the co-operation points, the moments where players needed to combine their separate information, and designed the space around making those moments clear without being prescriptive</li>
-        <li>Ran iterative playtesting at the blockout stage to catch navigation failures early, before they were embedded in polished geometry</li>
-      </ul>
+      <div class="case-section-label">Environment Showcase</div>
+      <p>The dungeon environment was built in a low-poly style with torch-based lighting to create atmosphere without heavy rendering cost in VR. Lighting was used deliberately to direct player attention toward puzzle elements and interaction points.</p>
+
+      <div class="carousel" id="relayCarousel">
+        <div class="carousel-track" id="relayTrack">
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-spawn.png" alt="Relay spawn room" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Spawn Room</span>
+              <p class="carousel-desc">The shared starting area where both players begin. A moonlight beam from above marks the central point before players split into their respective rooms. Designed to orient both players to the space before the asymmetric co-op begins.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-cave.png" alt="Dungeon cave environment" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Cave Environment</span>
+              <p class="carousel-desc">The main dungeon traversal area. Torch placement was used to create natural waypoints guiding players forward without explicit UI markers. The low-poly rock geometry keeps the VR frame rate stable while maintaining strong spatial readability.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-skeletons.png" alt="Skeleton accessory colour puzzle" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Colour Communication Puzzle</span>
+              <p class="carousel-desc">Three skeletons hang in one player's room, each wearing a differently coloured accessory. The other player has a corresponding colour-coded wheel puzzle they need to solve. The catch: they cannot see the skeletons. They must ask their partner what colours they see and act on the answer. This is the core asymmetric information mechanic in its purest form.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-tiles.png" alt="Black tile floor puzzle" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Tile Navigation Puzzle</span>
+              <p class="carousel-desc">One player's room contains this black tile floor. Their partner holds a poster showing the exact same tile layout with the correct tiles marked in red. The partner must communicate the tile positions verbally while the player navigates. Wrong tiles trigger a reset. Designed to test spatial communication under pressure.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-lever.png" alt="Generator lever and gate" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Gate and Lever Mechanic</span>
+              <p class="carousel-desc">A gate blocks progress in one room. The lever that opens it is on the other side of the wall — in the partner's room. One player must find and pull the lever while the other waits at the gate. A straightforward co-operation moment designed to reinforce the dependency between players early in the experience.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-gap.png" alt="Spike gap room with hanging skulls" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Gap Room</span>
+              <p class="carousel-desc">A spiked gap separates two platforms. Skulls hang from the ceiling above the gap. The player on the right side has a gun and must shoot each skull, causing platforms to rise temporarily on the left side. The left player times their crossing to the shots. Designed as the highest-tension co-operation moment in the level.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-pad-left.png" alt="Left player teleportation pad" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Battery Teleportation Pad (Left)</span>
+              <p class="carousel-desc">The left player carries a battery throughout the dungeon. Once they reach the top of the elevator, they place it on this pad to teleport it across to the right player. Without the battery, the right player cannot power the tile-revealing mechanism in their room — connecting the two halves of the dungeon's progression.</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-pad-right.png" alt="Right player teleportation pad" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Battery Teleportation Pad (Right)</span>
+              <p class="carousel-desc">The receiving pad on the right player's side. Once the battery arrives, the right player uses it to illuminate the correct tiles in the tile navigation puzzle. The battery acts as the key that links both halves of the dungeon together — a physical object encoding the dependency between players.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="moveCarousel(-1)">←</button>
+          <div class="carousel-dots" id="relayDots"></div>
+          <button class="carousel-btn" onclick="moveCarousel(1)">→</button>
+        </div>
+      </div>
     </div>
 
     <div class="case-section">
       <div class="case-section-label">Puzzle Design</div>
+      <p>Each puzzle was designed as a pair: one side provides information or action, the other receives and responds. The puzzle sequence builds from simple verbal communication toward more complex interdependencies requiring precise timing and trust.</p>
+
+      <div class="puzzle-flow">
+        <div class="puzzle-step">
+          <div class="puzzle-step-num">Puzzle 01</div>
+          <div class="puzzle-step-title">Colour Communication</div>
+          <p class="puzzle-step-desc">Player A reads skeleton accessory colours verbally. Player B rotates a colour-coded wheel to match. Tests basic communication under no time pressure, establishing the verbal co-op language early.</p>
+        </div>
+        <div class="puzzle-step">
+          <div class="puzzle-step-num">Puzzle 02</div>
+          <div class="puzzle-step-title">Gate and Lever</div>
+          <p class="puzzle-step-desc">One player pulls a lever in their room to open a gate in the other. Simple dependency mechanic that teaches players they cannot progress independently. Sets expectations for the rest of the level.</p>
+        </div>
+        <div class="puzzle-step">
+          <div class="puzzle-step-num">Puzzle 03</div>
+          <div class="puzzle-step-title">Gap Crossing</div>
+          <p class="puzzle-step-desc">Player B shoots skulls to raise platforms while Player A times their crossing. First mechanic requiring real-time co-ordination rather than turn-taking communication. Highest tension moment by design.</p>
+        </div>
+        <div class="puzzle-step">
+          <div class="puzzle-step-num">Puzzle 04</div>
+          <div class="puzzle-step-title">Battery Relay</div>
+          <p class="puzzle-step-desc">Player A carries a battery to the elevator top and teleports it to Player B, who uses it to reveal correct tiles. The battery physically connects both halves of the dungeon and pays off the asymmetric structure of the entire level.</p>
+        </div>
+        <div class="puzzle-step puzzle-step--full">
+          <div class="puzzle-step-num">Puzzle 05</div>
+          <div class="puzzle-step-title">Tile Navigation</div>
+          <p class="puzzle-step-desc">Player A navigates a black tile floor. Player B holds the map showing which tiles are safe, marked in red, and must communicate the path verbally. Wrong tiles reset progress. Combines spatial description, memory, and trust — the most cognitively demanding puzzle, placed last as the final test of the communication system built up across the level.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Level Design</div>
+      <p>The level was designed blockout-first, with the spatial layout, room sizes, and connection points established before any assets were placed. In VR specifically, scale decisions made at blockout stage are very difficult to change later — getting the proportions right early was critical.</p>
       <ul class="case-list">
-        <li>Designed the full puzzle flow for the session, each puzzle required both players' partial knowledge to solve, meaning neither could progress alone</li>
-        <li>Designed puzzles to remain legible in VR, no screen prompts, no tutorial text. All feedback came from physical interaction: sound, light, and object state changes</li>
-        <li>Paced the puzzle difficulty curve across the session's arc, simpler co-operation requirements early on building toward puzzles that required sustained and precise communication</li>
-        <li>Tested each puzzle with real pairs of players to check that the communication requirements felt natural rather than forced</li>
+        <li>Designed the full level layout as a shared dungeon with two parallel paths, ensuring both players always felt they were in the same space without being able to see each other's area directly</li>
+        <li>Sized rooms to feel appropriately enclosed in VR without causing discomfort — tested at blockout stage with real headsets before committing to geometry</li>
+        <li>Designed the spatial progression so both players advance at roughly the same pace, preventing one player from finishing their side and waiting while the other catches up</li>
+        <li>Used the torch placement and lighting passes to create natural waypoints, directing players toward puzzle elements without any UI markers or arrows</li>
+        <li>Ran iterative playtesting at each stage of the build, observing where communication broke down and adjusting puzzle design or spatial layout accordingly</li>
       </ul>
     </div>
 
     <div class="case-section">
       <div class="case-section-label">Lighting Design</div>
+      <p>All lighting in Relay was designed to serve two purposes simultaneously: atmosphere and navigation. In a VR experience without a HUD or minimap, lighting is the primary tool for directing player attention.</p>
       <ul class="case-list">
-        <li>Designed the lighting pass to support atmosphere and guide player attention without explicit UI waypoints</li>
-        <li>Used lighting as a navigational tool, brighter areas around puzzle interaction points, cooler and dimmer ambient light elsewhere</li>
-        <li>Ensured lighting choices supported the mood of the experience without compromising legibility in VR headsets, where contrast can behave differently than on a monitor</li>
+        <li>Used warm torch light to mark interaction points and puzzle elements, creating a visual hierarchy that drew players toward the correct objects</li>
+        <li>Kept ambient light cool and dim to ensure torch-lit areas read clearly and immediately as points of interest</li>
+        <li>Used the moonlight shaft in the spawn room as a spatial anchor, giving both players a shared reference point before they split into their separate areas</li>
+        <li>Tested lighting in headset throughout the build as VR light behaviour differs meaningfully from what appears in the Unity editor on a monitor</li>
       </ul>
     </div>
 
@@ -283,8 +291,39 @@ a { transition: color 0.2s; }
   </div>
 
   <footer>
-    <span>Patryk Parzelski, Game Designer</span>
+    <span>Patryk Parzelski — Game Designer</span>
     <span>© 2026</span>
   </footer>
+
+  <script>
+    let current = 0;
+    const track = document.getElementById('relayTrack');
+    const dotsContainer = document.getElementById('relayDots');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const total = slides.length;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function moveCarousel(dir) { goTo(current + dir); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') moveCarousel(-1);
+      if (e.key === 'ArrowRight') moveCarousel(1);
+    });
+  </script>
 </body>
 </html>
