@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lootin' — Patryk Parzelski</title>
+  <title>Lootin', Patryk Parzelski</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -20,7 +20,7 @@
   --font-body:    'Inter', sans-serif;
   --font-mono:    'Space Mono', monospace;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behaviour: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -199,6 +199,21 @@ footer span {
   .case-hero { padding-top: 8rem; }
   .stats-bar { gap: 2rem; }
 }
+
+/* GLOBAL OVERRIDES */
+body { font-size: 17px; line-height: 1.5; }
+.case-section p { font-size: 0.95rem; line-height: 1.75; }
+.case-list li { font-size: 0.93rem; line-height: 1.75; }
+.case-summary { font-size: 1.05rem; line-height: 1.8; }
+
+/* CONSISTENT GREEN HOVER, every interactive element */
+a { transition: color 0.2s; }
+.nav-back:hover { color: var(--accent) !important; }
+.case-back:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+.carousel-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+.carousel-dot:hover { background: var(--accent) !important; }
+.carousel-dot.active { background: var(--accent) !important; }
+
   </style>
 </head>
 <body>
@@ -218,7 +233,7 @@ footer span {
       <span class="discipline">Lighting Design</span>
       <span class="discipline">Roblox Studio</span>
     </div>
-    <p class="case-summary">A published Roblox action-mining game that reached 431K visits, sustained 200–300 daily active players at peak, and earned an 86% positive review rating. I owned the full design pipeline — spatial layout, tutorialisation, economy balancing, live data analysis, and community management. The game was later sold to another studio, built on the strength of its metrics and community.</p>
+    <p class="case-summary">A published Roblox action-mining game that reached 431K visits, sustained 200–300 daily active players at peak, and earned an 86% positive review rating. I owned the full design pipeline, spatial layout, tutorialisation, economy balancing, live data analysis, and community management. The game was later sold to another studio, built on the strength of its metrics and community.</p>
   </div>
 
   <div class="stats-bar">
@@ -230,7 +245,7 @@ footer span {
   </div>
 
   <div class="case-image">
-    <div class="case-image-placeholder">[ Add Lootin' screenshot — overhead or wide level view ]</div>
+    <div class="case-image-placeholder">[ Add Lootin' screenshot, overhead or wide level view ]</div>
   </div>
 
   <div class="case-body">
@@ -238,15 +253,15 @@ footer span {
     <div class="case-section">
       <div class="case-section-label">Overview</div>
       <p>Lootin' was a live-service action-mining game on Roblox built around a core progression loop of exploring zones, mining resources, upgrading equipment, and unlocking new areas. My role covered every layer of the design: the world players moved through, the systems that kept them engaged, the data that told us where the design was failing, and the iterations that fixed it.</p>
-      <p>Lootin' built a loyal community, strong retention, and a positive review rating that held consistently throughout its run. When I returned to full-time study, the title was handed to another studio that wanted to continue it — a decision made on the strength of what it had become. Selling a game you built from nothing is a good outcome. I retain the development environment and all historical data from the game's active period, including economy spreadsheets, funnel analysis, and playtesting records.</p>
+      <p>Lootin' built a loyal community, strong retention, and a positive review rating that held consistently throughout its run. When I returned to full-time study, the title was handed to another studio that wanted to continue it, a decision made on the strength of what it had become. Selling a game you built from nothing is a good outcome. I retain the development environment and all historical data from the game's active period, including economy spreadsheets, funnel analysis, and playtesting records.</p>
     </div>
 
     <div class="case-section">
       <div class="case-section-label">Level Design</div>
-      <p>I designed the complete world layout starting from blockout — establishing spatial flow, zone progression, and points of interest before any art was placed. The blockout-first approach meant design decisions were made on feel and function, not aesthetics.</p>
+      <p>I designed the complete world layout starting from blockout, establishing spatial flow, zone progression, and points of interest before any art was placed. The blockout-first approach meant design decisions were made on feel and function, not aesthetics.</p>
       <ul class="case-list">
-        <li>Designed zone layout to create a clear sense of progression — each area had a distinct visual identity and difficulty gradient to give players a readable sense of advancement</li>
-        <li>Built navigational cues into the environment itself to guide players without explicit UI arrows — lighting, scale, and path geometry did the directing</li>
+        <li>Designed zone layout to create a clear sense of progression, each area had a distinct visual identity and difficulty gradient to give players a readable sense of advancement</li>
+        <li>Built navigational cues into the environment itself to guide players without explicit UI arrows, lighting, scale, and path geometry did the directing</li>
         <li>Designed the tutorialisation zone to introduce core mechanics through action rather than text, keeping players in the game loop from the first seconds</li>
         <li>Created a lighting design pass across all zones to support atmosphere, reinforce zone identity, and direct attention to interactable elements</li>
       </ul>
@@ -254,10 +269,10 @@ footer span {
 
     <div class="case-section">
       <div class="case-section-label">Onboarding &amp; Funnel Design</div>
-      <p>One of the most impactful design areas was the onboarding funnel. Early playtesting revealed players were dropping off before reaching the game's first meaningful reward — a problem that pointed to the tutorial design, not the game itself.</p>
+      <p>One of the most impactful design areas was the onboarding funnel. Early playtesting revealed players were dropping off before reaching the game's first meaningful reward, a problem that pointed to the tutorial design, not the game itself.</p>
       <ul class="case-list">
         <li>Built player behaviour funnels to track where players entered, what they interacted with first, and where they stopped playing</li>
-        <li>Identified specific bottlenecks — one early zone boundary was creating navigation confusion causing a measurable spike in session-end events</li>
+        <li>Identified specific bottlenecks, one early zone boundary was creating navigation confusion causing a measurable spike in session-end events</li>
         <li>Redesigned the boundary and adjusted the tutorial pacing based on the drop-off data, which produced a measurable improvement in early retention</li>
         <li>Iterated on quest design to ensure the first few objectives were achievable within the first session, giving players a reason to return</li>
       </ul>
@@ -265,10 +280,10 @@ footer span {
 
     <div class="case-section">
       <div class="case-section-label">Systems &amp; Economy Balancing</div>
-      <p>The game's economy — resource drop rates, upgrade costs, luck modifiers — required ongoing balancing as the player base grew and behaviour patterns shifted.</p>
+      <p>The game's economy, resource drop rates, upgrade costs, luck modifiers, required ongoing balancing as the player base grew and behaviour patterns shifted.</p>
       <ul class="case-list">
         <li>Built Excel spreadsheets to model loot tables and luck curves, allowing changes to be simulated before pushing to the live game</li>
-        <li>Tracked economy metrics post-patch to catch unintended consequences — inflation, trivialised content, or progression bottlenecks</li>
+        <li>Tracked economy metrics post-patch to catch unintended consequences, inflation, trivialised content, or progression bottlenecks</li>
         <li>Designed and adjusted luck systems to preserve the feeling of meaningful randomness while keeping progression predictable enough to feel rewarding</li>
       </ul>
     </div>
@@ -277,8 +292,8 @@ footer span {
       <div class="case-section-label">Playtesting &amp; Community</div>
       <ul class="case-list">
         <li>Ran structured playtesting groups to gather quantitative data on specific design changes before going live</li>
-        <li>Managed a Discord community of 400+ members — using community feedback as a qualitative signal alongside the quantitative data</li>
-        <li>Designed VFX passes for key reward moments — drops, level-ups, unlocks — to ensure feedback clarity at the moments that mattered most for player satisfaction</li>
+        <li>Managed a Discord community of 400+ members, using community feedback as a qualitative signal alongside the quantitative data</li>
+        <li>Designed VFX passes for key reward moments, drops, level-ups, unlocks, to ensure feedback clarity at the moments that mattered most for player satisfaction</li>
       </ul>
     </div>
 
@@ -289,7 +304,7 @@ footer span {
   </div>
 
   <footer>
-    <span>Patryk Parzelski — Game Designer</span>
+    <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
 </body>

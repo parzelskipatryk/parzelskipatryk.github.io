@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Genre Framing Study — Patryk Parzelski</title>
+  <title>Perceptual Pathways, Patryk Parzelski</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -20,7 +20,7 @@
   --font-body:    'Inter', sans-serif;
   --font-mono:    'Space Mono', monospace;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behaviour: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -199,6 +199,21 @@ footer span {
   .case-hero { padding-top: 8rem; }
   .stats-bar { gap: 2rem; }
 }
+
+/* GLOBAL OVERRIDES */
+body { font-size: 17px; line-height: 1.5; }
+.case-section p { font-size: 0.95rem; line-height: 1.75; }
+.case-list li { font-size: 0.93rem; line-height: 1.75; }
+.case-summary { font-size: 1.05rem; line-height: 1.8; }
+
+/* CONSISTENT GREEN HOVER, every interactive element */
+a { transition: color 0.2s; }
+.nav-back:hover { color: var(--accent) !important; }
+.case-back:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+.carousel-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+.carousel-dot:hover { background: var(--accent) !important; }
+.carousel-dot.active { background: var(--accent) !important; }
+
   </style>
 </head>
 <body>
@@ -208,15 +223,16 @@ footer span {
   </nav>
 
   <div class="case-hero">
-    <p class="case-eyebrow">Individual Research Project · University of Greenwich · Unity</p>
-    <h1 class="case-title">Genre Framing &amp; Player Navigation Study</h1>
+    <p class="case-eyebrow">Research Study · University of Greenwich · Unity</p>
+    <h1 class="case-title">Perceptual Pathways</h1>
+    <p style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;margin-bottom:1.5rem;">Genre Framing and Player Navigation, Research Study</p>
     <div class="case-disciplines">
       <span class="discipline">Research</span>
       <span class="discipline">Environmental Design</span>
       <span class="discipline">Player Behaviour</span>
       <span class="discipline">Unity</span>
     </div>
-    <p class="case-summary">A research-led individual project investigating whether genre framing — telling a player what kind of game they're playing — influences how they navigate and explore an identical 3D environment. Three controlled groups of 10 participants each played the same space under different conditions. All standard design variables were stripped: no music, no lighting variation, no UI prompts. Only the environment and the framing.</p>
+    <p class="case-summary">An individual research study investigating whether genre framing, telling a player what kind of game they're playing, influences how they navigate and explore an identical 3D environment. Three controlled groups of 10 participants each played the same space under different conditions. All standard design variables were stripped: no music, no lighting variation, no UI prompts. Only the environment and the framing.</p>
   </div>
 
   <div class="stats-bar">
@@ -234,7 +250,7 @@ footer span {
 
     <div class="case-section">
       <div class="case-section-label">The Research Question</div>
-      <p>Does genre framing change how players behave in a space — independent of anything the space itself is doing? The premise came from observing how much context shapes player expectations before they even begin to play. A loading screen, a title, a one-line description — these things prime players to look for certain things and ignore others.</p>
+      <p>Does genre framing change how players behave in a space, independent of anything the space itself is doing? The premise came from observing how much context shapes player expectations before they even begin to play. A loading screen, a title, a one-line description, these things prime players to look for certain things and ignore others.</p>
       <p>The question was whether that priming produced measurable differences in navigational and explorational behaviour in an otherwise identical environment.</p>
     </div>
 
@@ -243,21 +259,21 @@ footer span {
       <ul class="case-list">
         <li><strong>Group A</strong> was told they were about to play a horror game</li>
         <li><strong>Group B</strong> was told they were about to play an adventure game</li>
-        <li><strong>Group C</strong> was given no genre information — just told to play</li>
+        <li><strong>Group C</strong> was given no genre information, just told to play</li>
         <li>All three groups played an identical 3D environment built in Unity with zero variation between sessions</li>
-        <li>No music was used — audio was completely absent to remove an entire category of emotional influence</li>
-        <li>No lighting changes were made — a single soft area light illuminated the scene for visibility only, with no atmospheric variation</li>
+        <li>No music was used, audio was completely absent to remove an entire category of emotional influence</li>
+        <li>No lighting changes were made, a single soft area light illuminated the scene for visibility only, with no atmospheric variation</li>
         <li>No UI prompts, waypoints, or instructional text appeared during play</li>
       </ul>
     </div>
 
     <div class="case-section">
       <div class="case-section-label">Environmental Design</div>
-      <p>Designing the environment for this study was a specific and unusual challenge: the space had to be <strong>deliberately ambiguous</strong>. It needed to be readable as horror, as adventure, or as neither — depending only on what the player had been told beforehand.</p>
+      <p>Designing the environment for this study was a specific and unusual challenge: the space had to be <strong>deliberately ambiguous</strong>. It needed to be readable as horror, as adventure, or as neither, depending only on what the player had been told beforehand.</p>
       <p>This meant avoiding any design choices that would anchor the space to a single genre reading. No overt horror props, no warm adventure-game palette, no neutral sterility. The environment needed to support all three interpretations simultaneously.</p>
       <ul class="case-list">
         <li>Every spatial decision was stress-tested against the question: does this push the space toward a specific genre reading?</li>
-        <li>The absence of certain design choices was itself a conscious design decision — removing colour grading, sound design, and signposting to isolate the framing variable</li>
+        <li>The absence of certain design choices was itself a conscious design decision, removing colour grading, sound design, and signposting to isolate the framing variable</li>
         <li>The environment was designed with enough navigational complexity to generate meaningful behavioural differences between groups, without being so complex that all groups would converge on the same path</li>
       </ul>
     </div>
@@ -265,8 +281,8 @@ footer span {
     <div class="case-section">
       <div class="case-section-label">Findings &amp; Design Implications</div>
       <p>The study produced measurable differences in navigational and explorational behaviour between the three groups. Genre framing demonstrably shaped how players moved through and interpreted the same physical space.</p>
-      <p>The implications for environmental storytelling are significant. The context established before a player enters a space changes how they read that space — what they look for, what they avoid, how cautiously or confidently they move. A designer can shift a player's experience of an environment without changing a single piece of geometry, simply by controlling what the player believes they are about to experience.</p>
-      <p>This finding has direct practical relevance for how games handle their opening sequences, loading screens, and genre signalling — all of which prime the player before the environment itself has a chance to speak.</p>
+      <p>The implications for environmental storytelling are significant. The context established before a player enters a space changes how they read that space, what they look for, what they avoid, how cautiously or confidently they move. A designer can shift a player's experience of an environment without changing a single piece of geometry, simply by controlling what the player believes they are about to experience.</p>
+      <p>This finding has direct practical relevance for how games handle their opening sequences, loading screens, and genre signalling, all of which prime the player before the environment itself has a chance to speak.</p>
     </div>
 
   </div>
@@ -276,7 +292,7 @@ footer span {
   </div>
 
   <footer>
-    <span>Patryk Parzelski — Game Designer</span>
+    <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
 </body>

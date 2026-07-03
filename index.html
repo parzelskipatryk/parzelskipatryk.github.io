@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Patryk Parzelski — Game Designer</title>
+  <title>Patryk Parzelski, Game Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -20,13 +20,13 @@
       --font-body:    'Inter', sans-serif;
       --font-mono:    'Space Mono', monospace;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behaviour: smooth; }
     body {
       background: var(--bg);
-      color: var(--text);
+      colour: var(--text);
       font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 17px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -48,20 +48,20 @@
       font-size: 0.95rem;
       font-weight: 600;
       letter-spacing: 0.02em;
-      color: var(--text);
+      colour: var(--text);
       text-decoration: none;
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--muted);
+      colour: var(--muted);
       text-decoration: none;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      transition: color 0.2s;
+      transition: colour 0.2s;
     }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover { colour: var(--accent); }
 
     /* HERO */
     .hero {
@@ -70,9 +70,9 @@
       flex-direction: column;
       justify-content: center;
       padding: 8rem 2.5rem 5rem;
+      max-width: 900px;
       position: relative;
       overflow: hidden;
-      border-bottom: 1px solid var(--border);
     }
     .hero-grid-bg {
       position: absolute;
@@ -92,7 +92,7 @@
     .hero-role {
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      color: var(--accent);
+      colour: var(--accent);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       position: relative;
@@ -104,13 +104,13 @@
       font-weight: 700;
       line-height: 1.0;
       letter-spacing: -0.02em;
-      color: var(--text);
+      colour: var(--text);
       position: relative;
       margin-bottom: 1.5rem;
     }
     .hero-sub {
       font-size: 0.95rem;
-      color: var(--muted);
+      colour: var(--muted);
       max-width: 520px;
       line-height: 1.75;
       position: relative;
@@ -127,12 +127,12 @@
       font-family: var(--font-display);
       font-size: 1.6rem;
       font-weight: 700;
-      color: var(--text);
+      colour: var(--text);
     }
     .hero-stat-label {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--muted);
+      colour: var(--muted);
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -146,7 +146,7 @@
     .section-label {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--accent);
+      colour: var(--accent);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 3rem;
@@ -177,18 +177,18 @@
       margin-bottom: 1.5rem;
     }
     .about-text p {
-      color: var(--muted);
+      colour: var(--muted);
       line-height: 1.8;
       margin-bottom: 1rem;
       font-size: 0.95rem;
     }
-    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-text p strong { colour: var(--text); font-weight: 500; }
     .about-skills { display: flex; flex-direction: column; gap: 1rem; }
     .skill-row { display: flex; flex-direction: column; gap: 0.4rem; }
     .skill-row-label {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--muted);
+      colour: var(--muted);
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -196,12 +196,12 @@
     .tag {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--text);
+      colour: var(--text);
       border: 1px solid var(--border);
       padding: 0.3rem 0.75rem;
       letter-spacing: 0.04em;
     }
-    .tag.accent { border-color: var(--accent); color: var(--accent); }
+    .tag.accent { border-colour: var(--accent); colour: var(--accent); }
 
     /* TIGA BANNER */
     .tiga-banner {
@@ -218,7 +218,7 @@
     .tiga-label {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--accent);
+      colour: var(--accent);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 0.3rem;
@@ -227,11 +227,11 @@
       font-family: var(--font-display);
       font-size: 1rem;
       font-weight: 600;
-      color: var(--text);
+      colour: var(--text);
     }
-    .tiga-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+    .tiga-sub { font-size: 0.8rem; colour: var(--muted); margin-top: 0.2rem; }
 
-    /* PROJECT CARDS — entire card is the link */
+    /* PROJECT CARDS, entire card is the link */
     .projects-list {
       display: flex;
       flex-direction: column;
@@ -245,7 +245,7 @@
       min-height: 320px;
       background: var(--surface);
       text-decoration: none;
-      color: inherit;
+      colour: inherit;
       transition: background 0.2s;
       position: relative;
     }
@@ -261,7 +261,7 @@
       top: 1.5rem;
       right: 1.5rem;
       font-size: 1rem;
-      color: var(--accent);
+      colour: var(--accent);
       opacity: 0;
       transition: opacity 0.2s;
     }
@@ -285,7 +285,7 @@
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: #333;
+      colour: #333;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       min-height: 280px;
@@ -301,7 +301,7 @@
     .discipline {
       font-family: var(--font-mono);
       font-size: 0.62rem;
-      color: var(--muted);
+      colour: var(--muted);
       border: 1px solid var(--border);
       padding: 0.2rem 0.6rem;
       letter-spacing: 0.06em;
@@ -317,7 +317,7 @@
     }
     .project-desc {
       font-size: 0.88rem;
-      color: var(--muted);
+      colour: var(--muted);
       line-height: 1.75;
     }
     .project-bottom { margin-top: 2rem; }
@@ -329,7 +329,7 @@
     .project-contributions li {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--muted);
+      colour: var(--muted);
       letter-spacing: 0.02em;
       padding-left: 1rem;
       position: relative;
@@ -337,7 +337,7 @@
     .project-contributions li::before {
       content: '→';
       position: absolute; left: 0;
-      color: var(--accent);
+      colour: var(--accent);
     }
     .project-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
     .project-stat { display: flex; flex-direction: column; gap: 0.15rem; }
@@ -345,17 +345,17 @@
       font-family: var(--font-display);
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--text);
+      colour: var(--text);
     }
     .project-stat-label {
       font-family: var(--font-mono);
       font-size: 0.6rem;
-      color: var(--muted);
+      colour: var(--muted);
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    /* Case study CTA — starts dark, lights up green on hover */
+    /* Case study CTA, starts dark, lights up green on hover */
     .project-cta {
       display: inline-flex;
       align-items: center;
@@ -365,23 +365,23 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted);
+      colour: var(--muted);
       background: transparent;
       border: 1px solid var(--border);
       padding: 0.6rem 1.2rem;
       width: fit-content;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      transition: background 0.2s, colour 0.2s, border-colour 0.2s;
     }
     .project-card:hover .project-cta {
       background: var(--accent);
-      color: #0f0f0f;
-      border-color: var(--accent);
+      colour: #0f0f0f;
+      border-colour: var(--accent);
     }
 
     .project-wip {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--accent);
+      colour: var(--accent);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       display: flex; align-items: center; gap: 0.5rem;
@@ -408,7 +408,7 @@
     .thinking-num {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--accent);
+      colour: var(--accent);
       letter-spacing: 0.1em;
       margin-bottom: 1rem;
     }
@@ -417,7 +417,7 @@
       font-size: 1rem; font-weight: 600;
       margin-bottom: 0.75rem; line-height: 1.3;
     }
-    .thinking-body { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
+    .thinking-body { font-size: 0.82rem; colour: var(--muted); line-height: 1.75; }
 
     /* CONTACT */
     .contact-wrap {
@@ -428,7 +428,7 @@
     .contact-label {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--accent);
+      colour: var(--accent);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
@@ -441,31 +441,31 @@
       line-height: 1.1;
       margin-bottom: 1rem;
     }
-    .contact-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+    .contact-sub { colour: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
     .contact-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
     .contact-link {
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      color: var(--text);
+      colour: var(--text);
       text-decoration: none;
       border: 1px solid var(--border);
       padding: 0.75rem 1.5rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-colour 0.2s, colour 0.2s;
       display: inline-flex; align-items: center; gap: 0.6rem;
     }
-    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link:hover { border-colour: var(--accent); colour: var(--accent); }
     .contact-link.primary {
       background: transparent;
-      color: var(--muted);
-      border-color: var(--border);
+      colour: var(--muted);
+      border-colour: var(--border);
       font-weight: 700;
     }
     .contact-link.primary:hover {
       background: var(--accent);
-      color: #0f0f0f;
-      border-color: var(--accent);
+      colour: #0f0f0f;
+      border-colour: var(--accent);
     }
 
     /* FOOTER */
@@ -476,7 +476,7 @@
     }
     footer span {
       font-family: var(--font-mono);
-      font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
+      font-size: 0.65rem; colour: #444; letter-spacing: 0.06em;
     }
 
     /* REVEAL */
@@ -504,6 +504,13 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
     }
+
+    /* GLOBAL GREEN HOVER — every interactive element */
+    .nav-links a:hover { color: var(--accent) !important; }
+    .contact-link:hover { border-color: var(--accent) !important; color: var(--accent) !important; background: transparent !important; }
+    .contact-link.primary:hover { background: var(--accent) !important; color: #0f0f0f !important; }
+    .project-card:hover .project-cta { background: var(--accent) !important; color: #0f0f0f !important; border-color: var(--accent) !important; }
+    footer a:hover { color: var(--accent) !important; }
   </style>
 </head>
 <body>
@@ -522,7 +529,7 @@
     <p class="hero-role">Game &amp; Level Designer</p>
     <h1 class="hero-name">Patryk Parzelski</h1>
     <p class="hero-sub">
-      BSc Games Design &amp; Development, University of Greenwich — graduating July 2026.<br>
+      BSc Games Design &amp; Development, University of Greenwich, graduating July 2026.<br>
       Published titles, led design teams, tested with real players.<br>
       TIGA Graduate of the Year nominee, Designer category, 2026.
     </p>
@@ -545,7 +552,7 @@
   <div class="tiga-banner reveal">
     <div class="tiga-inner">
       <div class="tiga-label">Award Nomination</div>
-      <div class="tiga-title">TIGA Graduate of the Year — Designer</div>
+      <div class="tiga-title">TIGA Graduate of the Year, Designer</div>
       <div class="tiga-sub">University of Greenwich · 2026 · UK Games Industry Trade Association</div>
     </div>
   </div>
@@ -554,9 +561,9 @@
     <p class="section-label">About</p>
     <div class="about-grid reveal">
       <div class="about-text">
-        <h2>Design that earns its decisions.</h2>
+        <h2>About me.</h2>
         <p>I've always been more interested in <strong>why a design works</strong> than what it looks like. That means building systems with testable assumptions, laying out levels with clear navigational logic, and not calling something finished until players prove it is.</p>
-        <p>My background spans published live-service games on Roblox, VR multiplayer puzzle design, physical puzzle installations, and research-led single-player environments. I've led design teams, run playtesting programmes, and tracked player behaviour to make decisions grounded in data rather than instinct.</p>
+        <p>My background spans published live-service games on Roblox, VR multiplayer puzzle design, physical puzzle installations, and research-led single-player environments. I've led design teams, run playtesting programmemes, and tracked player behaviour to make decisions grounded in data rather than instinct.</p>
         <p>Currently finishing my BSc at the University of Greenwich and leading design on <strong>Whoever Left The Light On</strong>, targeting Steam release July 2026.</p>
       </div>
       <div class="about-skills">
@@ -622,7 +629,7 @@
               <span class="discipline">Player Analytics</span>
             </div>
             <h3 class="project-title">Lootin'</h3>
-            <p class="project-desc">A published Roblox action-mining game that reached 431K visits and sustained 200–300 daily active players. I owned the full design pipeline — level flow, tutorialisation, puzzle and quest design, and player data analysis to drive iterative improvements.</p>
+            <p class="project-desc">A published Roblox action-mining game that reached 431K visits and sustained 200–300 daily active players. I owned the full design pipeline, level flow, tutorialisation, puzzle and quest design, and player data analysis to drive iterative improvements.</p>
           </div>
           <div class="project-bottom">
             <ul class="project-contributions">
@@ -656,16 +663,16 @@
               <span class="discipline">Narrative Design</span>
             </div>
             <h3 class="project-title">Whoever Left The Light On</h3>
-            <p class="project-desc">A bedroom escape-puzzle game targeting Steam release July 2026. As Design Team Lead I'm shaping the entire design direction — puzzle architecture across three phases, UI icon production, and narrative integration.</p>
+            <p class="project-desc">A bedroom escape-puzzle game targeting Steam release July 2026. As Design Team Lead I'm shaping the entire design direction, puzzle architecture across three phases, UI icon production, and narrative integration.</p>
           </div>
           <div class="project-bottom">
             <ul class="project-contributions">
               <li>Authored GDD, puzzle specs, and narrative beat document</li>
               <li>Designed all three puzzle phases across a student bedroom environment</li>
-              <li>Produced the full UI icon asset set — diegetic and menu-facing</li>
+              <li>Produced the full UI icon asset set, diegetic and menu-facing</li>
               <li>Coordinated design tasks across disciplines via Trello</li>
             </ul>
-            <div class="project-wip">In production — Steam target July 2026</div>
+            <div class="project-wip">In production, Steam target July 2026</div>
             <span class="project-cta">View Case Study →</span>
           </div>
         </div>
@@ -684,8 +691,8 @@
               <span class="discipline">Lighting Design</span>
               <span class="discipline">VR</span>
             </div>
-            <h3 class="project-title">VR Multiplayer Puzzle Game</h3>
-            <p class="project-desc">A co-operative VR puzzle experience built for university. As lead designer I owned the entire level — blockout through final lighting. The key challenge: two players sharing a space but carrying different information, designing for asymmetric co-operation in VR.</p>
+            <h3 class="project-title">Relay</h3>
+            <p class="project-desc">A co-operative VR puzzle experience built for university. As lead designer I owned the entire level, blockout through final lighting. The key challenge: two players sharing a space but carrying different information, designing for asymmetric co-operation in VR.</p>
           </div>
           <div class="project-bottom">
             <ul class="project-contributions">
@@ -707,12 +714,12 @@
         <div class="project-info">
           <div class="project-top">
             <div class="project-disciplines">
-              <span class="discipline">Research</span>
+              <span class="discipline">Research Study</span>
               <span class="discipline">Environmental Design</span>
               <span class="discipline">Player Behaviour</span>
             </div>
-            <h3 class="project-title">Genre Framing &amp; Player Navigation Study</h3>
-            <p class="project-desc">A research-led solo project investigating whether genre framing influences exploratory behaviour in identical 3D environments. Three controlled groups of 10 played the same space — told it was horror, adventure, or told nothing. All variables stripped except environment.</p>
+            <h3 class="project-title">Perceptual Pathways</h3>
+            <p class="project-desc">A research study investigating whether genre framing influences exploratory behaviour in identical 3D environments. Three controlled groups of 10 played the same space, told it was horror, adventure, or told nothing. All variables stripped except environment.</p>
           </div>
           <div class="project-bottom">
             <ul class="project-contributions">
@@ -743,12 +750,12 @@
               <span class="discipline">Arduino</span>
             </div>
             <h3 class="project-title">Gramophone Puzzle Box</h3>
-            <p class="project-desc">A physical escape-room puzzle built entirely from electrical components and Arduino — no digital engines. Players tune a dial, align a spinning record for correct audio, and turn a crank to trigger sequential lights.</p>
+            <p class="project-desc">A physical escape-room puzzle built entirely from electrical components and Arduino, no digital engines. Players tune a dial, align a spinning record for correct audio, and turn a crank to trigger sequential lights.</p>
           </div>
           <div class="project-bottom">
             <ul class="project-contributions">
               <li>Designed multi-stage puzzle logic: rotary encoder, crank, light sequencing</li>
-              <li>Constrained entirely to physical components — no software layer</li>
+              <li>Constrained entirely to physical components, no software layer</li>
               <li>Tested puzzle legibility without any on-screen affordances</li>
             </ul>
             <span class="project-cta">View Case Study →</span>
@@ -768,7 +775,7 @@
               <span class="discipline">Game Jam</span>
               <span class="discipline">Tabletop</span>
             </div>
-            <h3 class="project-title">Small Boats — Game Jam Board Game</h3>
+            <h3 class="project-title">Small Boats, Game Jam Board Game</h3>
             <p class="project-desc">A 4-player hex-tile racing game designed during a game jam. Players manage the tension between boat size and dice pool, bet on races with a shared economy, and explore a tile map as they go.</p>
           </div>
           <div class="project-bottom">
@@ -792,7 +799,7 @@
       <div class="thinking-card">
         <div class="thinking-num">Principle 01</div>
         <h4 class="thinking-title">Blockout first, always.</h4>
-        <p class="thinking-body">Every space I design starts as grey geometry. No art, no props, no atmosphere. If the level doesn't work in blockout it won't work polished — and it's cheaper to find that out early.</p>
+        <p class="thinking-body">Every space I design starts as grey geometry. No art, no props, no atmosphere. If the level doesn't work in blockout it won't work polished, and it's cheaper to find that out early.</p>
       </div>
       <div class="thinking-card">
         <div class="thinking-num">Principle 02</div>
@@ -802,15 +809,15 @@
       <div class="thinking-card">
         <div class="thinking-num">Principle 03</div>
         <h4 class="thinking-title">Document the decisions, not just the outcome.</h4>
-        <p class="thinking-body">A design document should explain why as much as what. I write decisions down as I make them — including what changed and what prompted it — because the reasoning is half the work.</p>
+        <p class="thinking-body">A design document should explain why as much as what. I write decisions down as I make them, including what changed and what prompted it, because the reasoning is half the work.</p>
       </div>
     </div>
   </section>
 
   <div class="contact-wrap reveal" id="contact">
-    <p class="contact-label">Get in touch</p>
-    <h2 class="contact-headline">Let's talk design.</h2>
-    <p class="contact-sub">Open to junior designer roles, internships, and collaborations from July 2026.</p>
+    <p class="contact-label">Contact</p>
+    <h2 class="contact-headline">Open to work from July 2026.</h2>
+    <p class="contact-sub">Junior designer roles, internships, and collaborations welcome.</p>
     <div class="contact-links">
       <a class="contact-link primary" href="mailto:[FILL THIS IN]">[FILL THIS IN]</a>
       <a class="contact-link" href="https://linkedin.com/in/[YOUR-LINKEDIN]" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -818,7 +825,7 @@
   </div>
 
   <footer>
-    <span>Patryk Parzelski — Game Designer</span>
+    <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
 

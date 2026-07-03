@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gramophone Puzzle Box — Patryk Parzelski</title>
+  <title>Gramophone Puzzle Box, Patryk Parzelski</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -20,7 +20,7 @@
   --font-body:    'Inter', sans-serif;
   --font-mono:    'Space Mono', monospace;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behaviour: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -199,6 +199,21 @@ footer span {
   .case-hero { padding-top: 8rem; }
   .stats-bar { gap: 2rem; }
 }
+
+/* GLOBAL OVERRIDES */
+body { font-size: 17px; line-height: 1.5; }
+.case-section p { font-size: 0.95rem; line-height: 1.75; }
+.case-list li { font-size: 0.93rem; line-height: 1.75; }
+.case-summary { font-size: 1.05rem; line-height: 1.8; }
+
+/* CONSISTENT GREEN HOVER, every interactive element */
+a { transition: color 0.2s; }
+.nav-back:hover { color: var(--accent) !important; }
+.case-back:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+.carousel-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+.carousel-dot:hover { background: var(--accent) !important; }
+.carousel-dot.active { background: var(--accent) !important; }
+
   </style>
 </head>
 <body>
@@ -215,28 +230,28 @@ footer span {
       <span class="discipline">Physical Prototyping</span>
       <span class="discipline">Arduino</span>
     </div>
-    <p class="case-summary">A physical escape-room puzzle built entirely from electrical components and an Arduino microcontroller — deliberately avoiding digital game engines as a design constraint. Players tune a dial, align a spinning record to hear correct audio, and operate a crank in the correct sequence to illuminate a series of lights. No screen. No software layer. Pure physical feedback.</p>
+    <p class="case-summary">A physical escape-room puzzle built entirely from electrical components and an Arduino microcontroller, deliberately avoiding digital game engines as a design constraint. Players tune a dial, align a spinning record to hear correct audio, and operate a crank in the correct sequence to illuminate a series of lights. No screen. No software layer. Pure physical feedback.</p>
   </div>
 
   <div class="case-image">
-    <div class="case-image-placeholder">[ Add Gramophone photo — physical box or internals ]</div>
+    <div class="case-image-placeholder">[ Add Gramophone photo, physical box or internals ]</div>
   </div>
 
   <div class="case-body">
 
     <div class="case-section">
       <div class="case-section-label">The Constraint</div>
-      <p>The project brief challenged us to build a game experience using only physical electrical components — no Unity, no Unreal, no software to fall back on for feedback, state management, or instruction. Everything a player needed to understand had to be communicated through physical sensation: sound, light, resistance, and movement.</p>
+      <p>The project brief challenged us to build a game experience using only physical electrical components, no Unity, no Unreal, no software to fall back on for feedback, state management, or instruction. Everything a player needed to understand had to be communicated through physical sensation: sound, light, resistance, and movement.</p>
       <p>This constraint forced a kind of design rigour that digital projects often don't require. When you can't add a tooltip or a UI prompt to clarify an interaction, the interaction itself has to be self-explanatory.</p>
     </div>
 
     <div class="case-section">
       <div class="case-section-label">Puzzle Design</div>
       <ul class="case-list">
-        <li><strong>Dial tuning:</strong> Players must rotate a physical dial — connected to a rotary encoder — to reach a correct value. Incorrect positions produce no positive feedback; the correct position triggers the next stage</li>
-        <li><strong>Record alignment:</strong> A motor-driven spinning record must be aligned to a specific position for the gramophone's audio output to play correctly. Wrong alignment produces garbled or incorrect sound — the physical metaphor of a misaligned record doing exactly what a misaligned record would do</li>
-        <li><strong>Crank sequencing:</strong> A hand crank must be turned in the correct direction a set number of times, triggering an LED sequence to illuminate in order. The light sequence provides feedback — partial completion is visible, wrong direction resets progress</li>
-        <li>Each stage's completion provides the information or access needed for the next — the puzzles are chained, not parallel</li>
+        <li><strong>Dial tuning:</strong> Players must rotate a physical dial, connected to a rotary encoder, to reach a correct value. Incorrect positions produce no positive feedback; the correct position triggers the next stage</li>
+        <li><strong>Record alignment:</strong> A motor-driven spinning record must be aligned to a specific position for the gramophone's audio output to play correctly. Wrong alignment produces garbled or incorrect sound, the physical metaphor of a misaligned record doing exactly what a misaligned record would do</li>
+        <li><strong>Crank sequencing:</strong> A hand crank must be turned in the correct direction a set number of times, triggering an LED sequence to illuminate in order. The light sequence provides feedback, partial completion is visible, wrong direction resets progress</li>
+        <li>Each stage's completion provides the information or access needed for the next, the puzzles are chained, not parallel</li>
       </ul>
     </div>
 
@@ -244,10 +259,10 @@ footer span {
       <div class="case-section-label">Affordance Design Without a Screen</div>
       <p>The most interesting design challenge was communicating puzzle state and progress using only physical feedback. Every design decision had to answer the question: how does the player know what to do, and how do they know if they're succeeding?</p>
       <ul class="case-list">
-        <li>Sound was the primary feedback channel for the dial and record stages — correct states produced clean audio, incorrect states produced degraded or absent audio</li>
-        <li>Light was used for the crank sequence — LEDs illuminating in order provided visible progress without needing any text or interface</li>
-        <li>Physical resistance and mechanical feel were used where possible to reinforce correct vs incorrect states — the crank clicks differently in the correct direction</li>
-        <li>The gramophone theme was chosen specifically because it justified the components narratively — a rotary encoder becomes a tuning dial, a motor becomes a record player. The narrative wrapper made the technical components feel intentional</li>
+        <li>Sound was the primary feedback channel for the dial and record stages, correct states produced clean audio, incorrect states produced degraded or absent audio</li>
+        <li>Light was used for the crank sequence, LEDs illuminating in order provided visible progress without needing any text or interface</li>
+        <li>Physical resistance and mechanical feel were used where possible to reinforce correct vs incorrect states, the crank clicks differently in the correct direction</li>
+        <li>The gramophone theme was chosen specifically because it justified the components narratively, a rotary encoder becomes a tuning dial, a motor becomes a record player. The narrative wrapper made the technical components feel intentional</li>
       </ul>
     </div>
 
@@ -258,7 +273,7 @@ footer span {
   </div>
 
   <footer>
-    <span>Patryk Parzelski — Game Designer</span>
+    <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
 </body>

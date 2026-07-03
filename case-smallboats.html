@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Small Boats — Patryk Parzelski</title>
+  <title>Small Boats, Patryk Parzelski</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -20,7 +20,7 @@
   --font-body:    'Inter', sans-serif;
   --font-mono:    'Space Mono', monospace;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behaviour: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -199,6 +199,21 @@ footer span {
   .case-hero { padding-top: 8rem; }
   .stats-bar { gap: 2rem; }
 }
+
+/* GLOBAL OVERRIDES */
+body { font-size: 17px; line-height: 1.5; }
+.case-section p { font-size: 0.95rem; line-height: 1.75; }
+.case-list li { font-size: 0.93rem; line-height: 1.75; }
+.case-summary { font-size: 1.05rem; line-height: 1.8; }
+
+/* CONSISTENT GREEN HOVER, every interactive element */
+a { transition: color 0.2s; }
+.nav-back:hover { color: var(--accent) !important; }
+.case-back:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+.carousel-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+.carousel-dot:hover { background: var(--accent) !important; }
+.carousel-dot.active { background: var(--accent) !important; }
+
   </style>
 </head>
 <body>
@@ -234,7 +249,7 @@ footer span {
       <div class="case-section-label">Systems Design</div>
       <ul class="case-list">
         <li><strong>Boat size vs dice pool:</strong> Each upgrade removes a die from your throw; each downgrade adds one. Larger boats gain bonuses on Deep Water tiles, smaller boats gain bonuses on Shallow Water. The system creates meaningful trade-offs at every decision point</li>
-        <li><strong>Race betting:</strong> Players who enter a race place a bet — the cap is set to the lowest coin total at the table, keeping all players competitive. One player per race may raise the cap once, creating a bluffing layer. Players who don't race gain a single coin — a small but consistent alternative</li>
+        <li><strong>Race betting:</strong> Players who enter a race place a bet, the cap is set to the lowest coin total at the table, keeping all players competitive. One player per race may raise the cap once, creating a bluffing layer. Players who don't race gain a single coin, a small but consistent alternative</li>
         <li><strong>Tile bag exploration:</strong> 80 tiles drawn blind: 40 Nothing, 15 Deep Water, 5 Shallow Water, 20 Events. The Scout action (3 chips) lets players draw and place three tiles, giving information advantage at a cost. Terrain tiles only affect players based on their boat size, so exploration value depends on your current strategy</li>
         <li><strong>Event system:</strong> 20 event cards split between one-time effects (waves, tailwinds, treasure) and permanent Perma-Events (Whirlpool, Oasis Island) that reshuffle into the deck after triggering. Perma-Events create recurring threats and opportunities that shift the board state for everyone</li>
       </ul>
@@ -243,7 +258,7 @@ footer span {
     <div class="case-section">
       <div class="case-section-label">Win Condition Design</div>
       <p>The dual win condition was a deliberate design decision to prevent runaway leaders and reward different playstyles across a session.</p>
-      <p>The first player to reach the end triggers a countdown — other players have a set number of rounds remaining. If multiple players finish, the winner is the player with the most gold, then smallest boat as a tiebreaker. This creates a late-game decision point: do you race to the end immediately, or hold back to accumulate coins and downgrade before crossing?</p>
+      <p>The first player to reach the end triggers a countdown, other players have a set number of rounds remaining. If multiple players finish, the winner is the player with the most gold, then smallest boat as a tiebreaker. This creates a late-game decision point: do you race to the end immediately, or hold back to accumulate coins and downgrade before crossing?</p>
       <p>A player who raced aggressively (small boat, lots of dice, won most races) might lose to a player who played the economy and arrived last with a larger coin pool. The system rewards reading the table, not just playing optimally in isolation.</p>
     </div>
 
@@ -251,10 +266,10 @@ footer span {
       <div class="case-section-label">Balancing &amp; Iteration</div>
       <p>The Fix1 annotations in the original design document reflect balance catches made during jam playtesting. Two issues were identified and addressed before the jam ended:</p>
       <ul class="case-list">
-        <li>The Thunderbolt card had too severe a penalty for small boats — the restart condition for players below size 2 was effectively eliminating players from the game rather than setting them back, breaking the comeback mechanic. The penalty was softened to a life loss and a size reduction rather than a full restart</li>
+        <li>The Thunderbolt card had too severe a penalty for small boats, the restart condition for players below size 2 was effectively eliminating players from the game rather than setting them back, breaking the comeback mechanic. The penalty was softened to a life loss and a size reduction rather than a full restart</li>
         <li>Treasure coin values were too high relative to the betting economy, causing inflation in longer games and devaluing the core race mechanic. A coin gain cap was added</li>
       </ul>
-      <p>Both catches came directly from watching players interact with the prototype — the numbers made sense on paper but produced unintended consequences at the table.</p>
+      <p>Both catches came directly from watching players interact with the prototype, the numbers made sense on paper but produced unintended consequences at the table.</p>
     </div>
 
   </div>
@@ -264,7 +279,7 @@ footer span {
   </div>
 
   <footer>
-    <span>Patryk Parzelski — Game Designer</span>
+    <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
 </body>
