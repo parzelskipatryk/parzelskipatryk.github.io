@@ -372,14 +372,13 @@
     .project-image {
       background: #111;
       overflow: hidden;
-      height: auto;
-      aspect-ratio: 3 / 2;
-      align-self: center;
+      height: 420px;
+      align-self: start;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .project-card--featured .project-image { aspect-ratio: 3 / 2; }
+    .project-card--featured .project-image { aspect-ratio: 2.4 / 1; height: auto; width: 100%; }
     .project-image img {
       width: 100%;
       height: 100%;
@@ -610,6 +609,8 @@
       .project-card:nth-child(even) { grid-template-columns: 1fr; }
       .project-card:nth-child(even) .project-image,
       .project-card:nth-child(even) .project-info { order: unset; }
+      .project-image { height: 260px; }
+      .project-card--featured .project-image { height: auto; aspect-ratio: 2.4 / 1; }
       .thinking-grid { grid-template-columns: 1fr; }
       .contact-links { flex-direction: column; align-items: center; }
     }
@@ -666,15 +667,14 @@
       clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%);
     }
 
-    /* FEATURED CARD */
+    /* FEATURED CARD — stacked hero banner, distinct from the side-by-side cards below */
     .project-card--featured {
       min-height: 420px;
       border-left: 3px solid var(--accent);
+      grid-template-columns: 1fr;
     }
-    @media (min-width: 769px) {
-      .project-card--featured { grid-template-columns: 1.6fr 1fr; }
-    }
-    .project-card--featured .project-image { position: relative; }
+    .project-card--featured .project-image { position: relative; order: unset; }
+    .project-card--featured .project-info { order: unset; }
     .project-card--featured .project-title { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
 
     /* GLOBAL GREEN HOVER — every interactive element */
@@ -849,7 +849,7 @@
       <a class="project-card project-card--featured reveal" href="case-lootin.html">
         <div class="project-image">
           <div class="featured-ribbon">★ Featured</div>
-          <img src="lootin-square.png" alt="Lootin'" />
+          <img src="lootin-hero-banner.png" alt="Lootin'" />
         </div>
         <div class="project-info">
           <div class="project-top">
