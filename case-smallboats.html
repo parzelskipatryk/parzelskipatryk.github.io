@@ -182,6 +182,14 @@ nav {
 }
 .case-back:hover { color: var(--accent); border-color: var(--accent); }
 
+/* RESULT BANNER */
+.result-banner {
+  margin-top: 1.5rem; border: 1px solid var(--border); background: var(--surface);
+  padding: 1.5rem 1.75rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.result-banner-num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent); }
+.result-banner-text { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 560px; }
+
 /* FOOTER */
 footer {
   border-top: 1px solid var(--border);
@@ -284,6 +292,14 @@ a { transition: color 0.2s; }
         <li>Treasure coin values were too high relative to the betting economy, causing inflation in longer games and devaluing the core race mechanic. A coin gain cap was added</li>
       </ul>
       <p>Both catches came directly from watching players interact with the prototype, the numbers made sense on paper but produced unintended consequences at the table.</p>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Result</div>
+      <div class="result-banner">
+        <span class="result-banner-num">Jam Favourite</span>
+        <span class="result-banner-text">Small Boats got a genuinely positive reaction from other players during the jam itself, people kept coming back to the table to play another round. It hasn't been tested with players outside that group, so the balance and pacing notes above reflect jam-level playtesting, not a formal study.</span>
+      </div>
     </div>
 
     <div class="case-section">

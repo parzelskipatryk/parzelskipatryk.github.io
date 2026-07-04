@@ -192,7 +192,7 @@ nav {
   margin-top: 1.5rem;
 }
 .analytics-card { background: var(--surface); display: flex; flex-direction: column; }
-.analytics-card-img-wrap { display: block; height: 220px; overflow: hidden; background: #0a0a0a; position: relative; }
+.analytics-card-img-wrap { display: block; height: 220px; overflow: hidden; background: #0a0a0a; position: relative; cursor: pointer; }
 .analytics-card-img-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 0.3s, opacity 0.2s; }
 .analytics-card-img-wrap:hover img { transform: scale(1.05); opacity: 0.9; }
 .analytics-card-zoom {
@@ -203,6 +203,45 @@ nav {
   opacity: 0; transition: opacity 0.2s;
 }
 .analytics-card-img-wrap:hover .analytics-card-zoom { opacity: 1; }
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(10,10,10,0.92);
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 3rem;
+  cursor: zoom-out;
+}
+.lightbox.active { display: flex; }
+.lightbox img {
+  max-width: 100%; max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  transition: transform 0.25s ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+.lightbox img.zoomed {
+  max-width: none; max-height: none;
+  transform: scale(1.8);
+  cursor: zoom-out;
+}
+.lightbox-close {
+  position: fixed; top: 1.5rem; right: 1.5rem;
+  width: 40px; height: 40px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); font-family: var(--font-mono); font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 1001;
+  transition: border-color 0.2s, color 0.2s;
+}
+.lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
+.lightbox-caption {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  z-index: 1001;
+}
 .analytics-card-caption { padding: 1rem 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.3rem; }
 .analytics-card-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
 .analytics-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
@@ -306,7 +345,7 @@ footer span {
   </div>
 
   <div class="case-image">
-    <img src="research-lobby.png" alt="Office lobby environment used across all three test conditions" />
+    <img src="research-lobby.png?v=2" alt="Office lobby environment used across all three test conditions" />
   </div>
 
   <div class="case-body">
@@ -353,7 +392,7 @@ footer span {
 
           <div class="carousel-slide">
             <div class="carousel-img-wrap">
-              <img src="research-lobby.png" alt="Office lobby entry point" />
+              <img src="research-lobby.png?v=2" alt="Office lobby entry point" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Lobby</span>
@@ -363,7 +402,7 @@ footer span {
 
           <div class="carousel-slide">
             <div class="carousel-img-wrap">
-              <img src="research-kitchen.png" alt="Office kitchen side room" />
+              <img src="research-kitchen.png?v=2" alt="Office kitchen side room" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Kitchen</span>
@@ -373,7 +412,7 @@ footer span {
 
           <div class="carousel-slide">
             <div class="carousel-img-wrap">
-              <img src="research-meeting.png" alt="Dimly lit conference room" />
+              <img src="research-meeting.png?v=2" alt="Dimly lit conference room" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Conference Room</span>
@@ -383,7 +422,7 @@ footer span {
 
           <div class="carousel-slide">
             <div class="carousel-img-wrap">
-              <img src="research-sbend.png" alt="S-bend connecting corridor" />
+              <img src="research-sbend.png?v=2" alt="S-bend connecting corridor" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">S-Bend Corridor</span>
@@ -509,30 +548,30 @@ footer span {
 
       <div class="analytics-grid">
         <div class="analytics-card">
-          <a class="analytics-card-img-wrap" href="research-heatmap-horror.png" target="_blank" rel="noopener">
+          <div class="analytics-card-img-wrap" onclick="openLightbox('research-heatmap-horror.png', 'Horror Heatmap')">
             <img src="research-heatmap-horror.png" alt="Horror condition movement heatmap" />
-            <span class="analytics-card-zoom">View full ↗</span>
-          </a>
+            <span class="analytics-card-zoom">Click to enlarge</span>
+          </div>
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Horror Heatmap</span>
             <span class="analytics-card-desc">Movement hugs corridors and edges, consistent with cautious, threat-aware traversal.</span>
           </div>
         </div>
         <div class="analytics-card">
-          <a class="analytics-card-img-wrap" href="research-heatmap-adventure.png" target="_blank" rel="noopener">
+          <div class="analytics-card-img-wrap" onclick="openLightbox('research-heatmap-adventure.png', 'Adventure Heatmap')">
             <img src="research-heatmap-adventure.png" alt="Adventure condition movement heatmap" />
-            <span class="analytics-card-zoom">View full ↗</span>
-          </a>
+            <span class="analytics-card-zoom">Click to enlarge</span>
+          </div>
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Adventure Heatmap</span>
             <span class="analytics-card-desc">Denser, more scattered coverage clustered around interactable objects and side rooms.</span>
           </div>
         </div>
         <div class="analytics-card">
-          <a class="analytics-card-img-wrap" href="research-heatmap-neutral.png" target="_blank" rel="noopener">
+          <div class="analytics-card-img-wrap" onclick="openLightbox('research-heatmap-neutral.png', 'Neutral Heatmap')">
             <img src="research-heatmap-neutral.png" alt="Neutral condition movement heatmap" />
-            <span class="analytics-card-zoom">View full ↗</span>
-          </a>
+            <span class="analytics-card-zoom">Click to enlarge</span>
+          </div>
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Neutral Heatmap</span>
             <span class="analytics-card-desc">Sparser, more linear paths, closer to passive transit than active exploration.</span>
@@ -598,7 +637,7 @@ footer span {
       <p>The sample (N = 30) was drawn entirely from the Games Design cohort, meaning participants were likely more analytically aware of genre as a construct than a general player base would be. A couple of results sat between p = .05 and .06, treated here as suggestive rather than confirmed, though their effect sizes remained large. Future work would benefit from a larger, non-specialist sample and physiological measures like heart rate or GSR to track the framing effect as it unfolds in real time, rather than only at the end of a session.</p>
       <div class="result-banner">
         <span class="result-banner-num">First Class</span>
-        <span class="result-banner-text">The project formed the core of my COMP1870 Final Year Individual Project, contributing to a final degree mark of approximately 75.11%, a comfortable First Class Honours.</span>
+        <span class="result-banner-text">This project formed the core of my Final Year Individual Project.</span>
       </div>
     </div>
 
@@ -612,6 +651,12 @@ footer span {
     <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightboxImg" src="" alt="" onclick="toggleZoom(event)" />
+    <span class="lightbox-caption" id="lightboxCaption"></span>
+  </div>
 
   <script>
     let current = 0;
@@ -641,7 +686,28 @@ footer span {
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') moveCarousel(-1);
       if (e.key === 'ArrowRight') moveCarousel(1);
+      if (e.key === 'Escape') closeLightbox();
     });
+
+    // LIGHTBOX
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.classList.remove('zoomed');
+      document.getElementById('lightboxCaption').textContent = caption || '';
+      lb.classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target.tagName === 'IMG' && e.target.classList.contains('zoomed')) return;
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    function toggleZoom(e) {
+      e.stopPropagation();
+      e.target.classList.toggle('zoomed');
+    }
   </script>
 </body>
 </html>

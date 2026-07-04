@@ -80,6 +80,12 @@
     .puzzle-step--full { grid-column: 1 / -1; }
 
     .case-back-wrap { max-width: 900px; margin: 0 auto; padding: 0 2.5rem 4rem; }
+    .result-banner {
+      margin-top: 1.5rem; border: 1px solid var(--border); background: var(--surface);
+      padding: 1.5rem 1.75rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .result-banner-num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .result-banner-text { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 560px; }
     .case-back { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.7rem 1.4rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s, border-color 0.2s; }
     .case-back:hover { color: var(--accent); border-color: var(--accent); }
     footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
@@ -100,7 +106,7 @@
   </nav>
 
   <div class="case-hero-image">
-    <img src="relay-cave.png" alt="Relay dungeon environment" />
+    <img src="relay-cave.png?v=2" alt="Relay dungeon environment" />
   </div>
 
   <div class="case-hero">
@@ -151,7 +157,7 @@
 
           <div class="carousel-slide">
             <div class="carousel-img-wrap">
-              <img src="relay-cave.png" alt="Dungeon cave environment" />
+              <img src="relay-cave.png?v=2" alt="Dungeon cave environment" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Cave Environment</span>
@@ -219,6 +225,16 @@
             </div>
           </div>
 
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="relay-torches.png" alt="Suspended platform with torches in the cave ceiling" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Suspended Platform</span>
+              <p class="carousel-desc">Looking up at one of the chain-suspended platforms above the main cave, lit by torches to draw the eye upward and signal verticality as a navigable part of the space rather than just set dressing.</p>
+            </div>
+          </div>
+
         </div>
         <div class="carousel-controls">
           <button class="carousel-btn" onclick="moveCarousel(-1)">←</button>
@@ -282,6 +298,14 @@
         <li>Used the moonlight shaft in the spawn room as a spatial anchor, giving both players a shared reference point before they split into their separate areas</li>
         <li>Tested lighting in headset throughout the build as VR light behaviour differs meaningfully from what appears in the Unity editor on a monitor</li>
       </ul>
+    </div>
+
+    <div class="case-section">
+      <div class="case-section-label">Result</div>
+      <div class="result-banner">
+        <span class="result-banner-num">First Class</span>
+        <span class="result-banner-text">Relay was submitted as a university group project and received a First Class grade.</span>
+      </div>
     </div>
 
   </div>
