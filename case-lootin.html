@@ -39,6 +39,16 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
+    .scroll-progress {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.1s linear;
+      z-index: 2;
+    }
     .nav-name {
       font-family: var(--font-display);
       font-size: 0.95rem; font-weight: 600;
@@ -307,6 +317,7 @@
   <nav>
     <a class="nav-name" href="index.html">Patryk Parzelski</a>
     <a class="nav-back" href="index.html">← Back to work</a>
+    <div class="scroll-progress" id="scrollProgress"></div>
   </nav>
 
   <!-- FULL WIDTH THUMBNAIL -->
@@ -585,6 +596,17 @@
       if (e.key === 'ArrowLeft') moveCarousel('gameplay', -1);
       if (e.key === 'ArrowRight') moveCarousel('gameplay', 1);
     });
+
+    // Scroll progress bar
+    const scrollProgress = document.getElementById('scrollProgress');
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateScrollProgress);
+    updateScrollProgress();
   </script>
 </body>
 </html>

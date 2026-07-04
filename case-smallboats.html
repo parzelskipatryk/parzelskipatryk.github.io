@@ -39,6 +39,7 @@ nav {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
+.scroll-progress { position: absolute; bottom: -1px; left: 0; height: 2px; width: 0%; background: var(--accent); transition: width 0.1s linear; z-index: 2; }
 .nav-name {
   font-family: var(--font-display);
   font-size: 0.95rem; font-weight: 600;
@@ -242,6 +243,7 @@ a { transition: color 0.2s; }
   <nav>
     <a class="nav-name" href="index.html">Patryk Parzelski</a>
     <a class="nav-back" href="index.html">← Back to work</a>
+    <div class="scroll-progress" id="scrollProgress"></div>
   </nav>
 
   <div class="case-hero">
@@ -292,14 +294,6 @@ a { transition: color 0.2s; }
         <li>Treasure coin values were too high relative to the betting economy, causing inflation in longer games and devaluing the core race mechanic. A coin gain cap was added</li>
       </ul>
       <p>Both catches came directly from watching players interact with the prototype, the numbers made sense on paper but produced unintended consequences at the table.</p>
-    </div>
-
-    <div class="case-section">
-      <div class="case-section-label">Result</div>
-      <div class="result-banner">
-        <span class="result-banner-num">Jam Favourite</span>
-        <span class="result-banner-text">Small Boats got a genuinely positive reaction from other players during the jam itself, people kept coming back to the table to play another round. It hasn't been tested with players outside that group, so the balance and pacing notes above reflect jam-level playtesting, not a formal study.</span>
-      </div>
     </div>
 
     <div class="case-section">
@@ -370,6 +364,14 @@ a { transition: color 0.2s; }
       </div>
     </div>
 
+    <div class="case-section">
+      <div class="case-section-label">Result</div>
+      <div class="result-banner">
+        <span class="result-banner-num">Jam Favourite</span>
+        <span class="result-banner-text">Small Boats got a genuinely positive reaction during the jam itself, people from within the jam group kept coming back to the table to play another round. It hasn't been through formal testing outside that group, though people outside it who saw it played have said they'd want to play it once it's built properly. The balance and pacing notes above reflect jam-level playtesting, not a formal study.</span>
+      </div>
+    </div>
+
   </div>
 
   <div class="case-back-wrap">
@@ -405,6 +407,17 @@ a { transition: color 0.2s; }
     }
 
     function moveBoatsCarousel(dir) { boatsGoTo(boatsCurrent + dir); }
+
+    // Scroll progress bar
+    const scrollProgress = document.getElementById('scrollProgress');
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateScrollProgress);
+    updateScrollProgress();
   </script>
 </body>
 </html>

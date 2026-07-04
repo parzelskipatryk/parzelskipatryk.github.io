@@ -62,6 +62,16 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); }
+    .scroll-progress {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.1s linear;
+      z-index: 2;
+    }
 
     /* HERO */
     .hero {
@@ -148,9 +158,8 @@
     .hero-stat-dot.production { background: #e8a030; }
     .hero-visual {
       background: #0a0a0a;
-      background-image: linear-gradient(rgba(200,240,74,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,240,74,0.04) 1px, transparent 1px);
-      background-size: 24px 24px;
-      min-height: 420px;
+      aspect-ratio: 1 / 1;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -158,21 +167,17 @@
       overflow: hidden;
       border-radius: 2px;
       border: 1px solid var(--border);
-      padding: 2rem;
     }
     .hero-visual img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
       opacity: 1;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
     .hero-visual-slide {
       position: absolute;
-      inset: 2rem;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -182,13 +187,10 @@
     }
     .hero-visual-slide.active { opacity: 1; }
     .hero-visual-slide img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
     .hero-visual-dots {
       position: absolute;
@@ -599,7 +601,7 @@
       nav { padding: 1rem 1.25rem; }
       .nav-links { display: none; }
       .hero { grid-template-columns: 1fr; padding: 6rem 1.25rem 3rem; gap: 2rem; }
-      .hero-visual { min-height: 240px; }
+      .hero-visual { max-width: 340px; margin: 0 auto; }
       .hero-meta { gap: 1.5rem; flex-wrap: wrap; }
       section { padding: 4rem 1.25rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -692,6 +694,7 @@
       <li><a href="#work">Work</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="scroll-progress" id="scrollProgress"></div>
   </nav>
 
   <div class="hero">
@@ -721,16 +724,16 @@
     </div>
     <div class="hero-visual" id="heroVisual">
       <div class="hero-visual-slide active">
-        <img src="relay-cave.png?v=2" alt="Relay, VR co-op puzzle level" />
+        <img src="relay-square.png" alt="Relay, VR co-op puzzle level" />
       </div>
       <div class="hero-visual-slide">
-        <img src="ShowcaseImage.png" alt="Whoever Left The Light On, in production" />
+        <img src="wltlo-logo.png" alt="Whoever Left The Light On, in production" />
       </div>
       <div class="hero-visual-slide">
-        <img src="research-lobby.png?v=2" alt="Perceptual Pathways, research environment" />
+        <img src="research-lobby-square.png" alt="Perceptual Pathways, research environment" />
       </div>
       <div class="hero-visual-slide">
-        <img src="lootin-closeup.png" alt="Lootin', shipped Roblox title" />
+        <img src="lootin-closeup-square.png" alt="Lootin', shipped Roblox title" />
       </div>
       <div class="hero-visual-dots" id="heroVisualDots"></div>
     </div>
@@ -755,12 +758,11 @@
           </div>
           <div>
             <div class="about-photo-name">Patryk Parzelski</div>
-            <div class="about-photo-role">Game &amp; Level Designer, Greenwich</div>
+            <div class="about-photo-role">Game &amp; Level Designer, Southend-On-Sea</div>
           </div>
         </div>
-        <p>I got into design the way most people my age did, by modding the games I already loved and wondering why some levels felt effortless to explore and others felt like a chore. That question never really went away. It's why I've spent the last few years chasing it through very different mediums: a Roblox economy with real players and real money, a VR co-op puzzle level, a physical Arduino puzzle box with no screen at all, and a final year study running actual participants through a controlled environment to see whether a genre label alone could change how they moved.</p>
-        <p>What ties it together is that I don't trust a design decision until I've watched someone else struggle with it. I'll happily rebuild a puzzle three times if the playtest says the first two versions weren't landing. That's also just how I'd describe myself outside of games: stubborn about getting things right, a bit of a systems nerd (ask me about my Minecraft AE2 setup or my Seafall strategy), and someone who'd rather ship something honest than something polished but hollow.</p>
-        <p>First Class Honours from the University of Greenwich, graduating July 2026, and nominated for TIGA Graduate of the Year in the Designer category. Right now I'm looking for a junior design role where I can keep doing exactly this: building things, testing them properly, and being wrong in useful ways until they're right.</p>
+        <p>I got into design by modding games and wondering why some levels felt effortless and others felt like a chore. I've since chased that question through a Roblox economy, a VR co-op puzzle level, a screenless Arduino puzzle box, and a final year study testing whether genre framing alone changes how players move.</p>
+        <p>I don't trust a design decision until I've watched someone else struggle with it, and I'll rebuild a puzzle three times if a playtest says the first two weren't landing. First Class Honours from the University of Greenwich, graduating July 2026, TIGA Graduate of the Year nominee, and currently looking for a junior design role.</p>
       </div>
       <div class="about-skills">
         <div class="skill-row">
@@ -820,17 +822,17 @@
       <div class="thinking-card">
         <div class="thinking-num">Principle 01</div>
         <h4 class="thinking-title">Blockout first, always.</h4>
-        <p class="thinking-body">Every space I design starts as grey geometry. No art, no props, no atmosphere. If the level doesn't work in blockout it won't work polished, and it's cheaper to find that out early.</p>
+        <p class="thinking-body">I build every space as basic grey geometry first, no art or props. If it doesn't work in blockout it won't work polished, and problems are cheaper to fix early.</p>
       </div>
       <div class="thinking-card">
         <div class="thinking-num">Principle 02</div>
-        <h4 class="thinking-title">Design is a hypothesis.</h4>
-        <p class="thinking-body">Every mechanic, layout, or puzzle is an assumption about player behaviour. I test assumptions with real players and real data. Intuition is a starting point, not an endpoint.</p>
+        <h4 class="thinking-title">Test it, don't just trust it.</h4>
+        <p class="thinking-body">Every mechanic or puzzle is a guess about how players will behave. I test that guess with real players and real data instead of assuming I've got it right.</p>
       </div>
       <div class="thinking-card">
         <div class="thinking-num">Principle 03</div>
-        <h4 class="thinking-title">Document the decisions, not just the outcome.</h4>
-        <p class="thinking-body">A design document should explain why as much as what. I write decisions down as I make them, including what changed and what prompted it, because the reasoning is half the work.</p>
+        <h4 class="thinking-title">Document why, not just what.</h4>
+        <p class="thinking-body">My design docs explain the reasoning behind a decision, not just the decision itself, including what changed and why, so the logic is there if anyone needs to check it.</p>
       </div>
     </div>
   </section>
@@ -846,7 +848,7 @@
       <a class="project-card project-card--featured reveal" href="case-lootin.html">
         <div class="project-image">
           <div class="featured-ribbon">★ Featured</div>
-          <img src="lootin-cave.png" alt="Lootin'" />
+          <img src="lootin-square.png" alt="Lootin'" />
         </div>
         <div class="project-info">
           <div class="project-top">
@@ -886,7 +888,7 @@
       <a class="project-card reveal" href="case-wltlo.html">
         <div class="project-image" style="position:relative;">
           <div class="inprod-ribbon">⬤ In Production</div>
-          <img src="ShowcaseImage.png" alt="Whoever Left The Light On" />
+          <img src="wltlo-logo.png" alt="Whoever Left The Light On" />
         </div>
         <div class="project-info">
           <div class="project-top">
@@ -915,7 +917,7 @@
       <!-- VR -->
       <a class="project-card reveal" href="case-vr.html">
         <div class="project-image">
-          <img src="relay-cave.png?v=2" alt="Relay VR puzzle game" />
+          <img src="relay-torches.png" alt="Relay VR puzzle game" />
         </div>
         <div class="project-info">
           <div class="project-top">
@@ -943,7 +945,7 @@
       <!-- Research -->
       <a class="project-card reveal" href="case-research.html">
         <div class="project-image">
-          <div class="project-image-placeholder">[ Add research environment screenshot ]</div>
+          <img src="research-square.png" alt="Perceptual Pathways, research environment" />
         </div>
         <div class="project-info">
           <div class="project-top">
@@ -1029,8 +1031,7 @@
 
   <div class="contact-wrap reveal" id="contact">
     <p class="contact-label">Contact</p>
-    <h2 class="contact-headline">Open to work from July 2026.</h2>
-    <p class="contact-sub">Junior designer roles, internships, and collaborations welcome.</p>
+    <h2 class="contact-headline">Get in touch.</h2>
     <div class="contact-links">
       <a class="contact-link" href="mailto:work.patrykparzelski@gmail.com">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
@@ -1053,6 +1054,17 @@
   </footer>
 
   <script>
+    // Scroll progress bar
+    const scrollProgress = document.getElementById('scrollProgress');
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateScrollProgress);
+    updateScrollProgress();
+
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
