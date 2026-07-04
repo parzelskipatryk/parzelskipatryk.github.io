@@ -110,7 +110,7 @@ nav {
   display: flex; align-items: center; justify-content: center;
   border-bottom: 1px solid var(--border);
 }
-.case-image img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
+.case-image img { width: 100%; display: block; max-height: 520px; object-fit: contain; background: #0a0a0a; }
 .case-image-placeholder {
   font-family: var(--font-mono); font-size: 0.65rem;
   color: #333; letter-spacing: 0.1em; text-transform: uppercase;
@@ -193,6 +193,20 @@ footer span {
   font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
 }
 
+/* CAROUSEL */
+.carousel { border: 1px solid var(--border); background: var(--surface); overflow: hidden; margin-top: 1.5rem; }
+.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+.carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
+.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.carousel-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.carousel-caption { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; }
+.carousel-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+.carousel-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.carousel-controls { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
+.carousel-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--font-mono); font-size: 0.9rem; padding: 0.4rem 0.9rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+.carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
+.carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s; border: none; padding: 0; }
+
 @media (max-width: 768px) {
   nav { padding: 1rem 1.25rem; }
   .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
@@ -234,7 +248,7 @@ a { transition: color 0.2s; }
   </div>
 
   <div class="case-image">
-    <div class="case-image-placeholder">[ Add board game photo or tile diagram ]</div>
+    <img src="smallboats-banner.jpg" alt="Full hex-tile board layout for Small Boats" />
   </div>
 
   <div class="case-body">
@@ -272,6 +286,74 @@ a { transition: color 0.2s; }
       <p>Both catches came directly from watching players interact with the prototype, the numbers made sense on paper but produced unintended consequences at the table.</p>
     </div>
 
+    <div class="case-section">
+      <div class="case-section-label">The Physical Prototype</div>
+      <p>Built and playtested on cardboard within the jam's time limit: laser-cut hex tiles, a hand-drawn Perma-Event tile, poker chips for the betting economy, and dice representing each boat's current size.</p>
+      <div class="carousel" id="boatsCarousel">
+        <div class="carousel-track" id="boatsTrack">
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="smallboats-banner.jpg" alt="Full hex-tile board layout" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Full Board Layout</span>
+              <p class="carousel-desc">The complete race track wrapping around the cardboard base, with the betting and economy area laid out on the left-hand board.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="smallboats-detail.jpg" alt="Hand-drawn Oasis Island Perma-Event tile" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Oasis Island Tile</span>
+              <p class="carousel-desc">One of the hand-drawn Perma-Event tiles at the centre of the board. Triggering it reshuffles the tile back into the deck, creating a recurring threat or opportunity that shifts for every player across the session.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="smallboats-board-2.jpg" alt="Alternate view of the hex tile board" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Tile Bag Reveal</span>
+              <p class="carousel-desc">Tiles are drawn blind from a bag of 80: Nothing, Deep Water, Shallow Water, and Event, and placed as players explore, revealing the map as the race unfolds rather than all at once.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="smallboats-board-3.jpg" alt="Board layout with boat tokens in play" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Boats In Play</span>
+              <p class="carousel-desc">Coloured tokens marking each player's boat position along the track mid-race.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="smallboats-tokens-1.jpg" alt="Betting economy chips and dice" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Betting Economy</span>
+              <p class="carousel-desc">Poker chips standing in for coins, staked on each race with the cap set to the lowest coin total at the table.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="smallboats-tokens-2.jpg" alt="Dice representing boat size and dice pool" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Boat Size Dice Pool</span>
+              <p class="carousel-desc">Dice standing in for each boat's current size, fewer dice for a smaller, faster boat, more for a larger, sturdier one.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="moveBoatsCarousel(-1)">←</button>
+          <div class="carousel-dots" id="boatsDots"></div>
+          <button class="carousel-btn" onclick="moveBoatsCarousel(1)">→</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="case-back-wrap">
@@ -282,5 +364,31 @@ a { transition: color 0.2s; }
     <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
+
+  <script>
+    let boatsCurrent = 0;
+    const boatsTrack = document.getElementById('boatsTrack');
+    const boatsDotsContainer = document.getElementById('boatsDots');
+    const boatsSlides = boatsTrack.querySelectorAll('.carousel-slide');
+    const boatsTotal = boatsSlides.length;
+
+    boatsSlides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => boatsGoTo(i));
+      boatsDotsContainer.appendChild(dot);
+    });
+
+    function boatsGoTo(index) {
+      boatsCurrent = (index + boatsTotal) % boatsTotal;
+      boatsTrack.style.transform = `translateX(-${boatsCurrent * 100}%)`;
+      boatsDotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === boatsCurrent);
+      });
+    }
+
+    function moveBoatsCarousel(dir) { boatsGoTo(boatsCurrent + dir); }
+  </script>
 </body>
 </html>

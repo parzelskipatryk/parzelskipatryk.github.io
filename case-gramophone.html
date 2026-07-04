@@ -110,7 +110,7 @@ nav {
   display: flex; align-items: center; justify-content: center;
   border-bottom: 1px solid var(--border);
 }
-.case-image img { width: 100%; display: block; max-height: 520px; object-fit: cover; }
+.case-image img { width: 100%; display: block; max-height: 520px; object-fit: contain; background: #0a0a0a; }
 .case-image-placeholder {
   font-family: var(--font-mono); font-size: 0.65rem;
   color: #333; letter-spacing: 0.1em; text-transform: uppercase;
@@ -193,6 +193,20 @@ footer span {
   font-size: 0.65rem; color: #444; letter-spacing: 0.06em;
 }
 
+/* CAROUSEL */
+.carousel { border: 1px solid var(--border); background: var(--surface); overflow: hidden; margin-top: 1.5rem; }
+.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+.carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
+.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.carousel-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.carousel-caption { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; }
+.carousel-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+.carousel-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.carousel-controls { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
+.carousel-btn { background: none; border: 1px solid var(--border); color: var(--muted); font-family: var(--font-mono); font-size: 0.9rem; padding: 0.4rem 0.9rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+.carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
+.carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s; border: none; padding: 0; }
+
 @media (max-width: 768px) {
   nav { padding: 1rem 1.25rem; }
   .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
@@ -234,7 +248,7 @@ a { transition: color 0.2s; }
   </div>
 
   <div class="case-image">
-    <div class="case-image-placeholder">[ Add Gramophone photo, physical box or internals ]</div>
+    <img src="gramophone-final.png" alt="Finished Gramophone puzzle box with record and horn" />
   </div>
 
   <div class="case-body">
@@ -266,6 +280,47 @@ a { transition: color 0.2s; }
       </ul>
     </div>
 
+    <div class="case-section">
+      <div class="case-section-label">Build Process</div>
+      <p>From first mechanism test to finished unit. No screen, no software, every stage of this build had to work as a physical object before it could work as a puzzle.</p>
+      <div class="carousel" id="gramophoneCarousel">
+        <div class="carousel-track" id="gramophoneTrack">
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="gramophone-prototype.png" alt="Early cardboard prototype of the gramophone mechanism" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Early Prototype</span>
+              <p class="carousel-desc">The first physical test of the core mechanism: a paper horn, a toothpick needle, and a cardboard base, built to prove the concept of a spinning-record puzzle before any electronics were involved.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="gramophone-internals.png" alt="Internal wiring of the gramophone puzzle box" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Internal Wiring</span>
+              <p class="carousel-desc">The rotary encoder, motor, and LED circuits wired inside the box. Every puzzle stage, the dial, the record, and the crank, runs through this wiring with no software layer to fall back on.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-img-wrap">
+              <img src="gramophone-final.png" alt="Finished Gramophone puzzle box with record and horn" />
+            </div>
+            <div class="carousel-caption">
+              <span class="carousel-label">Finished Build</span>
+              <p class="carousel-desc">The completed unit: working horn, motor-driven record, and crank-triggered light sequence, all housed in a single wooden box with no visible electronics.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="moveGramophoneCarousel(-1)">←</button>
+          <div class="carousel-dots" id="gramophoneDots"></div>
+          <button class="carousel-btn" onclick="moveGramophoneCarousel(1)">→</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="case-back-wrap">
@@ -276,5 +331,31 @@ a { transition: color 0.2s; }
     <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
+
+  <script>
+    let gramophoneCurrent = 0;
+    const gramophoneTrack = document.getElementById('gramophoneTrack');
+    const gramophoneDotsContainer = document.getElementById('gramophoneDots');
+    const gramophoneSlides = gramophoneTrack.querySelectorAll('.carousel-slide');
+    const gramophoneTotal = gramophoneSlides.length;
+
+    gramophoneSlides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => gramophoneGoTo(i));
+      gramophoneDotsContainer.appendChild(dot);
+    });
+
+    function gramophoneGoTo(index) {
+      gramophoneCurrent = (index + gramophoneTotal) % gramophoneTotal;
+      gramophoneTrack.style.transform = `translateX(-${gramophoneCurrent * 100}%)`;
+      gramophoneDotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === gramophoneCurrent);
+      });
+    }
+
+    function moveGramophoneCarousel(dir) { gramophoneGoTo(gramophoneCurrent + dir); }
+  </script>
 </body>
 </html>
