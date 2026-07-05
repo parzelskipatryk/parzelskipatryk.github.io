@@ -126,11 +126,20 @@
       flex-wrap: wrap;
     }
     .hero-stat { display: flex; flex-direction: column; gap: 0.2rem; }
+    .hero-stat-link {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .hero-stat-link:hover { opacity: 0.75; }
+    .hero-stat-link:hover .hero-stat-num { color: var(--accent); }
     .hero-stat-num {
       font-family: var(--font-display);
       font-size: 1.6rem;
       font-weight: 700;
       color: var(--text);
+      transition: color 0.2s;
     }
     .hero-stat-label {
       font-family: var(--font-mono);
@@ -207,6 +216,33 @@
       transition: background 0.3s;
     }
     .hero-visual-dot.active { background: var(--accent); }
+    .hero-visual-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15,15,15,0.55);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--text);
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .hero-visual:hover .hero-visual-nav { opacity: 1; }
+    .hero-visual-nav:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0f0f0f;
+    }
+    .hero-visual-nav svg { width: 16px; height: 16px; }
+    .hero-visual-nav.prev { left: 0.6rem; }
+    .hero-visual-nav.next { right: 0.6rem; }
     .hero-visual-placeholder {
       font-family: var(--font-mono);
       font-size: 0.62rem;
@@ -711,14 +747,14 @@
           <span class="hero-stat-num">86%</span>
           <span class="hero-stat-label">Positive review rate</span>
         </div>
-        <div class="hero-stat">
+        <a class="hero-stat hero-stat-link" href="#work">
           <span class="hero-stat-num">2</span>
           <span class="hero-stat-label">Commercial titles</span>
           <div class="hero-stat-breakdown">
             <span class="hero-stat-pill"><span class="hero-stat-dot shipped"></span>1 shipped</span>
             <span class="hero-stat-pill"><span class="hero-stat-dot production"></span>1 in production</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="hero-visual" id="heroVisual">
@@ -735,6 +771,12 @@
         <img src="lootin-closeup-square.png" alt="Lootin', shipped Roblox title" />
       </div>
       <div class="hero-visual-dots" id="heroVisualDots"></div>
+      <button type="button" class="hero-visual-nav prev" id="heroVisualPrev" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button type="button" class="hero-visual-nav next" id="heroVisualNext" aria-label="Next image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 
@@ -1091,12 +1133,16 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
 
-    // Hero visual auto-rotate
+    // Hero visual auto-rotate + manual nav
     const heroVisual = document.getElementById('heroVisual');
     if (heroVisual) {
       const heroSlides = heroVisual.querySelectorAll('.hero-visual-slide');
       const heroDots = document.getElementById('heroVisualDots');
+      const heroPrevBtn = document.getElementById('heroVisualPrev');
+      const heroNextBtn = document.getElementById('heroVisualNext');
       let heroIndex = 0;
+      let heroTimer = null;
+
       heroSlides.forEach((_, i) => {
         const dot = document.createElement('span');
         dot.classList.add('hero-visual-dot');
@@ -1104,13 +1150,34 @@
         heroDots.appendChild(dot);
       });
       const heroDotEls = heroDots.querySelectorAll('.hero-visual-dot');
-      setInterval(() => {
+
+      function goToSlide(newIndex) {
         heroSlides[heroIndex].classList.remove('active');
         heroDotEls[heroIndex].classList.remove('active');
-        heroIndex = (heroIndex + 1) % heroSlides.length;
+        heroIndex = (newIndex + heroSlides.length) % heroSlides.length;
         heroSlides[heroIndex].classList.add('active');
         heroDotEls[heroIndex].classList.add('active');
-      }, 4500);
+      }
+
+      function startAutoRotate() {
+        heroTimer = setInterval(() => goToSlide(heroIndex + 1), 4500);
+      }
+
+      function restartAutoRotate() {
+        clearInterval(heroTimer);
+        startAutoRotate();
+      }
+
+      heroNextBtn.addEventListener('click', () => {
+        goToSlide(heroIndex + 1);
+        restartAutoRotate();
+      });
+      heroPrevBtn.addEventListener('click', () => {
+        goToSlide(heroIndex - 1);
+        restartAutoRotate();
+      });
+
+      startAutoRotate();
     }
   </script>
 </body>
