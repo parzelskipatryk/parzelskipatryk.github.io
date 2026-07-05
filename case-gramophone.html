@@ -53,9 +53,27 @@ nav {
 }
 .nav-back:hover { color: var(--accent); }
 
+/* HERO IMAGE — full width banner */
+.case-hero-image {
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  margin-top: 64px;
+}
+.case-hero-image img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
 /* CASE HERO */
 .case-hero {
-  padding: 10rem 2.5rem 5rem;
+  padding: 3.5rem 2.5rem 3rem;
   max-width: 900px; margin: 0 auto;
   border-bottom: 1px solid var(--border);
 }
@@ -107,6 +125,7 @@ nav {
 .case-image {
   max-width: 900px; margin: 0 auto;
   background: #111;
+  min-height: 420px;
   display: flex; align-items: center; justify-content: center;
   border-bottom: 1px solid var(--border);
 }
@@ -227,7 +246,6 @@ footer span {
 @media (max-width: 768px) {
   nav { padding: 1rem 1.25rem; }
   .case-hero, .case-body, .stats-bar, .case-back-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .case-hero { padding-top: 8rem; }
   .stats-bar { gap: 2rem; }
 }
 
@@ -254,6 +272,11 @@ a { transition: color 0.2s; }
     <div class="scroll-progress" id="scrollProgress"></div>
   </nav>
 
+  <!-- FULL WIDTH BANNER -->
+  <div class="case-hero-image">
+    <img src="gramophone-banner.png" alt="The Bizarre Gramophone banner" />
+  </div>
+
   <div class="case-hero">
     <p class="case-eyebrow">Group Project · Physical Prototype · Arduino</p>
     <h1 class="case-title">Gramophone Puzzle Box</h1>
@@ -266,7 +289,7 @@ a { transition: color 0.2s; }
   </div>
 
   <div class="case-image">
-    <img src="gramophone-banner.png" alt="The Bizarre Gramophone banner" />
+    <img src="gramophone-final.png" alt="Finished Gramophone puzzle box with record and horn" />
   </div>
 
   <div class="case-body">
