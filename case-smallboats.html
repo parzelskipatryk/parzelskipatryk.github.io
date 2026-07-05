@@ -154,6 +154,18 @@ nav {
   color: var(--accent); font-size: 0.8rem;
 }
 
+.credit-link {
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 0.05em 0.45em;
+  text-shadow: 0 0 8px rgba(200,240,74,0.45);
+  transition: background 0.2s, color 0.2s;
+}
+.credit-link:hover { background: var(--accent); color: #0f0f0f; text-shadow: none; }
+
 /* WIP badge */
 .wip-badge {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -265,6 +277,7 @@ a { transition: color 0.2s; }
       <span class="discipline">Tabletop</span>
     </div>
     <p class="case-summary">Capsize is a 4-player hex-tile racing board game designed and prototyped during a game jam around the theme "Small Boats." Players race across an unknown sea, managing the tension between boat size and dice advantage, betting on races with a shared economy, and exploring a tile map that reveals itself as they move.</p>
+    <p style="font-size:0.85rem; color:var(--muted); margin-top:0.75rem;">Built during the jam with <a class="credit-link" href="https://www.linkedin.com/in/roberto-scialpi/" target="_blank" rel="noopener">Roberto</a>, <a class="credit-link" href="https://www.linkedin.com/in/joshua-gorton-641221349/" target="_blank" rel="noopener">Josh</a>, and <a class="credit-link" href="https://www.linkedin.com/in/louis-craig-1a6a8123b/" target="_blank" rel="noopener">Louis</a>.</p>
   </div>
 
   <div class="case-image">
@@ -385,7 +398,7 @@ a { transition: color 0.2s; }
   </div>
 
   <div class="case-back-wrap">
-    <a class="case-back" href="index.html">← Back to all work</a>
+    <a class="case-back" href="index.html" onclick="sessionStorage.setItem(&quot;restoreScroll&quot;,&quot;1&quot;)">← Back to all work</a>
   </div>
 
   <footer>

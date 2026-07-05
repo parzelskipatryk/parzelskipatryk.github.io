@@ -373,8 +373,10 @@ a { transition: color 0.2s; }
       <p>Whoever Left The Light On is a narrative escape-puzzle game built around a student bedroom environment. The game uses a hand-drawn graphic novel aesthetic with diegetic UI, meaning the interface is embedded in the world itself rather than sitting on top of it. The puzzle structure is built around three phases, each centred on a different object in the room.</p>
       <p>I helped name the game, shaped its initial concept, and have been the primary design voice throughout production, working alongside a project director and a team spanning programming and art, with audio assets produced by external artist Sam Hall.</p>
       <p style="font-size:0.85rem; color:var(--muted); font-style:italic;">Full gameplay screenshots aren't shown here while the game is still in production, so as not to spoil the puzzles or story ahead of release. The UI and environment assets below are shown as they don't reveal narrative content.</p>
-      <div style="margin-top:1.5rem; border:1px solid var(--border); overflow:hidden; background:#0a0a0a; display:flex; align-items:center; justify-content:center;">
-        <img src="ShowcaseImage.png" alt="Whoever Left The Light On bedroom environment" style="max-width:100%; height:auto; display:block;" />
+      <div style="margin-top:1.5rem; border:1px solid var(--border); overflow:hidden; background:#0a0a0a;">
+        <div style="display:flex; align-items:center; justify-content:center;">
+          <img src="ShowcaseImage.png" alt="Whoever Left The Light On bedroom environment" style="max-width:100%; height:auto; display:block;" />
+        </div>
         <div style="padding:1rem 1.25rem; border-top:1px solid var(--border);">
           <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;">In-Game Environment</span>
           <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;margin-top:0.3rem;">The student bedroom in engine. The grayscale visual style preserves colour only on specific interactive objects using Unity URP Render Objects, distinguishing puzzle elements from the surrounding space without any UI prompts.</p>
@@ -386,7 +388,7 @@ a { transition: color 0.2s; }
       <div class="case-section-label">Design Leadership</div>
       <ul class="case-list">
         <li>Authored the full Game Design Document, establishing the game's design standards, mechanics reference, narrative framework, and puzzle specifications</li>
-        <li>Wrote individual puzzle design specifications for each team member: radio puzzle (<a class="credit-link" href="#" target="_blank" rel="noopener">Shannon</a>), calendar puzzle (<a class="credit-link" href="#" target="_blank" rel="noopener">Kasper</a>), toothbrush/teeth puzzle (<a class="credit-link" href="#" target="_blank" rel="noopener">Ahmet</a>)</li>
+        <li>Wrote individual puzzle design specifications for each team member: radio puzzle (<a class="credit-link" href="https://www.linkedin.com/in/shannonxgrant/" target="_blank" rel="noopener">Shannon</a>), calendar puzzle (<a class="credit-link" href="https://www.linkedin.com/in/kaspercrittendenwedge/" target="_blank" rel="noopener">Kasper</a>), toothbrush/teeth puzzle (<a class="credit-link" href="https://www.linkedin.com/in/ahmet-nalbant-797619170/" target="_blank" rel="noopener">Ahmet</a>)</li>
         <li>Produced a narrative beat document mapping how the game's story is communicated through environmental details rather than dialogue</li>
         <li>Scoped the project from an initially larger vision down to a realistic, shippable build for the July 2026 window, making hard calls about what to cut without losing the game's identity</li>
         <li>Managed design task distribution across the team via Trello, acting as the final decision-maker on design direction alongside the project director</li>
@@ -501,7 +503,7 @@ a { transition: color 0.2s; }
   </div>
 
   <div class="case-back-wrap">
-    <a class="case-back" href="index.html">← Back to all work</a>
+    <a class="case-back" href="index.html" onclick="sessionStorage.setItem(&quot;restoreScroll&quot;,&quot;1&quot;)">← Back to all work</a>
   </div>
 
   <footer>

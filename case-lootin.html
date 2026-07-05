@@ -282,7 +282,10 @@
     .analytics-card img {
       width: 100%; display: block;
       object-fit: cover;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
     }
+    .analytics-card img:hover { opacity: 0.85; }
     .analytics-card-caption {
       padding: 1rem 1.25rem;
       border-top: 1px solid var(--border);
@@ -308,7 +311,10 @@
     }
     .economy-image img {
       width: 100%; display: block;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
     }
+    .economy-image img:hover { opacity: 0.85; }
     .economy-image-caption {
       padding: 1rem 1.5rem;
       border-top: 1px solid var(--border);
@@ -532,21 +538,21 @@
 
       <div class="analytics-grid">
         <div class="analytics-card analytics-card--full">
-          <img src="lootin-funnel.png" alt="21-step tutorialisation funnel" />
+          <img src="lootin-funnel.png" alt="21-step tutorialisation funnel" onclick="openLightbox('lootin-funnel.png', 'Tutorialisation Funnel (21 steps, 2,103 users)')" />
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Tutorialisation Funnel (21 steps, 2,103 users)</span>
             <p class="analytics-card-desc">Full funnel showing step completion, churn rate, and total conversion at each stage across the tutorial sequence. The largest drops are visible at steps 2 and 5, both of which were iterated on following this data.</p>
           </div>
         </div>
         <div class="analytics-card">
-          <img src="lootin-conversion.png" alt="Funnel conversion summary" />
+          <img src="lootin-conversion.png" alt="Funnel conversion summary" onclick="openLightbox('lootin-conversion.png', 'Conversion Summary')" />
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Conversion Summary</span>
             <p class="analytics-card-desc">2,103 users tracked. Total conversion 29.43%. Biggest identified drop at step 5, Breaking Ground (PROGRESS).</p>
           </div>
         </div>
         <div class="analytics-card">
-          <img src="lootin-stats.png" alt="Benchmarked performance stats" />
+          <img src="lootin-stats.png" alt="Benchmarked performance stats" onclick="openLightbox('lootin-stats.png', 'Benchmarked Performance')" />
           <div class="analytics-card-caption">
             <span class="analytics-card-label">Benchmarked Performance</span>
             <p class="analytics-card-desc">Lootin' at the 91st percentile for average playtime and 87th percentile for payer conversion rate within the simulation genre benchmark. Day 1 retention at the 63rd percentile.</p>
@@ -567,7 +573,7 @@
       </ul>
 
       <div class="economy-image">
-        <img src="lootin-excel.png" alt="Economy balancing spreadsheet" />
+        <img src="lootin-excel.png" alt="Economy balancing spreadsheet" onclick="openLightbox('lootin-excel.png', 'Economy Balancing Spreadsheet (Solaris Zone 2-3)')" />
         <div class="economy-image-caption">
           <span class="economy-image-label">Economy Balancing Spreadsheet (Solaris Zone 2-3)</span>
           <p class="economy-image-desc">Loot table model for the Solaris zone showing ore rarity, raw and adjusted drop chances, true percentages, luck factor variables, and simulation graphs comparing drop distributions at Luck=1 vs Luck=20. Changes were modelled here before going live.</p>
@@ -589,7 +595,7 @@
   </div>
 
   <div class="case-back-wrap">
-    <a class="case-back" href="index.html">← Back to all work</a>
+    <a class="case-back" href="index.html" onclick="sessionStorage.setItem(&quot;restoreScroll&quot;,&quot;1&quot;)">← Back to all work</a>
   </div>
 
   <footer>
