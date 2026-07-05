@@ -376,7 +376,7 @@
       min-height: 420px;
       align-self: stretch;
     }
-    .project-card--featured .project-image { aspect-ratio: 2.4 / 1; height: auto; width: 100%; align-self: auto; }
+    .project-card--featured .project-image { aspect-ratio: 2.4 / 1; height: auto; min-height: 0; width: 100%; align-self: auto; }
     .project-image img {
       position: absolute;
       inset: 0;
@@ -607,8 +607,8 @@
       .project-card:nth-child(even) { grid-template-columns: 1fr; }
       .project-card:nth-child(even) .project-image,
       .project-card:nth-child(even) .project-info { order: unset; }
-      .project-image { height: 260px; }
-      .project-card--featured .project-image { height: auto; aspect-ratio: 2.4 / 1; }
+      .project-image { height: 260px; min-height: 0; }
+      .project-card--featured .project-image { height: auto; min-height: 0; aspect-ratio: 2.4 / 1; }
       .thinking-grid { grid-template-columns: 1fr; }
       .contact-links { flex-direction: column; align-items: center; }
     }
