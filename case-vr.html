@@ -60,8 +60,17 @@
     .carousel { border: 1px solid var(--border); background: var(--surface); overflow: hidden; margin-top: 1.5rem; }
     .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
     .carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
-    .carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .carousel-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: zoom-in; }
+    .carousel-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.2s; }
+    .carousel-img-wrap:hover img { opacity: 0.85; }
+    /* LIGHTBOX */
+    .lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(10,10,10,0.92); display: none; align-items: center; justify-content: center; padding: 3rem; cursor: zoom-out; }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; transition: transform 0.25s ease; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+    .lightbox img.zoomed { max-width: none; max-height: none; transform: scale(1.8); cursor: zoom-out; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: var(--font-mono); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; transition: border-color 0.2s, color 0.2s; }
+    .lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
+    .lightbox-caption { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; z-index: 1001; }
     .carousel-caption { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; }
     .carousel-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
     .carousel-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
@@ -148,7 +157,7 @@
         <div class="carousel-track" id="relayTrack">
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-spawn.png', 'Spawn Room')">
               <img src="relay-spawn.png" alt="Relay spawn room" />
             </div>
             <div class="carousel-caption">
@@ -158,7 +167,7 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-cave.png?v=2', 'Cave Environment')">
               <img src="relay-cave.png?v=2" alt="Dungeon cave environment" />
             </div>
             <div class="carousel-caption">
@@ -168,7 +177,7 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-skeletons.png', 'Colour Communication Puzzle')">
               <img src="relay-skeletons.png" alt="Skeleton accessory colour puzzle" />
             </div>
             <div class="carousel-caption">
@@ -178,17 +187,17 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-tiles.png', 'Tile Navigation Puzzle')">
               <img src="relay-tiles.png" alt="Black tile floor puzzle" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Tile Navigation Puzzle</span>
-              <p class="carousel-desc">One player's room contains this black tile floor. Their partner holds a poster showing the exact same tile layout with the correct tiles marked in red. The partner must communicate the tile positions verbally while the player navigates. Wrong tiles trigger a reset. Designed to test spatial communication under pressure.</p>
+              <p class="carousel-desc">One player's room contains this black tile floor. Their partner holds a poster showing the exact same tile layout with the correct tiles marked in red. The partner must communicate the tile positions verbally while the player navigates. Wrong tiles simply have no collider beneath them, stepping on one drops the player through and sends them back to the start of the puzzle, effectively a death state rather than a soft reset. Designed to test spatial communication under pressure.</p>
             </div>
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-lever.png', 'Gate and Lever Mechanic')">
               <img src="relay-lever.png" alt="Generator lever and gate" />
             </div>
             <div class="carousel-caption">
@@ -198,7 +207,7 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-gap.png', 'Gap Room')">
               <img src="relay-gap.png" alt="Spike gap room with hanging skulls" />
             </div>
             <div class="carousel-caption">
@@ -208,7 +217,7 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-pad-left.png', 'Battery Teleportation Pad (Left)')">
               <img src="relay-pad-left.png" alt="Left player teleportation pad" />
             </div>
             <div class="carousel-caption">
@@ -218,7 +227,7 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-pad-right.png', 'Battery Teleportation Pad (Right)')">
               <img src="relay-pad-right.png" alt="Right player teleportation pad" />
             </div>
             <div class="carousel-caption">
@@ -228,7 +237,7 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('relay-torches.png', 'Suspended Platform')">
               <img src="relay-torches.png" alt="Suspended platform with torches in the cave ceiling" />
             </div>
             <div class="carousel-caption">
@@ -321,6 +330,12 @@
     <span>© 2026</span>
   </footer>
 
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightboxImg" src="" alt="" onclick="toggleZoom(event)" />
+    <span class="lightbox-caption" id="lightboxCaption"></span>
+  </div>
+
   <script>
     let current = 0;
     const track = document.getElementById('relayTrack');
@@ -349,7 +364,28 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') moveCarousel(-1);
       if (e.key === 'ArrowRight') moveCarousel(1);
+      if (e.key === 'Escape') closeLightbox();
     });
+
+    // LIGHTBOX
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.classList.remove('zoomed');
+      document.getElementById('lightboxCaption').textContent = caption || '';
+      lb.classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target.tagName === 'IMG' && e.target.classList.contains('zoomed')) return;
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    function toggleZoom(e) {
+      e.stopPropagation();
+      e.target.classList.toggle('zoomed');
+    }
 
     // Scroll progress bar
     const scrollProgress = document.getElementById('scrollProgress');

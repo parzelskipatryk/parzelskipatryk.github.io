@@ -174,8 +174,9 @@ nav {
 .carousel { border: 1px solid var(--border); background: var(--surface); overflow: hidden; margin-top: 1.5rem; }
 .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
 .carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
-.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.carousel-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: zoom-in; }
+.carousel-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.2s; }
+.carousel-img-wrap:hover img { opacity: 0.85; }
 .carousel-caption { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; }
 .carousel-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
 .carousel-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
@@ -393,17 +394,17 @@ footer span {
         <div class="carousel-track" id="researchTrack">
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('research-lobby.png?v=2', 'Lobby')">
               <img src="research-lobby.png?v=2" alt="Office lobby entry point" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Lobby</span>
-              <p class="carousel-desc">The entry point every participant shared. Vending machines, exit signage, and a waiting area sat in an architectural indent off the main path, a deliberate zoning choice to see whether participants would deviate from the shortest route to the goal.</p>
+              <p class="carousel-desc">The entry point every participant shared, stepping out to a reception desk, a staircase leading up to the doors beyond, and consistent office signage on the walls. Kept deliberately neutral, so any behavioural difference came from the genre framing, not the room itself.</p>
             </div>
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('research-kitchen.png?v=2', 'Kitchen')">
               <img src="research-kitchen.png?v=2" alt="Office kitchen side room" />
             </div>
             <div class="carousel-caption">
@@ -413,7 +414,7 @@ footer span {
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('research-meeting.png?v=2', 'Conference Room')">
               <img src="research-meeting.png?v=2" alt="Dimly lit conference room" />
             </div>
             <div class="carousel-caption">
@@ -423,17 +424,17 @@ footer span {
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
-              <img src="research-sbend.png?v=2" alt="S-bend connecting corridor" />
+            <div class="carousel-img-wrap" onclick="openLightbox('research-sbend.png?v=2', 'Hub Doors')">
+              <img src="research-sbend.png?v=2" alt="Doors connecting the S-bend corridor to the main cubicle hub" />
             </div>
             <div class="carousel-caption">
-              <span class="carousel-label">S-Bend Corridor</span>
-              <p class="carousel-desc">The connecting passage between zones and the main reframing target. Blind corners removed line of sight to the exit, forcing participants to commit to a path without knowing what was around the turn. Whether they approached with caution or efficiency was one of the clearest behavioural tells in the study.</p>
+              <span class="carousel-label">Hub Doors</span>
+              <p class="carousel-desc">The doors connecting the S-bend corridor to the main cubicle section, the hub every participant passed through between the lobby and each side room.</p>
             </div>
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('research-cubicles.png', 'Office Floor')">
               <img src="research-cubicles.png" alt="Open-plan office cubicles" />
             </div>
             <div class="carousel-caption">
@@ -443,7 +444,7 @@ footer span {
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('research-exit.png', 'Exit Corridor')">
               <img src="research-exit.png" alt="Exit corridor with vending machines and signage" />
             </div>
             <div class="carousel-caption">

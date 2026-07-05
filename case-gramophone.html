@@ -206,8 +206,17 @@ footer span {
 .carousel { border: 1px solid var(--border); background: var(--surface); overflow: hidden; margin-top: 1.5rem; }
 .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
 .carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
-.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.carousel-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: zoom-in; }
+.carousel-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity 0.2s; }
+.carousel-img-wrap:hover img { opacity: 0.85; }
+/* LIGHTBOX */
+.lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(10,10,10,0.92); display: none; align-items: center; justify-content: center; padding: 3rem; cursor: zoom-out; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; transition: transform 0.25s ease; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+.lightbox img.zoomed { max-width: none; max-height: none; transform: scale(1.8); cursor: zoom-out; }
+.lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: var(--font-mono); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; transition: border-color 0.2s, color 0.2s; }
+.lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
+.lightbox-caption { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; z-index: 1001; }
 .carousel-caption { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; }
 .carousel-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
 .carousel-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
@@ -265,8 +274,8 @@ a { transition: color 0.2s; }
 
     <div class="case-section">
       <div class="case-section-label">The Constraint</div>
-      <p>The project brief challenged us to build a game experience using only physical electrical components, no Unity, no Unreal, no software to fall back on for feedback, state management, or instruction. Everything a player needed to understand had to be communicated through physical sensation: sound, light, resistance, and movement.</p>
-      <p>This constraint forced a kind of design rigour that digital projects often don't require. When you can't add a tooltip or a UI prompt to clarify an interaction, the interaction itself has to be self-explanatory.</p>
+      <p>The brief didn't forbid Unity, using it was actually worth 10% of the available marks, with the remaining 90% coming from the electronics work itself. We chose to skip that 10% entirely and build the whole thing on physical components alone, a self-imposed constraint rather than a required one. Despite being game developers with an engine available to us, we wanted to see how far we could get relying only on what the electronics themselves could communicate.</p>
+      <p>That decision meant the maximum we could realistically score was capped from the start, and it was a real risk to a module grade to turn down free marks on principle. It paid off: the project scored 85%, effectively 85 out of the 90 available once the Unity portion was off the table.</p>
     </div>
 
     <div class="case-section">
@@ -285,8 +294,7 @@ a { transition: color 0.2s; }
       <ul class="case-list">
         <li>Sound was the primary feedback channel for the dial and record stages, correct states produced clean audio, incorrect states produced degraded or absent audio</li>
         <li>Light was used for the crank sequence, LEDs illuminating in order provided visible progress without needing any text or interface</li>
-        <li>Physical resistance and mechanical feel were used where possible to reinforce correct vs incorrect states, the crank clicks differently in the correct direction</li>
-        <li>The gramophone theme was chosen specifically because it justified the components narratively, a rotary encoder becomes a tuning dial, a motor becomes a record player. The narrative wrapper made the technical components feel intentional</li>
+        <li>The assigned brief theme was "Bizzarcade"; the gramophone concept was our own response to it, chosen because it justified the components narratively, a rotary encoder becomes a tuning dial, a motor becomes a record player. The narrative wrapper made the technical components feel intentional</li>
       </ul>
     </div>
 
@@ -296,7 +304,7 @@ a { transition: color 0.2s; }
       <div class="carousel" id="gramophoneCarousel">
         <div class="carousel-track" id="gramophoneTrack">
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('gramophone-prototype.png', 'Early Prototype')">
               <img src="gramophone-prototype.png" alt="Early cardboard prototype of the gramophone mechanism" />
             </div>
             <div class="carousel-caption">
@@ -305,7 +313,7 @@ a { transition: color 0.2s; }
             </div>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('gramophone-internals.png', 'Internal Wiring')">
               <img src="gramophone-internals.png" alt="Internal wiring of the gramophone puzzle box" />
             </div>
             <div class="carousel-caption">
@@ -314,7 +322,7 @@ a { transition: color 0.2s; }
             </div>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('gramophone-final.png', 'Finished Build')">
               <img src="gramophone-final.png" alt="Finished Gramophone puzzle box with record and horn" />
             </div>
             <div class="carousel-caption">
@@ -350,6 +358,12 @@ a { transition: color 0.2s; }
     <span>© 2026</span>
   </footer>
 
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightboxImg" src="" alt="" onclick="toggleZoom(event)" />
+    <span class="lightbox-caption" id="lightboxCaption"></span>
+  </div>
+
   <script>
     let gramophoneCurrent = 0;
     const gramophoneTrack = document.getElementById('gramophoneTrack');
@@ -374,6 +388,32 @@ a { transition: color 0.2s; }
     }
 
     function moveGramophoneCarousel(dir) { gramophoneGoTo(gramophoneCurrent + dir); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') moveGramophoneCarousel(-1);
+      if (e.key === 'ArrowRight') moveGramophoneCarousel(1);
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // LIGHTBOX
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.classList.remove('zoomed');
+      document.getElementById('lightboxCaption').textContent = caption || '';
+      lb.classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target.tagName === 'IMG' && e.target.classList.contains('zoomed')) return;
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    function toggleZoom(e) {
+      e.stopPropagation();
+      e.target.classList.toggle('zoomed');
+    }
 
     // Scroll progress bar
     const scrollProgress = document.getElementById('scrollProgress');

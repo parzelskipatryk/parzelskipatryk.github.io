@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Small Boats, Patryk Parzelski</title>
+  <title>Capsize, Patryk Parzelski</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -206,7 +206,17 @@ footer span {
 .carousel { border: 1px solid var(--border); background: var(--surface); overflow: hidden; margin-top: 1.5rem; }
 .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
 .carousel-slide { min-width: 100%; display: flex; flex-direction: column; }
-.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.carousel-img-wrap { background: #0a0a0a; height: 360px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: zoom-in; }
+.carousel-img-wrap img { transition: opacity 0.2s; }
+.carousel-img-wrap:hover img { opacity: 0.85; }
+/* LIGHTBOX */
+.lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(10,10,10,0.92); display: none; align-items: center; justify-content: center; padding: 3rem; cursor: zoom-out; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; transition: transform 0.25s ease; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+.lightbox img.zoomed { max-width: none; max-height: none; transform: scale(1.8); cursor: zoom-out; }
+.lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: var(--font-mono); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1001; transition: border-color 0.2s, color 0.2s; }
+.lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
+.lightbox-caption { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; z-index: 1001; }
 .carousel-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .carousel-caption { padding: 1.25rem 1.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.35rem; }
 .carousel-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
@@ -248,17 +258,17 @@ a { transition: color 0.2s; }
 
   <div class="case-hero">
     <p class="case-eyebrow">Game Jam · Tabletop · 2–4 Players</p>
-    <h1 class="case-title">Small Boats</h1>
+    <h1 class="case-title">Capsize</h1>
     <div class="case-disciplines">
       <span class="discipline">Systems Design</span>
       <span class="discipline">Game Jam</span>
       <span class="discipline">Tabletop</span>
     </div>
-    <p class="case-summary">A 4-player hex-tile racing board game designed and prototyped during a game jam around the theme "Small Boats." Players race across an unknown sea, managing the tension between boat size and dice advantage, betting on races with a shared economy, and exploring a tile map that reveals itself as they move.</p>
+    <p class="case-summary">Capsize is a 4-player hex-tile racing board game designed and prototyped during a game jam around the theme "Small Boats." Players race across an unknown sea, managing the tension between boat size and dice advantage, betting on races with a shared economy, and exploring a tile map that reveals itself as they move.</p>
   </div>
 
   <div class="case-image">
-    <img src="smallboats-banner.jpg" alt="Full hex-tile board layout for Small Boats" />
+    <img src="smallboats-banner-fixed.jpg" alt="Full hex-tile board layout for Capsize" />
   </div>
 
   <div class="case-body">
@@ -288,7 +298,7 @@ a { transition: color 0.2s; }
 
     <div class="case-section">
       <div class="case-section-label">Balancing &amp; Iteration</div>
-      <p>The Fix1 annotations in the original design document reflect balance catches made during jam playtesting. Two issues were identified and addressed before the jam ended:</p>
+      <p>Two balance issues came up directly from jam playtesting and were addressed before the jam ended:</p>
       <ul class="case-list">
         <li>The Thunderbolt card had too severe a penalty for small boats, the restart condition for players below size 2 was effectively eliminating players from the game rather than setting them back, breaking the comeback mechanic. The penalty was softened to a life loss and a size reduction rather than a full restart</li>
         <li>Treasure coin values were too high relative to the betting economy, causing inflation in longer games and devaluing the core race mechanic. A coin gain cap was added</li>
@@ -302,8 +312,8 @@ a { transition: color 0.2s; }
       <div class="carousel" id="boatsCarousel">
         <div class="carousel-track" id="boatsTrack">
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
-              <img src="smallboats-banner.jpg" alt="Full hex-tile board layout" />
+            <div class="carousel-img-wrap" onclick="openLightbox('smallboats-banner-fixed.jpg', 'Full Board Layout')">
+              <img src="smallboats-banner-fixed.jpg" alt="Full hex-tile board layout" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Full Board Layout</span>
@@ -311,17 +321,17 @@ a { transition: color 0.2s; }
             </div>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
-              <img src="smallboats-detail.jpg" alt="Hand-drawn Oasis Island Perma-Event tile" />
+            <div class="carousel-img-wrap" onclick="openLightbox('smallboats-detail-fixed.jpg', 'Whirlpool Card')">
+              <img src="smallboats-detail-fixed.jpg" alt="Hand-drawn Whirlpool Perma-Event tile" />
             </div>
             <div class="carousel-caption">
-              <span class="carousel-label">Oasis Island Tile</span>
+              <span class="carousel-label">Whirlpool Card</span>
               <p class="carousel-desc">One of the hand-drawn Perma-Event tiles at the centre of the board. Triggering it reshuffles the tile back into the deck, creating a recurring threat or opportunity that shifts for every player across the session.</p>
             </div>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
-              <img src="smallboats-board-2.jpg" alt="Alternate view of the hex tile board" />
+            <div class="carousel-img-wrap" onclick="openLightbox('smallboats-board-2-fixed.jpg', 'Tile Bag Reveal')">
+              <img src="smallboats-board-2-fixed.jpg" alt="Alternate view of the hex tile board" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Tile Bag Reveal</span>
@@ -329,17 +339,17 @@ a { transition: color 0.2s; }
             </div>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
-              <img src="smallboats-board-3.jpg" alt="Board layout with boat tokens in play" />
+            <div class="carousel-img-wrap" onclick="openLightbox('smallboats-board-3-fixed.jpg', 'Full Board, Mid-Race')">
+              <img src="smallboats-board-3-fixed.jpg" alt="Full board view mid-race" />
             </div>
             <div class="carousel-caption">
-              <span class="carousel-label">Boats In Play</span>
-              <p class="carousel-desc">Coloured tokens marking each player's boat position along the track mid-race.</p>
+              <span class="carousel-label">Full Board, Mid-Race</span>
+              <p class="carousel-desc">The full board mid-race, coloured tokens marking each player's boat position alongside the betting chips and dice pools in play.</p>
             </div>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
-              <img src="smallboats-tokens-1.jpg" alt="Betting economy chips and dice" />
+            <div class="carousel-img-wrap" onclick="openLightbox('smallboats-tokens-1-fixed.jpg', 'Betting Economy')">
+              <img src="smallboats-tokens-1-fixed.jpg" alt="Betting economy chips and dice" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Betting Economy</span>
@@ -347,8 +357,8 @@ a { transition: color 0.2s; }
             </div>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
-              <img src="smallboats-tokens-2.jpg" alt="Dice representing boat size and dice pool" />
+            <div class="carousel-img-wrap" onclick="openLightbox('smallboats-tokens-2-fixed.jpg', 'Boat Size Dice Pool')">
+              <img src="smallboats-tokens-2-fixed.jpg" alt="Dice representing boat size and dice pool" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Boat Size Dice Pool</span>
@@ -367,8 +377,8 @@ a { transition: color 0.2s; }
     <div class="case-section">
       <div class="case-section-label">Result</div>
       <div class="result-banner">
-        <span class="result-banner-num">Jam Favourite</span>
-        <span class="result-banner-text">Small Boats got a genuinely positive reaction during the jam itself, people from within the jam group kept coming back to the table to play another round. It hasn't been through formal testing outside that group, though people outside it who saw it played have said they'd want to play it once it's built properly. The balance and pacing notes above reflect jam-level playtesting, not a formal study.</span>
+        <span class="result-banner-num">Team-Tested</span>
+        <span class="result-banner-text">Capsize was played and rebalanced entirely by the four of us who built it, run after run through the jam, refining the size, dice, and economy tuning with each pass. It hasn't been played by anyone outside the team yet, so the balance and pacing notes above reflect internal jam-level testing, not a formal external study.</span>
       </div>
     </div>
 
@@ -382,6 +392,12 @@ a { transition: color 0.2s; }
     <span>Patryk Parzelski, Game Designer</span>
     <span>© 2026</span>
   </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightboxImg" src="" alt="" onclick="toggleZoom(event)" />
+    <span class="lightbox-caption" id="lightboxCaption"></span>
+  </div>
 
   <script>
     let boatsCurrent = 0;
@@ -407,6 +423,32 @@ a { transition: color 0.2s; }
     }
 
     function moveBoatsCarousel(dir) { boatsGoTo(boatsCurrent + dir); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') moveBoatsCarousel(-1);
+      if (e.key === 'ArrowRight') moveBoatsCarousel(1);
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // LIGHTBOX
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.classList.remove('zoomed');
+      document.getElementById('lightboxCaption').textContent = caption || '';
+      lb.classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target.tagName === 'IMG' && e.target.classList.contains('zoomed')) return;
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    function toggleZoom(e) {
+      e.stopPropagation();
+      e.target.classList.toggle('zoomed');
+    }
 
     // Scroll progress bar
     const scrollProgress = document.getElementById('scrollProgress');

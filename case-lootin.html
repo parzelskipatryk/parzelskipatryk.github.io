@@ -180,13 +180,16 @@
       height: 360px;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
+      cursor: zoom-in;
     }
     .carousel-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: opacity 0.2s;
     }
+    .carousel-img-wrap:hover img { opacity: 0.85; }
     .carousel-placeholder {
       font-family: var(--font-mono); font-size: 0.65rem;
       color: #333; letter-spacing: 0.1em; text-transform: uppercase;
@@ -207,6 +210,44 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 1.5rem;
       border-top: 1px solid var(--border);
+    }
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10,10,10,0.92);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 3rem;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+      cursor: zoom-in;
+      transition: transform 0.25s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .lightbox img.zoomed {
+      max-width: none; max-height: none;
+      transform: scale(1.8);
+      cursor: zoom-out;
+    }
+    .lightbox-close {
+      position: fixed; top: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); font-family: var(--font-mono); font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 1001;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
+    .lightbox-caption {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      z-index: 1001;
     }
     .carousel-btn {
       background: none; border: 1px solid var(--border);
@@ -368,17 +409,17 @@
         <div class="carousel-track" id="gameplayTrack">
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-hub.png', 'Solaris (Tutorial Zone)')">
               <img src="lootin-hub.png" alt="Lootin' main hub area" />
             </div>
             <div class="carousel-caption">
-              <span class="carousel-label">Main Hub</span>
-              <p class="carousel-desc">The central hub area showing the Aurora Maker, Sell shop, and miner statue. This is the spatial anchor the player returns to between zones, designed to communicate available systems at a glance.</p>
+              <span class="carousel-label">Solaris (Tutorial Zone)</span>
+              <p class="carousel-desc">Solaris, the game's tutorial zone, showing the Aurora Maker, Sell shop, and miner statue. Zones like this function as proper towns with a full NPC roster; smaller sub-zones branching off them are points of interest built around mineable areas and quests, rather than a single central hub players repeatedly return to.</p>
             </div>
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-flow.png', 'Annotated Player Flow')">
               <img src="lootin-flow.png" alt="Annotated player flow diagram" />
             </div>
             <div class="carousel-caption">
@@ -388,17 +429,17 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-loot.png', 'Reward Feedback Design')">
               <img src="lootin-loot.png" alt="Loot drop and Perfect timing feedback" />
             </div>
             <div class="carousel-caption">
               <span class="carousel-label">Reward Feedback Design</span>
-              <p class="carousel-desc">A loot drop moment showing the "Perfect!" timing feedback and coin burst VFX. Reward clarity at key moments was a deliberate design priority. The skill-based timing layer added engagement to the core mining loop.</p>
+              <p class="carousel-desc">A loot drop moment showing the "Perfect!" timing feedback. Reward clarity at key moments was a deliberate design priority. The skill-based timing layer added engagement to the core mining loop.</p>
             </div>
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-journal.png', 'Compendium System')">
               <img src="lootin-journal.png" alt="Journal compendium screen" />
             </div>
             <div class="carousel-caption">
@@ -408,7 +449,7 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-quest.png', 'Quest Design')">
               <img src="lootin-quest.png" alt="Quest journal tab" />
             </div>
             <div class="carousel-caption">
@@ -418,7 +459,7 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-pickaxe.png', 'Equipment Progression')">
               <img src="lootin-pickaxe.png" alt="Miners Satchel equipment screen" />
             </div>
             <div class="carousel-caption">
@@ -428,17 +469,17 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-castle.png', 'Wintermist Keep')">
               <img src="lootin-castle.png" alt="Ice biome zone with castle structure" />
             </div>
             <div class="carousel-caption">
-              <span class="carousel-label">Ice Biome</span>
-              <p class="carousel-desc">One of the later-game biomes, built to read as a clear difficulty and visual step up from the starting zones, reinforcing progression through environment rather than only through UI numbers.</p>
+              <span class="carousel-label">Wintermist Keep</span>
+              <p class="carousel-desc">Wintermist Keep, the last zone built before the project was handed over. A clear difficulty and visual step up from the starting zones, reinforcing progression through environment rather than only through UI numbers.</p>
             </div>
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-cave.png', 'Mining Cave')">
               <img src="lootin-cave.png" alt="Mining cave zone with central pedestal" />
             </div>
             <div class="carousel-caption">
@@ -448,12 +489,12 @@
           </div>
 
           <div class="carousel-slide">
-            <div class="carousel-img-wrap">
+            <div class="carousel-img-wrap" onclick="openLightbox('lootin-closeup.png', 'Cinematic Still')">
               <img src="lootin-closeup.png" alt="Player character with pickaxe" />
             </div>
             <div class="carousel-caption">
-              <span class="carousel-label">Core Action</span>
-              <p class="carousel-desc">The core mining interaction in close-up, the moment every economy and progression system in the game was ultimately designed to support.</p>
+              <span class="carousel-label">Cinematic Still</span>
+              <p class="carousel-desc">A posed shot of the miner statue against the mountain backdrop, composed to look good cinematically rather than a capture of actual gameplay.</p>
             </div>
           </div>
 
@@ -556,6 +597,12 @@
     <span>© 2026</span>
   </footer>
 
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <img id="lightboxImg" src="" alt="" onclick="toggleZoom(event)" />
+    <span class="lightbox-caption" id="lightboxCaption"></span>
+  </div>
+
   <script>
     const carousels = {};
 
@@ -595,7 +642,28 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') moveCarousel('gameplay', -1);
       if (e.key === 'ArrowRight') moveCarousel('gameplay', 1);
+      if (e.key === 'Escape') closeLightbox();
     });
+
+    // LIGHTBOX
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.classList.remove('zoomed');
+      document.getElementById('lightboxCaption').textContent = caption || '';
+      lb.classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target.tagName === 'IMG' && e.target.classList.contains('zoomed')) return;
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    function toggleZoom(e) {
+      e.stopPropagation();
+      e.target.classList.toggle('zoomed');
+    }
 
     // Scroll progress bar
     const scrollProgress = document.getElementById('scrollProgress');
