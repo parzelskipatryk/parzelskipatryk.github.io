@@ -278,6 +278,45 @@
       background: var(--border);
     }
 
+    /* SHOWREEL */
+    .showreel-section { padding-top: 3rem; }
+    .showreel-intro {
+      font-size: 0.95rem; color: var(--muted);
+      max-width: 620px; line-height: 1.8; margin-bottom: 2rem;
+    }
+    .showreel-embed {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .showreel-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .showreel-embed-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #333;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 1rem;
+    }
+
     /* ABOUT */
     .about-grid {
       display: grid;
@@ -788,14 +827,24 @@
     </div>
   </div>
 
+  <section class="showreel-section reveal">
+    <p class="section-label">Showreel</p>
+    <p class="showreel-intro">A quick look across three of my projects — Lootin', Relay, and Perceptual Pathways. For research, systems, and physical prototyping work, see the full case studies below.</p>
+    <div class="showreel-embed">
+      <!-- Once uploaded, replace the placeholder div below with:
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Patryk Parzelski — Game Design Showreel 2026" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      -->
+      <div class="showreel-embed-placeholder">[ Showreel video<br/>will be embedded here ]</div>
+    </div>
+  </section>
+
   <section id="about">
     <p class="section-label">About</p>
     <div class="about-grid reveal">
       <div class="about-text">
         <div class="about-photo-row">
           <div class="about-photo">
-            <span class="about-photo-placeholder">[ Add<br/>photo ]</span>
-            <!-- Swap the placeholder above for: <img src="your-photo.jpg" alt="Patryk Parzelski" /> -->
+            <img src="images/patryk-headshot.jpg" alt="Patryk Parzelski" />
           </div>
           <div>
             <div class="about-photo-name">Patryk Parzelski</div>
